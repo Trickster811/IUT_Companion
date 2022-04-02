@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+
+// admin Index
+final adminIndex = ValueNotifier(const Color(0xfff8f8f8));
+
+// Color
+
+const kPrimaryColor = Color(0xFF7B1B85);
+const kPrimaryLightColor = Color.fromARGB(255, 255, 255, 255);
+
+// buttons
+
+const sampleColorBtn = Color.fromARGB(255, 252, 160, 0);
+const btnColor = Colors.black;
+
+// padding
+
+const padding_h = EdgeInsets.symmetric(horizontal: 10, vertical: 10);
+
+// Text Field Border
+
+OutlineInputBorder textFieldBorder = OutlineInputBorder(
+  borderSide: BorderSide(
+    color: kPrimaryColor.withOpacity(0.8),
+  ),
+);
+
+// Custom Fonts
+
+// final customFont = Font.ttf
