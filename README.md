@@ -1,6 +1,6 @@
 # iut_companion
 
-A new Flutter project.
+This is the University Institute of Technology (UIT) of Ngaoundere app, created to help people to know about the institute, their trainings, graduations and more. This app also help students in some administratives tasks like generating documents.
 
 ## Getting Started
 
