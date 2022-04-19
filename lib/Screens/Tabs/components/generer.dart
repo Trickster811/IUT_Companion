@@ -26,6 +26,20 @@ class PdfParagraphApi {
       '03 mois',
     ];
 
+    final name_filiere = {
+      ' ',
+      'Informatique',
+      'Electrique',
+      'Maintenance',
+      'Maintenance Industrielle',
+      'Geni Civil',
+      'Biomedical',
+      'Industrie Alimentaire',
+      'Analyse Biochimique et Biologique',
+      'Thermique',
+      'Environnement',
+    };
+
     final type_stage = [
       ' ',
       'stage ouvrier',

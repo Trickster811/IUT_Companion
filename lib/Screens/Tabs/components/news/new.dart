@@ -32,7 +32,7 @@ class News extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InfoCard.addInfo('Hello'),
-              ],
+              ], 
             ),
           ),
           SizedBox(

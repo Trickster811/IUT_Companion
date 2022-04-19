@@ -76,7 +76,7 @@ class InfoCard {
       return newsCard(title);
       // InfoCard(title: title);
     }
-  }
+  } 
 
   static newsCard(title) {
     @override
