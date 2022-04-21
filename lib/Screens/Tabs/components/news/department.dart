@@ -31,7 +31,7 @@ class Department extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InfoCard.addInfo('Hello'),
+                InfoCard(title: 'Hello'),
               ],
             ),
           ),

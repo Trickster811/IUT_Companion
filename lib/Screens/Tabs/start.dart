@@ -9,7 +9,6 @@ import 'package:iut_companion/Screens/Tabs/tools_screen.dart';
 import 'package:iut_companion/constants.dart';
 
 class StartScreen extends StatefulWidget {
-
   @override
   State<StartScreen> createState() => _StartScreenState();
 }
@@ -174,6 +173,8 @@ class _StartScreenState extends State<StartScreen> {
           buttonBackgroundColor: sampleColorBtn,
           index: index,
           height: size(50, context),
+          // animationCurve: Curves.easeInOut,
+          // animationDuration: Duration(milliseconds: 600),
           items: items,
           onTap: (index) => setState(() => this.index = index),
         ),
@@ -182,4 +183,3 @@ class _StartScreenState extends State<StartScreen> {
     );
   }
 }
-

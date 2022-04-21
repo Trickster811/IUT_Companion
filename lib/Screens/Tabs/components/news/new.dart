@@ -1,3 +1,4 @@
+import 'package:flutter/rendering.dart';
 import 'package:iut_companion/Screens/Tabs/components/news/constructor.dart';
 import 'package:iut_companion/Screens/Tabs/components/news/sport.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
@@ -10,6 +11,7 @@ class News extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<int> tab = [1, 2, 3];
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -26,13 +28,30 @@ class News extends StatelessWidget {
               ),
             ],
           ),
+          // ListView.builder(
+          //   scrollDirection: Axis.horizontal,
+          //   itemBuilder: (context, index) {
+          //     return InfoCard(
+          //       title: 'Transport',
+          //     );
+          //   },
+          //   itemCount: 4,
+          // ),
+
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InfoCard.addInfo('Hello'),
-              ], 
+                ...(tab).map(
+                  (e) {
+                    print("test");
+                    return InfoCard(
+                      title: 'Transport',
+                    );
+                  },
+                )
+              ],
             ),
           ),
           SizedBox(

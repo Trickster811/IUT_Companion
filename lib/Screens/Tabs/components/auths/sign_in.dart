@@ -152,7 +152,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           height: 20,
                         ),
                         Text(
-                          'Sign In and enjoy withyour companion',
+                          'Sign In and enjoy with your companion',
                           style: TextStyle(
                             color: kPrimaryColor,
                             fontFamily: 'OpenSans_Regular',

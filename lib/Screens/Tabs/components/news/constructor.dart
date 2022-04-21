@@ -70,82 +70,79 @@ class InfoCarde extends StatelessWidget {
   }
 }
 
-class InfoCard {
-  static addInfo(title) {
-    for (var i = 0; i < 2; i++) {
-      return newsCard(title);
-      // InfoCard(title: title);
-    }
-  } 
+class InfoCard extends StatelessWidget {
+  final title;
+  const InfoCard({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
-  static newsCard(title) {
-    @override
-    Widget build(BuildContext context) {
-      return Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: size(10, context),
-          horizontal: size(10, context),
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: size(10, context),
+        horizontal: size(10, context),
+      ),
+      child: Container(
+        width: size(230, context),
+        height: size(250, context),
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 255, 255, 255),
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromARGB(255, 216, 216, 216),
+              // blurStyle: BlurStyle.solid,
+              blurRadius: 5.0,
+              // spreadRadius: 1.0,
+              offset: Offset(0, 5),
+            ),
+            BoxShadow(
+              color: Colors.white,
+              offset: Offset(-5, 0),
+            ),
+            BoxShadow(
+              color: Colors.white,
+              offset: Offset(5, 0),
+            ),
+          ],
         ),
-        child: Container(
-          width: size(230, context),
-          height: size(250, context),
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
-            boxShadow: [
-              BoxShadow(
-                color: Color.fromARGB(255, 216, 216, 216),
-                // blurStyle: BlurStyle.solid,
-                blurRadius: 5.0,
-                // spreadRadius: 1.0,
-                offset: Offset(0, 5),
-              ),
-              BoxShadow(
-                color: Colors.white,
-                offset: Offset(-5, 0),
-              ),
-              BoxShadow(
-                color: Colors.white,
-                offset: Offset(5, 0),
-              ),
-            ],
-          ),
-          child: Column(
-            children: [
-              Flexible(
-                flex: 5,
-                child: Container(
-                  width: double.maxFinite,
-                  height: size(150, context),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10),
-                    ),
-                    child: Image.asset(
-                      'assets/images/news.png',
-                      fit: BoxFit.fill,
-                    ),
+        child: Column(
+          children: [
+            Flexible(
+              flex: 5,
+              child: Container(
+                width: double.maxFinite,
+                height: size(150, context),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
+                  child: Image.asset(
+                    'assets/images/news.png',
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
-              Flexible(
-                flex: 1,
-                child: Center(
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontFamily: 'OpenSans_Regular',
-                      fontSize: taille(14, context),
-                      fontWeight: FontWeight.bold,
-                    ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Center(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontFamily: 'OpenSans_Regular',
+                    fontSize: taille(14, context),
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
-    }
+      ),
+    );
   }
 }

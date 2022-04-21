@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 // class User {
 //   final String login;
 //   final String pwd;
-
 //   User(this.login, this.pwd);
 // }
 
@@ -12,7 +11,6 @@ import 'package:flutter/material.dart';
 //   final String contenu;
 //   final DateTime datePost;
 //   final String img;
-
 //   Actualite(this.titre, this.contenu, this.datePost, this.img);
 // }
 
@@ -20,14 +18,12 @@ import 'package:flutter/material.dart';
 //   final String intitule;
 //   final String dateDeb;
 //   final String dateFin;
-
 //   Stage(this.intitule, this.dateDeb, this.dateFin);
 // }
 
 // class Concours {
 //   final String intitule;
 //   final String arrete;
-
 //   Concours(this.intitule, this.arrete);
 // }
 
@@ -35,13 +31,11 @@ import 'package:flutter/material.dart';
 //   final String theme;
 //   final String question;
 //   final String reponse;
-
 //   Faq(this.theme, this.question, this.reponse);
 // }
 
 // class Cycle {
 //   final String intitule;
-
 //   Cycle(this.intitule);
 // }
 
@@ -50,10 +44,8 @@ import 'package:flutter/material.dart';
 // class TexteSt extends StatelessWidget {
 //   const TexteSt({Key? key, required this.title, required this.styl})
 //       : super(key: key);
-
 //   final String title;
 //   final TextStyle styl;
-
 //   @override
 //   Widget build(BuildContext context) {
 //     return Text(
@@ -71,12 +63,10 @@ import 'package:flutter/material.dart';
 //       this.color = Colors.black,
 //       this.weight = FontWeight.normal})
 //       : super(key: key);
-
 //   final String title;
 //   final double font;
 //   final Color color;
 //   final FontWeight weight;
-
 //   @override
 //   Widget build(BuildContext context) {
 //     return Text(
