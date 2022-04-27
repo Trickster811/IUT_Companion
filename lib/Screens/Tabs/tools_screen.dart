@@ -100,7 +100,6 @@ class ToolScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                  
                   ],
                 ),
               ),
@@ -175,74 +174,103 @@ class Section extends StatelessWidget {
                       elevation: 0,
                     ),
                     onPressed: () => security == 0
-                        ? Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Letter(),
-                            ),
+                        ? showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Expanded(
+                                child: AlertDialog(
+                                  title: Text('Hi!!'),
+                                  content: Text(
+                                    'Are you Student at UIT of Ngaoundere??',
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Letter(index: 1),
+                                          ),
+                                        );
+                                      },
+                                      child: Text(
+                                        'YES',
+                                        style: TextStyle(color: kPrimaryColor),
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Letter(index: 2),
+                                          ),
+                                        );
+                                      },
+                                      child: Text(
+                                        'NO',
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           )
                         : security == 2
-                            ? Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Letter(),
-                                ),
-                              )
-                            :Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NotificationPage(),
-                                ),
+                            ? print('Goog Job')
+                            : showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Expanded(
+                                    child: AlertDialog(
+                                      title: Text('Hi!!'),
+                                      content: Text(
+                                        'You have to be logged as "Admin" to access to area',
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SignInScreen(),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            'Login Now',
+                                            style:
+                                                TextStyle(color: kPrimaryColor),
+                                          ),
+                                        ),
+                                        // TextButton(
+                                        //   onPressed: () {
+                                        //     Navigator.of(context).pop();
+                                        //   },
+                                        //   child: Text(
+                                        //     'NO',
+                                        //     style:
+                                        //         TextStyle(color: Colors.black),
+                                        //   ),
+                                        // ),
+                                      ],
+                                    ),
+                                  );
+                                },
                               ),
-                            // : showDialog(
-                            //     context: context,
-                            //     builder: (context) {
-                            //       return AlertDialog(
-                            //         // Display a message to user
-                            //         content: Column(
-                            //           children: [
-                            //             Text(
-                            //               'You have to be logged as "Admin" to access to area',
-                            //               style: TextStyle(
-                            //                 fontSize: taille(12, context),
-                            //               ),
-                            //             ),
-                            //             ElevatedButton(
-                            //               style: TextButton.styleFrom(
-                            //                 backgroundColor: kPrimaryColor,
-                            //                 // elevation: 0,
-                            //               ),
-                            //               onPressed: () => Navigator.push(
-                            //                 context,
-                            //                 MaterialPageRoute(
-                            //                   builder: (context) =>
-                            //                       SignInScreen(),
-                            //                 ),
-                            //               ),
-                            //               child: Text(
-                            //                 'Login',
-                            //                 style: TextStyle(
-                            //                   fontSize: taille(12, context),
-                            //                 ),
-                            //               ),
-                            //             ),
-                            //           ],
-                            //         ),
-                            //       );
-                            //     },
-                            //   ),
-                    
-                            // final snackBar = SnackBar(content: Text(
-                            //   'You have to be logged as "Admin" to access to area',
-                            //   style: TextStyle(
-                            //     fontSize: taille(12, context),
-                            //   ),
-                            // ),backgroundColor: kPrimaryColor,);
 
-                            // ScaffoldMessenger.of(context)
-                            // ..removeCurrentSnackBar()
-                            // ..showSnackbar(snackBar)
-                            
+                    // : Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => NotificationPage(),
+                    //     ),
+                    //   ),
+
                     child: Text(
                       title,
                       style: TextStyle(fontSize: taille(12, context)),
@@ -257,3 +285,4 @@ class Section extends StatelessWidget {
     );
   }
 }
+

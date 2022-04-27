@@ -197,7 +197,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Don't have an account?",
+                                    "Alredy have an account?",
                                     style: TextStyle(
                                       // color: kPrimaryColor,
                                       fontFamily: 'OpenSans_Regular',
@@ -210,12 +210,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       backgroundColor: Colors.transparent,
                                       elevation: 0,
                                     ),
-                                    onPressed: () => Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => SignInScreen(),
-                                      ),
-                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => SignInScreen(),
+                                        ),
+                                      );
+                                    },
                                     child: Text(
                                       'Sign In',
                                       style: TextStyle(

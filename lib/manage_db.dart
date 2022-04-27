@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:path/path.dart';
+// import 'package:excel/excel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 
@@ -191,13 +195,14 @@ class Student {
   // create
   static createStudent(data) async {
     try {
-      FirebaseFirestore.instance.collection('Student').doc().set({
-        // 'matricule': data[0],
+      FirebaseFirestore.instance.collection('Student').doc(data[0]).set({
+        'matricule': data[0],
         'nom': data[1],
         'prenom': data[2],
-        // 'sexe': data[3],
-        // 'mention': data[4],
-        // 'parcours': data[5],
+        'sexe': data[3],
+        'mention': data[4],
+        'parcours': data[5],
+        'level':data[6],
       });
     } catch (e) {
       print(e);
@@ -229,3 +234,19 @@ class Student {
     }
   }
 }
+
+
+
+
+// var file = "Path_to_pre_existing_Excel_File/excel_file.xlsx";
+//     var bytes = File(file).readAsBytesSync();
+//     var excel = Excel.decodeBytes(bytes);
+    
+//     for (var table in excel.tables.keys) {
+//       print(table); //sheet Name
+//       print(excel.tables[table].maxCols);
+//       print(excel.tables[table].maxRows);
+//       for (var row in excel.tables[table].rows) {
+//         print("$row");
+//       }
+//     }

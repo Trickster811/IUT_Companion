@@ -30,70 +30,28 @@ class _NotificationPageState extends State<NotificationPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: Column(
-          children: [
-            Center(
-              child: SizedBox(
-                width: 200,
-                child: ElevatedButton(
-                  onPressed: () => NotificationApi.showNotification(
-                    title: 'Joachim Nedaouka',
-                    body: "Hey! I'm your companion",
-                    payload: 'Ndam Njoya',
-                  ),
-                  child: Text(
-                    'Simple notification',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'OpenSans_Regular',
-                    ),
-                  ),
-                  style: TextButton.styleFrom(
-                    backgroundColor: kPrimaryColor,
-                    // elevation: 0,
-                  ),
+        body: Center(
+          child: SizedBox(
+            width: 200,
+            child: ElevatedButton(
+              onPressed: () => NotificationApi.showNotification(
+                title: 'Joachim Nedaouka',
+                body: "Hey! I'm your companion",
+                payload: 'Ndam Njoya',
+              ),
+              child: Text(
+                'Simple notification',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'OpenSans_Regular',
                 ),
               ),
-            ),
-            Center(
-              child: SizedBox(
-                width: 200,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Scheduled notification',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'OpenSans_Regular',
-                    ),
-                  ),
-                  style: TextButton.styleFrom(
-                    backgroundColor: kPrimaryColor,
-                    // elevation: 0,
-                  ),
-                ),
+              style: TextButton.styleFrom(
+                backgroundColor: kPrimaryColor,
+                // elevation: 0,
               ),
             ),
-            Center(
-              child: SizedBox(
-                width: 200,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Remove notification',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'OpenSans_Regular',
-                    ),
-                  ),
-                  style: TextButton.styleFrom(
-                    backgroundColor: kPrimaryColor,
-                    // elevation: 0,
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       );
 }

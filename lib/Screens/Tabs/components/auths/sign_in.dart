@@ -264,12 +264,16 @@ class _SignInScreenState extends State<SignInScreen> {
                                         backgroundColor: Colors.transparent,
                                         elevation: 0,
                                       ),
-                                      onPressed: () => Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => SignUpScreen(),
-                                        ),
-                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                SignUpScreen(),
+                                          ),
+                                        );
+                                      },
                                       child: Text(
                                         'Sign Up',
                                         style: TextStyle(
