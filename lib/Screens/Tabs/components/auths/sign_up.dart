@@ -160,11 +160,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       if (_dropdownFormKey.currentState!
                                           .validate()) {
                                         final userInputs = [
-                                          ' ',
                                           my_con_1.text,
                                           my_con_2.text,
                                         ];
-                                        Student.createStudent(userInputs);
+                                        Admin.createAdmin(userInputs);
 
                                         // Go to the Login page
                                         Navigator.push(

@@ -21,7 +21,7 @@ class _SignInScreenState extends State<SignInScreen> {
     List docs = [];
     try {
       FirebaseFirestore.instance
-          .collection('User')
+          .collection('Admin')
           .doc(idmat[0])
           .get()
           .then((DocumentSnapshot doc) {
@@ -29,7 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
         print(idmat);
         docs.add(doc['username']);
         docs.add(doc['password']);
-        if (docs[1] == idmat[1]) {
+        if (docs[0] == idmat[0]) {
           // Go to the admin page
           Navigator.push(
             context,
@@ -40,15 +40,19 @@ class _SignInScreenState extends State<SignInScreen> {
         } else {
           showDialog(
             context: context,
-            builder: (context) {
-              return AlertDialog(
-                // Display a message to user
-                content: Column(
-                  children: [
-                    Text(
-                      'Username or Password incorrect',
-                      style: TextStyle(
-                        fontSize: taille(12, context),
+            builder: (BuildContext context) {
+              return Expanded(
+                child: AlertDialog(
+                  title: Text('Oups!!'),
+                  content: Text(
+                    'Username or password incorrect',
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text(
+                        'YES',
+                        style: TextStyle(color: kPrimaryColor),
                       ),
                     ),
                   ],
@@ -64,14 +68,14 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
-  _openMyPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => AdminScreen(),
-      ),
-    );
-  }
+  // _openMyPage() {
+  //   Navigator.push(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (BuildContext context) => AdminScreen(),
+  //     ),
+  //   );
+  // }
 
   // Variables to get user entries
   final my_con_1 = TextEditingController();

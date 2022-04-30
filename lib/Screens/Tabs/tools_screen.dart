@@ -190,7 +190,8 @@ class Section extends StatelessWidget {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => Letter(index: 1),
+                                            builder: (context) =>
+                                                Letter(index: 1),
                                           ),
                                         );
                                       },
@@ -205,7 +206,8 @@ class Section extends StatelessWidget {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => Letter(index: 2),
+                                            builder: (context) =>
+                                                Letter(index: 2),
                                           ),
                                         );
                                       },
@@ -220,7 +222,12 @@ class Section extends StatelessWidget {
                             },
                           )
                         : security == 2
-                            ? print('Goog Job')
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => NotificationPage(),
+                                ),
+                              )
                             : showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -263,14 +270,6 @@ class Section extends StatelessWidget {
                                   );
                                 },
                               ),
-
-                    // : Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => NotificationPage(),
-                    //     ),
-                    //   ),
-
                     child: Text(
                       title,
                       style: TextStyle(fontSize: taille(12, context)),
@@ -285,4 +284,3 @@ class Section extends StatelessWidget {
     );
   }
 }
-

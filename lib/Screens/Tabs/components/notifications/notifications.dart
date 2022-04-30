@@ -35,6 +35,7 @@ class _NotificationPageState extends State<NotificationPage> {
             width: 200,
             child: ElevatedButton(
               onPressed: () => NotificationApi.showNotification(
+                id: 0,
                 title: 'Joachim Nedaouka',
                 body: "Hey! I'm your companion",
                 payload: 'Ndam Njoya',

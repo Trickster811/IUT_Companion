@@ -1,8 +1,5 @@
 import 'dart:async';
-// import 'dart:convert';
 import 'dart:io';
-// import 'dart:typed_data';
-// import 'dart:ui';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
@@ -16,9 +13,11 @@ class NotificationApi {
 
   static Future _notificationDetails() async {
     final String largeIconPath = await _downloadAndSaveFile(
-        'https://firebasestorage.googleapis.com/v0/b/iut-companion-nedaoukajoachim0.appspot.com/o/logo_iut.png?alt=media&token=540d7665-364f-4096-8d03-a601295fd36c', 'largeIcon');
+        'https://firebasestorage.googleapis.com/v0/b/iut-companion-nedaoukajoachim0.appspot.com/o/logo_iut.png?alt=media&token=540d7665-364f-4096-8d03-a601295fd36c',
+        'largeIcon');
     final String bigPicturePath = await _downloadAndSaveFile(
-        'https://firebasestorage.googleapis.com/v0/b/iut-companion-nedaoukajoachim0.appspot.com/o/340971-things-to-consider-when-looking-for-a-web-design-agency.jpg?alt=media&token=4308e45e-0ca9-4d35-a055-728ec9a37939', 'bigPicture');
+        'https://firebasestorage.googleapis.com/v0/b/iut-companion-nedaoukajoachim0.appspot.com/o/340971-things-to-consider-when-looking-for-a-web-design-agency.jpg?alt=media&token=4308e45e-0ca9-4d35-a055-728ec9a37939',
+        'bigPicture');
 
     // final String bigPicturePath = 'assets/images/letter.png';
     // final String largeIconPath = 'assets/images/logo_iut.png';
@@ -65,18 +64,19 @@ class NotificationApi {
   }
 
   static Future showNotification({
-    int id = 0,
+    id,
     String? title,
     String? body,
     String? payload,
-  }) async =>
-      _notifications.show(
-        id,
-        title,
-        body,
-        await _notificationDetails(),
-        payload: payload,
-      );
+  }) async {
+    _notifications.show(
+      id,
+      title,
+      body,
+      await _notificationDetails(),
+      payload: payload,
+    );
+  }
 }
 
 Future<String> _downloadAndSaveFile(String url, String fileName) async {

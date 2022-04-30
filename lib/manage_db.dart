@@ -203,7 +203,7 @@ class Student {
         'sexe': data[3],
         'mention': data[4],
         'parcours': data[5],
-        'level':data[6],
+        'level': data[6],
       });
     } catch (e) {
       print(e);
@@ -236,13 +236,83 @@ class Student {
   }
 }
 
+class Admin {
+  // create
+  static createAdmin(data) async {
+    try {
+      FirebaseFirestore.instance.collection('Admin').doc(data[0]).set({
+        'username': data[0],
+        'password': data[1],
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
+  // update
+  static updateAdmin(data) async {
+    try {
+      firebase.collection('Admin').doc(data[0]).update({
+        'nom': data[0],
+        'password': data[1],
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
+  // delete
+  static deleteAdmin(data) async {
+    try {
+      firebase.collection('Admin').doc(data[0]).delete();
+    } catch (e) {
+      print(e);
+    }
+  }
+}
+
+class Letter {
+  // create
+  static createLetter(data) async {
+    try {
+      FirebaseFirestore.instance.collection('Letter').doc(data[0]).set({
+        'email': data[0],
+        'phone': data[1],
+        'pobox': data[2],
+        
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // update
+  static updateStudent(data) async {
+    try {
+      firebase.collection('Letter').doc(data[0]).update({
+        'email': data[0],
+        'phone': data[1],
+        'pobox': data[2],
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // delete
+  static deleteStudent(data) async {
+    try {
+      firebase.collection('Letter').doc(data[0]).delete();
+    } catch (e) {
+      print(e);
+    }
+  }
+}
 
 // var file = "Path_to_pre_existing_Excel_File/excel_file.xlsx";
 //     var bytes = File(file).readAsBytesSync();
 //     var excel = Excel.decodeBytes(bytes);
-    
+
 //     for (var table in excel.tables.keys) {
 //       print(table); //sheet Name
 //       print(excel.tables[table].maxCols);
