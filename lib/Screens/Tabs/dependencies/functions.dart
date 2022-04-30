@@ -1,4 +1,11 @@
+import 'dart:io';
+// import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
 
 // class User {
 //   final String login;
@@ -38,8 +45,6 @@ import 'package:flutter/material.dart';
 //   final String intitule;
 //   Cycle(this.intitule);
 // }
-
-
 
 // class TexteSt extends StatelessWidget {
 //   const TexteSt({Key? key, required this.title, required this.styl})
@@ -124,4 +129,28 @@ double size(double val, context) {
 
 double taille(double val, context) {
   return AdaptiveTextSize().getadaptiveTextSize(context, val);
+}
+
+class PicturePicker {
+  Future imageGallerypicker(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+
+      if (image == null) return;
+
+      // final imageTemporaly = File(image.path);
+      final imagPermanently = await saveImagePermanently(image.path);
+      return imagPermanently;
+    } on PlatformException catch (e) {
+      print('Faild to pick image: $e');
+    }
+  }
+
+  Future<File> saveImagePermanently(String imagePath) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final name = basename(imagePath);
+    final image = File('${directory.path}/$name');
+
+    return File(imagePath).copy(image.path);
+  }
 }

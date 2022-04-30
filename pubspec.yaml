@@ -58,6 +58,8 @@ dependencies:
   file_picker: ^4.5.1
   flutter_launcher_icons: ^0.9.2
   encrypt: ^5.0.1
+  image_picker: ^0.8.5
+  rename: ^2.0.1
   # excel: ^1.1.5
 
 dev_dependencies:

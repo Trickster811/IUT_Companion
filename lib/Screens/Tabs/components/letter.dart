@@ -120,9 +120,9 @@ class _Forms1State extends State<Forms1> {
       //       );
       //  return 0;
       querySnapshot = await FirebaseFirestore.instance
-          .collection('matricule')
+          .collection('Student')
           // .collection('Etudiant')
-          .where('matricule', isEqualTo: idmat[0])
+          .where('matricule', isEqualTo: idmat[3])
           .get();
       // .then((QuerySnapshot querySnapshot) {
       if (querySnapshot.docs.isNotEmpty) {
@@ -135,7 +135,7 @@ class _Forms1State extends State<Forms1> {
             doc['parcours'],
             doc['level'],
           ];
-          idmat.remove(my_con_1.text);
+          // idmat.remove(my_con_1.text);
           // print('yoyo');
           for (var i in idmat) {
             a.add(i);
@@ -149,7 +149,20 @@ class _Forms1State extends State<Forms1> {
           PdfParagraphApi.openFile(pdfFile);
         }
       } else {
-        print('Etudiant not exists');
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return Expanded(
+              child: AlertDialog(
+                title: Text('Oups!!'),
+                content: Text(
+                  'Student with this id not exists',
+                ),
+                
+              ),
+            );
+          },
+        );
       }
     } catch (e) {
       print(e);
@@ -416,10 +429,10 @@ class _Forms1State extends State<Forms1> {
                                         if (_dropdownFormKey.currentState!
                                             .validate()) {
                                           final data = [
-                                            my_con_1.text,
                                             my_con_3.text,
                                             dropdownvalue_4,
                                             dropdownvalue_5,
+                                            my_con_1.text,
                                           ];
 
                                           letter(data);
@@ -493,6 +506,7 @@ class Forms2 extends StatefulWidget {
 
 class _Forms2State extends State<Forms2> {
   // Variables to get user entries
+  final my_con_0 = TextEditingController();
   final my_con_1 = TextEditingController();
   final my_con_2 = TextEditingController();
   final my_con_3 = TextEditingController();
@@ -747,7 +761,7 @@ class _Forms2State extends State<Forms2> {
                                       decoration: InputDecoration(
                                         hintText: 'entrer votre matricule',
                                       ),
-                                      controller: my_con_1,
+                                      controller: my_con_0,
                                       validator: RequiredValidator(
                                           errorText:
                                               'Veuillez renseigner votre matricule')),
@@ -995,13 +1009,14 @@ class _Forms2State extends State<Forms2> {
                                           final userInputs = [
                                             my_con_1.text,
                                             my_con_2.text,
-                                            my_con_3.text,
+                                            _radioValue,
                                             dropdownvalue_1,
                                             dropdownvalue_2,
                                             dropdownvalue_3,
+                                            my_con_3.text,
                                             dropdownvalue_4,
                                             dropdownvalue_5,
-                                            _radioValue,
+                                            my_con_0.text,
                                           ];
 
                                           final pdfFile =

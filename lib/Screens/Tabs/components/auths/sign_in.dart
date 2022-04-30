@@ -47,15 +47,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   content: Text(
                     'Username or password incorrect',
                   ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: Text(
-                        'YES',
-                        style: TextStyle(color: kPrimaryColor),
-                      ),
-                    ),
-                  ],
                 ),
               );
             },

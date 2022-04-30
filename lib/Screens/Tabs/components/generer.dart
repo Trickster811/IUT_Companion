@@ -128,7 +128,7 @@ class PdfParagraphApi {
                         EdgeInsets.only(top: 0.5 * PdfPageFormat.cm, right: 50),
                     child: Column(
                       children: [
-                        userData_1[7] == 'Directeur'
+                        userData_1[8] == 'Directeur'
                             ? Column(children: [
                                 Text(
                                   "A",
@@ -136,12 +136,12 @@ class PdfParagraphApi {
                                       TextStyle(font: customFont, fontSize: 12),
                                 ),
                                 Text(
-                                  "Monsieur le ${userData_1[7]} General",
+                                  "Monsieur le ${userData_1[8]} General",
                                   style:
                                       TextStyle(font: customFont, fontSize: 12),
                                 ),
                               ])
-                            : userData_1[7] == 'Directrice'
+                            : userData_1[8] == 'Directrice'
                                 ? Column(children: [
                                     Text(
                                       "A",
@@ -149,7 +149,7 @@ class PdfParagraphApi {
                                           font: customFont, fontSize: 12),
                                     ),
                                     Text(
-                                      "Madame la ${userData_1[7]} Generale",
+                                      "Madame la ${userData_1[8]} Generale",
                                       style: TextStyle(
                                           font: customFont, fontSize: 12),
                                     ),
@@ -161,17 +161,17 @@ class PdfParagraphApi {
                                           font: customFont, fontSize: 12),
                                     ),
                                     Text(
-                                      "${userData_1[7]}",
+                                      "${userData_1[8]}",
                                       style: TextStyle(
                                           font: customFont, fontSize: 12),
                                     ),
                                   ]),
                         Text(
-                          " de ${userData_1[2]}",
+                          " de ${userData_1[6]}",
                           style: TextStyle(font: customFont, fontSize: 12),
                         ),
                         Text(
-                          "${userData_1[6]}.",
+                          "${userData_1[7]}.",
                           style: TextStyle(
                             font: customFont,
                             fontSize: 12,
@@ -210,12 +210,12 @@ class PdfParagraphApi {
                     children: [
                       userData_1[7] == 'Directeur'
                           ? Text(
-                              "             Monsieur le ${userData_1[7]} General,",
+                              "             Monsieur le ${userData_1[8]} General,",
                               style: TextStyle(font: customFont, fontSize: 12),
                             )
-                          : userData_1[7] == 'Directrice'
+                          : userData_1[8] == 'Directrice'
                               ? Text(
-                                  "             Madame la ${userData_1[7]} Generale,",
+                                  "             Madame la ${userData_1[8]} Generale,",
                                   style:
                                       TextStyle(font: customFont, fontSize: 12),
                                 )
@@ -236,7 +236,7 @@ class PdfParagraphApi {
                               textAlign: TextAlign.justify,
                               style: TextStyle(font: customFont, fontSize: 12),
                               text:
-                                  "             En effet, le stage académique sollicite par cette étudiante a une durée de ${delay[int.parse(userData_1[5])]} dans la période allant du 04 avril 2022 au 28 juin 2022 selon le calendrier académique de l'IUT de N’Gaoundéré. Ce séjour en milieu industriel lui permettra non seulement de répondre a une de vos préoccupation en ${userData_1[5]}, mais aussi de compléter la solide formation qu’elle a reçue dans les différents enseignements de la ${userData_1[4]}.",
+                                  "             En effet, le stage académique sollicite par cette étudiante a une durée de ${delay[int.parse(userData_1[5])]} dans la période allant du 04 avril 2022 au 28 juin 2022 selon le calendrier académique de l'IUT de N’Gaoundéré. Ce séjour en milieu industriel lui permettra non seulement de répondre a une de vos préoccupation en ${userData_1[3]}, mais aussi de compléter la solide formation qu’elle a reçue dans les différents enseignements en ${userData_1[4]}.",
                             ),
                             Paragraph(
                               textAlign: TextAlign.justify,
@@ -254,7 +254,7 @@ class PdfParagraphApi {
                               textAlign: TextAlign.justify,
                               style: TextStyle(font: customFont, fontSize: 12),
                               text:
-                                  "             En vous souhaitant bonne réception, nous restons à votre entière disposition pour plus d'ample renseignement que vous jugerez utile. Veuillez agréer, ${userData_1[7]} l'expression de notre parfaite considération.",
+                                  "             En vous souhaitant bonne réception, nous restons à votre entière disposition pour plus d'ample renseignement que vous jugerez utile. Veuillez agréer, Monsieur ${userData_1[8]} l'expression de notre parfaite considération.",
                             ),
                           ],
                         )
@@ -270,7 +270,7 @@ class PdfParagraphApi {
                               textAlign: TextAlign.justify,
                               style: TextStyle(font: customFont, fontSize: 12),
                               text:
-                                  "             En effet, le stage académique sollicite par cet étudiant a une durée de ${delay[int.parse(userData_1[5])]} dans la période allant du 04 avril 2022 au 28 juin 2022 selon le calendrier académique de l'IUT de N’Gaoundéré. Ce séjour en milieu industriel lui permettra non seulement de répondre a une de vos préoccupation en ${userData_1[4]}, mais aussi de compléter la solide formation qu’il a reçu dans les différents enseignements du ${userData_1[4]}.",
+                                  "             En effet, le stage académique sollicite par cet étudiant a une durée de ${delay[int.parse(userData_1[5])]} dans la période allant du 04 avril 2022 au 28 juin 2022 selon le calendrier académique de l'IUT de N’Gaoundéré. Ce séjour en milieu industriel lui permettra non seulement de répondre a une de vos préoccupation en ${userData_1[3]}, mais aussi de compléter la solide formation qu’il a reçu dans les différents enseignements du ${userData_1[4]}.",
                             ),
                             Paragraph(
                               textAlign: TextAlign.justify,
@@ -288,7 +288,7 @@ class PdfParagraphApi {
                               textAlign: TextAlign.justify,
                               style: TextStyle(font: customFont, fontSize: 12),
                               text:
-                                  "             En vous souhaitant bonne réception, nous restons à votre entière disposition pour plus d'ample renseignement que vous jugerez utile. Veuillez agréer, ${userData_1[7]} l'expression de notre parfaite considération.",
+                                  "             En vous souhaitant bonne réception, nous restons à votre entière disposition pour plus d'ample renseignement que vous jugerez utile. Veuillez agréer, Monsieur ${userData_1[8]} l'expression de notre parfaite considération.",
                             ),
                           ],
                         ),
@@ -306,7 +306,7 @@ class PdfParagraphApi {
                 ],
               )),
     );
-    return saveDocument(name: 'Lettre_de_Recommandation.pdf', pdf: pdf);
+    return saveDocument(name: 'Lettre_de_Recommandation_${userData_1[9]}_${userData_1[3]}_${userData_1[4]}_niveau_${userData_1[5]}.pdf', pdf: pdf);
   }
 
   static Future<File> saveDocument({
