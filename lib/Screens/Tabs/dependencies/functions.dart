@@ -132,21 +132,21 @@ double taille(double val, context) {
 }
 
 class PicturePicker {
-  Future imageGallerypicker(ImageSource source) async {
+  static Future imageGallerypicker(ImageSource source) async {
     try {
       final image = await ImagePicker().pickImage(source: source);
 
       if (image == null) return;
 
       // final imageTemporaly = File(image.path);
-      final imagPermanently = await saveImagePermanently(image.path);
-      return imagPermanently;
+      final imagePermanently = await saveImagePermanently(image.path);
+      return imagePermanently;
     } on PlatformException catch (e) {
       print('Faild to pick image: $e');
     }
   }
 
-  Future<File> saveImagePermanently(String imagePath) async {
+  static Future<File> saveImagePermanently(String imagePath) async {
     final directory = await getApplicationDocumentsDirectory();
     final name = basename(imagePath);
     final image = File('${directory.path}/$name');

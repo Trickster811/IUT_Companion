@@ -1,5 +1,7 @@
-// import 'dart:html';
+import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:iut_companion/Screens/Tabs/components/letter.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/constants.dart';
@@ -116,10 +118,12 @@ class Info extends StatefulWidget {
 }
 
 class _InfoState extends State<Info> {
+  // image for news variable
+  File? image;
+
   // Variables to get user entries
   final my_con_1 = TextEditingController();
   final my_con_2 = TextEditingController();
-  // final my_con_3 = TextEditingController();
 
   int id = 1;
 
@@ -128,8 +132,6 @@ class _InfoState extends State<Info> {
 
   // Initial Selected Value
   String? dropdownvalue_1;
-
-  String _radioValue = 'Male';
 
   // List of items in our dropdown menu for mention
   List<DropdownMenuItem<String>> get items_mn {
@@ -180,36 +182,79 @@ class _InfoState extends State<Info> {
                           ),
                           TextTitle(title: 'Title : '),
                           TextFormField(
-                              style: TextStyle(
-                                fontSize: taille(10, context),
-                                height: 1.5,
-                              ),
-                              decoration: InputDecoration(
-                                // icon: Icon(Icons.person),
-                                hintText: 'enter a title',
-                              ),
-                              // value: dropdownvalue_1,
-                              controller: my_con_1,
-                              validator: RequiredValidator(
-                                  errorText: 'Veuillez renseigner un titre')),
+                            style: TextStyle(
+                              fontSize: taille(10, context),
+                              height: 1.5,
+                            ),
+                            decoration: InputDecoration(
+                              // icon: Icon(Icons.person),
+                              hintText: 'enter a title',
+                            ),
+                            // value: dropdownvalue_1,
+                            controller: my_con_1,
+                            validator: RequiredValidator(
+                                errorText: 'Veuillez renseigner un titre'),
+                          ),
                           SizedBox(
                             height: size(12, context),
                           ),
+                          TextTitle(title: 'Image : '),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: image == null
+                                ? ImageWidget(
+                                    image: image!,
+                                    onClicked: (source) =>
+                                        PicturePicker.imageGallerypicker(
+                                            source),
+                                  )
+                                : TextFormField(
+                                    keyboardType: TextInputType.url,
+                                    style: TextStyle(
+                                      fontSize: taille(10, context),
+                                      height: 1.5,
+                                    ),
+                                    decoration: InputDecoration(
+                                      // icon: Icon(Icons.person),
+                                      hintText: 'add an image',
+                                    ),
+                                    // value: dropdownvalue_1,
+                                    controller: my_con_2,
+                                    validator: RequiredValidator(
+                                        errorText: 'Please pick an image'),
+                                  ),
+                          ),
+                          TextFormField(
+                            keyboardType: TextInputType.url,
+                            style: TextStyle(
+                              fontSize: taille(10, context),
+                              height: 1.5,
+                            ),
+                            decoration: InputDecoration(
+                              // icon: Icon(Icons.person),
+                              hintText: 'add an image',
+                            ),
+                            // value: dropdownvalue_1,
+                            controller: my_con_2,
+                            validator: RequiredValidator(
+                                errorText: 'Please pick an image'),
+                          ),
                           TextTitle(title: 'Content : '),
                           TextFormField(
-                              keyboardType: TextInputType.multiline,
-                              style: TextStyle(
-                                fontSize: taille(10, context),
-                                height: 1.5,
-                              ),
-                              decoration: InputDecoration(
-                                // icon: Icon(Icons.person),
-                                hintText: 'enter a content',
-                              ),
-                              // value: dropdownvalue_1,
-                              controller: my_con_2,
-                              validator: RequiredValidator(
-                                  errorText: 'Veuillez mettre du contenu')),
+                            keyboardType: TextInputType.multiline,
+                            style: TextStyle(
+                              fontSize: taille(10, context),
+                              height: 1.5,
+                            ),
+                            decoration: InputDecoration(
+                              // icon: Icon(Icons.person),
+                              hintText: 'enter a content',
+                            ),
+                            // value: dropdownvalue_1,
+                            controller: my_con_2,
+                            validator: RequiredValidator(
+                                errorText: 'Veuillez mettre du contenu'),
+                          ),
                           SizedBox(
                             height: size(12, context),
                           ),
@@ -252,7 +297,7 @@ class _InfoState extends State<Info> {
                                     my_con_1.text,
                                     my_con_2.text,
                                     dropdownvalue_1,
-                                    _radioValue,
+                                    // _radioValue,
                                   ];
                                 }
                               },
@@ -309,4 +354,95 @@ class _InfoState extends State<Info> {
       ],
     );
   }
+}
+
+class ImageWidget extends StatelessWidget {
+  final File image;
+  final ValueChanged<ImageSource> onClicked;
+
+  const ImageWidget({
+    Key? key,
+    required this.image,
+    required this.onClicked,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.primary;
+
+    return Center(
+      child: Stack(
+        children: [
+          buildImage(context),
+          Positioned(
+            bottom: 0,
+            right: 4,
+            child: buildEditIcon(color),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildImage(BuildContext context) {
+  final imagePath = this.image.path;
+  final image = imagePath.contains('https://')
+      ? NetworkImage(imagePath)
+      : FileImage(File(imagePath));
+
+  return ClipOval(
+    child: Material(
+      color: Colors.transparent,
+      child: Ink.image(
+        image: image as ImageProvider,
+        fit: BoxFit.cover,
+        height: 160,
+        width: 160,
+        child: InkWell(
+          onTap: () async {
+            final source = await showImageSource(context);
+            if (source == null) return;
+            
+            onClicked(source);
+          },
+        ),
+      ),
+    ),
+  );
+}
+
+}
+
+
+
+Future<ImageSource?> showImageSource(BuildContext context)async{
+if (Platform.isIOS){
+return  showCupertinoModalPopup(context: context, builder: ((context) => CupertinoActionSheet(
+  actions: [
+    CupertinoActionSheetAction(
+      child: Text('Camera'), 
+      onPressed: () => Navigator.of(context).pop(ImageSource.camera),
+    ),
+    CupertinoActionSheetAction(
+      child: Text('Galery'), 
+      onPressed: () => Navigator.of(context).pop(ImageSource.gallery),
+    )
+  ],)),);
+}else{
+  return showModalBottomSheet(context: context, builder: ((context) => Column(
+    mainAxisSize: MainAxisSize.min,
+children: [
+  ListTile(
+    leading: Icon(Icons.camera_outlined),
+title: Text('Camera'),
+onTap: () => Navigator.of(context).pop(ImageSource.gallery),
+  ),
+  ListTile(
+    leading: Icon(Icons.image_rounded),
+title: Text('Camera'),
+onTap: () => Navigator.of(context).pop(ImageSource.gallery),
+  ),
+],
+  )),);
+}
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
-import 'package:iut_companion/Screens/Tabs/components/informationsFiliere.dart';
+// import 'package:iut_companion/Screens/Tabs/components/informationsFiliere.dart';
 
 class Scolarite extends StatelessWidget {
   const Scolarite({Key? key}) : super(key: key);

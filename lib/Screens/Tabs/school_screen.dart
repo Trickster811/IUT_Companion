@@ -1,4 +1,4 @@
-import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
+// import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/Screens/Tabs/components/concours.dart';
 import 'package:iut_companion/Screens/Tabs/components/filliere.dart';
 import 'package:iut_companion/constants.dart';
