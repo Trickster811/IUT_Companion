@@ -377,7 +377,8 @@ class ImageWidget extends StatelessWidget {
           Positioned(
             bottom: 0,
             right: 4,
-            child: buildEditIcon(color),
+            child: Container(),
+            // buildEditIcon(color),
           )
         ],
       ),
