@@ -7,6 +7,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:52413235158:android:e4b4d898eb84503de36e77",
+        "android_client_info": {
+          "package_name": "com.dailylearnig.iutcompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52413235158-ma9ecbmjmrvf1meui24it8ctblkq1gs8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZzBkrbYY_6Q2QJ0ylzx3zlySdIOG6mp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52413235158-ma9ecbmjmrvf1meui24it8ctblkq1gs8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:52413235158:android:b8a5d7ef97bc5ca7e36e77",
         "android_client_info": {
           "package_name": "com.example.iut_companion"

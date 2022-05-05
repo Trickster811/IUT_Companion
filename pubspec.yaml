@@ -60,6 +60,7 @@ dependencies:
   encrypt: ^5.0.1
   image_picker: ^0.8.5
   rename: ^2.0.1
+  get: ^4.6.1
   # excel: ^1.1.5
 
 dev_dependencies:

@@ -236,6 +236,7 @@ class Student {
   }
 }
 
+// Function to manage admin  account
 class Admin {
   // create
   static createAdmin(data) async {
@@ -271,11 +272,12 @@ class Admin {
   }
 }
 
-class Letter {
+// Function to manage info for letter of recommandations
+class Letter_info {
   // create
-  static createLetter(data) async {
+  static createLetter_info(data) async {
     try {
-      FirebaseFirestore.instance.collection('Letter').doc(data[0]).set({
+      FirebaseFirestore.instance.collection('Letter_info').doc(data[0]).set({
         'email': data[0],
         'phone': data[1],
         'pobox': data[2],
@@ -287,9 +289,9 @@ class Letter {
   }
 
   // update
-  static updateStudent(data) async {
+  static updateLetter_info(data) async {
     try {
-      firebase.collection('Letter').doc(data[0]).update({
+      firebase.collection('Letter_info').doc(data[0]).update({
         'email': data[0],
         'phone': data[1],
         'pobox': data[2],
@@ -300,9 +302,9 @@ class Letter {
   }
 
   // delete
-  static deleteStudent(data) async {
+  static deleteLetter_info(data) async {
     try {
-      firebase.collection('Letter').doc(data[0]).delete();
+      firebase.collection('Letter_info').doc(data[0]).delete();
     } catch (e) {
       print(e);
     }

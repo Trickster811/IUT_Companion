@@ -147,6 +147,7 @@ class _Forms1State extends State<Forms1> {
           // print(docs);
           final pdfFile = await PdfParagraphApi.generate(a);
           PdfParagraphApi.openFile(pdfFile);
+          
         }
       } else {
         showDialog(

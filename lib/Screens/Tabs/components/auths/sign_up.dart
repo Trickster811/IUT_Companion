@@ -1,3 +1,4 @@
+import 'package:iut_companion/Screens/Admin/components/encrytion.dart';
 import 'package:iut_companion/Screens/Tabs/components/auths/sign_in.dart';
 import 'package:iut_companion/Screens/Tabs/components/letter.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
@@ -159,10 +160,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     onPressed: () async {
                                       if (_dropdownFormKey.currentState!
                                           .validate()) {
-                                            
+                                        final password =
+                                            EncryptionFernet.encryptFernet(
+                                                my_con_2.text);
+
                                         final userInputs = [
                                           my_con_1.text,
-                                          my_con_2.text,
+                                          password,
                                         ];
                                         Admin.createAdmin(userInputs);
 

@@ -99,7 +99,7 @@ class AdminScreen extends StatelessWidget {
                             link: AdminWorkSpace(index: 0),
                           ),
                           Actions(
-                            icon: Icons.class_rounded,
+                            icon: Icons.class__rounded,
                             title: 'Add Stage Infos',
                             link: AdminWorkSpace(index: 1),
                           ),
