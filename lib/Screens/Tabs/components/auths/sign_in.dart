@@ -29,7 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
         print(idmat);
         docs.add(doc['username']);
         docs.add(doc['password']);
-        if (docs[0] == idmat[0]) {
+        if (docs[1] == idmat[1]) {
           // Go to the admin page
           Navigator.push(
             context,
@@ -58,15 +58,6 @@ class _SignInScreenState extends State<SignInScreen> {
       print(e);
     }
   }
-
-  // _openMyPage() {
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (BuildContext context) => AdminScreen(),
-  //     ),
-  //   );
-  // }
 
   // Variables to get user entries
   final my_con_1 = TextEditingController();
@@ -167,7 +158,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                TextTitle(title: 'Username'),
+                                TextTitle.textTitle('Username'),
                                 TextFormField(
                                   style: TextStyle(
                                     fontSize: taille(10, context),
@@ -186,7 +177,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                TextTitle(title: 'Password'),
+                                TextTitle.textTitle('Password'),
                                 TextFormField(
                                   obscureText: true,
                                   style: TextStyle(

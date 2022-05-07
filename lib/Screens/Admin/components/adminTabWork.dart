@@ -137,19 +137,19 @@ class _InfoState extends State<Info> {
   List<DropdownMenuItem<String>> get items_mn {
     List<DropdownMenuItem<String>> items = [
       DropdownMenuItem(
-        child: TextTitle(title: 'News'),
+        child: TextTitle.textTitle('News'),
         value: 'News',
       ),
       DropdownMenuItem(
-        child: TextTitle(title: 'Departments'),
+        child: TextTitle.textTitle('Departments'),
         value: 'Departments',
       ),
       DropdownMenuItem(
-        child: TextTitle(title: 'Concours'),
+        child: TextTitle.textTitle('Concours'),
         value: 'Concours',
       ),
       DropdownMenuItem(
-        child: TextTitle(title: 'Sport'),
+        child: TextTitle.textTitle('Sport'),
         value: 'Sport',
       ),
     ];
@@ -180,7 +180,7 @@ class _InfoState extends State<Info> {
                           SizedBox(
                             height: size(12, context),
                           ),
-                          TextTitle(title: 'Title : '),
+                          TextTitle.textTitle('Title : '),
                           TextFormField(
                             style: TextStyle(
                               fontSize: taille(10, context),
@@ -198,7 +198,7 @@ class _InfoState extends State<Info> {
                           SizedBox(
                             height: size(12, context),
                           ),
-                          TextTitle(title: 'Image : '),
+                          TextTitle.textTitle('Image : '),
                           ElevatedButton(
                             onPressed: () {},
                             child: image == null
@@ -239,7 +239,7 @@ class _InfoState extends State<Info> {
                             validator: RequiredValidator(
                                 errorText: 'Please pick an image'),
                           ),
-                          TextTitle(title: 'Content : '),
+                          TextTitle.textTitle('Content : '),
                           TextFormField(
                             keyboardType: TextInputType.multiline,
                             style: TextStyle(
@@ -261,7 +261,7 @@ class _InfoState extends State<Info> {
                           SizedBox(
                             height: size(12, context),
                           ),
-                          TextTitle(title: 'Category : '),
+                          TextTitle.textTitle('Category : '),
                           DropdownButtonFormField(
                             style: TextStyle(
                               fontSize: taille(10, context),

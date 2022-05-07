@@ -281,7 +281,6 @@ class Letter_info {
         'email': data[0],
         'phone': data[1],
         'pobox': data[2],
-        
       });
     } catch (e) {
       print(e);
@@ -305,6 +304,42 @@ class Letter_info {
   static deleteLetter_info(data) async {
     try {
       firebase.collection('Letter_info').doc(data[0]).delete();
+    } catch (e) {
+      print(e);
+    }
+  }
+}
+
+// Function to manage info for letter of recommandations
+class Filiere {
+  // create
+  static createFiliere(data) async {
+    try {
+      FirebaseFirestore.instance.collection('Filiere').doc(data[0]).set({
+        'intitule': data[0],
+        'cycle': data[1],
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // update
+  static updateFiliere(data) async {
+    try {
+      firebase.collection('Filiere').doc(data[0]).update({
+        'intitule': data[0],
+        'cycle': data[1],
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // delete
+  static deleteFiliere(data) async {
+    try {
+      firebase.collection('Filiere').doc(data[0]).delete();
     } catch (e) {
       print(e);
     }
@@ -348,4 +383,3 @@ Future<int> readFile() async {
     return 0;
   }
 }
- 

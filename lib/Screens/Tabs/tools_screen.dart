@@ -2,7 +2,6 @@ import 'package:iut_companion/Screens/Tabs/components/auths/sign_in.dart';
 import 'package:iut_companion/Screens/Tabs/components/letter.dart';
 import 'package:iut_companion/Screens/Tabs/components/notifications/notifications.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
-import 'package:iut_companion/Screens/Tabs/school_screen.dart';
 import 'package:iut_companion/constants.dart';
 import 'package:flutter/material.dart';
 

@@ -47,7 +47,7 @@ class EncryptionFernet {
   }
 }
 
-
+// for Salsa20 encryption algorithm
 class EncryptionSalsa20{
   static final keySalsa20 = Key.fromLength(32);
   static final iv = IV.fromLength(8);

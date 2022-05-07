@@ -113,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              TextTitle(title: 'Username'),
+                              TextTitle.textTitle('Username'),
                               TextFormField(
                                 style: TextStyle(
                                   fontSize: taille(10, context),
@@ -131,7 +131,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               SizedBox(
                                 height: 20,
                               ),
-                              TextTitle(title: 'Password'),
+                              TextTitle.textTitle('Password'),
                               TextFormField(
                                 style: TextStyle(
                                   fontSize: taille(10, context),
@@ -161,7 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       if (_dropdownFormKey.currentState!
                                           .validate()) {
                                         final password =
-                                            EncryptionFernet.encryptFernet(
+                                            EncryptionAES.encryptAES(
                                                 my_con_2.text);
 
                                         final userInputs = [

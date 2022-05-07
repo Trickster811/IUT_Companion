@@ -142,7 +142,19 @@ class _StartScreenState extends State<StartScreen> {
                                 ),
                               ),
                               IconButton(
-                                onPressed: () {},
+                                onPressed: () => showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Expanded(
+                                      child: AlertDialog(
+                                        title: Text('Account Setting'),
+                                        content: Text(
+                                          'Connect to your account',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
                                 icon: Icon(Icons.account_circle_sharp),
                                 iconSize: taille(30, context),
                                 color: Colors.white,
