@@ -1,14 +1,11 @@
 import 'package:iut_companion/Screens/Admin/admin.dart';
 import 'package:iut_companion/Screens/Tabs/components/auths/sign_up.dart';
-import 'package:iut_companion/Screens/Tabs/components/letter.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
-import 'package:iut_companion/Screens/Tabs/start.dart';
 import 'package:iut_companion/Screens/Tabs/tools_screen.dart';
 import 'package:iut_companion/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -26,9 +23,10 @@ class _SignInScreenState extends State<SignInScreen> {
           .get()
           .then((DocumentSnapshot doc) {
         print(doc.data());
-        print(idmat);
         docs.add(doc['username']);
         docs.add(doc['password']);
+        print(docs);
+
         if (docs[1] == idmat[1]) {
           // Go to the admin page
           Navigator.push(
@@ -158,7 +156,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                TextTitle.textTitle('Username'),
+                                textStyle(context, 'Username'),
                                 TextFormField(
                                   style: TextStyle(
                                     fontSize: taille(10, context),
@@ -177,7 +175,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                TextTitle.textTitle('Password'),
+                                textStyle(context, 'Password'),
                                 TextFormField(
                                   obscureText: true,
                                   style: TextStyle(

@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:iut_companion/Screens/Tabs/components/letter.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/constants.dart';
 import 'package:flutter/material.dart';
@@ -137,19 +136,19 @@ class _InfoState extends State<Info> {
   List<DropdownMenuItem<String>> get items_mn {
     List<DropdownMenuItem<String>> items = [
       DropdownMenuItem(
-        child: TextTitle.textTitle('News'),
+        child: textStyle(context, 'News'),
         value: 'News',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Departments'),
+        child: textStyle(context, 'Departments'),
         value: 'Departments',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Concours'),
+        child: textStyle(context, 'Concours'),
         value: 'Concours',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Sport'),
+        child: textStyle(context, 'Sport'),
         value: 'Sport',
       ),
     ];
@@ -180,7 +179,7 @@ class _InfoState extends State<Info> {
                           SizedBox(
                             height: size(12, context),
                           ),
-                          TextTitle.textTitle('Title : '),
+                          textStyle(context, 'Title : '),
                           TextFormField(
                             style: TextStyle(
                               fontSize: taille(10, context),
@@ -198,7 +197,7 @@ class _InfoState extends State<Info> {
                           SizedBox(
                             height: size(12, context),
                           ),
-                          TextTitle.textTitle('Image : '),
+                          textStyle(context, 'Image : '),
                           ElevatedButton(
                             onPressed: () {},
                             child: image == null
@@ -239,7 +238,7 @@ class _InfoState extends State<Info> {
                             validator: RequiredValidator(
                                 errorText: 'Please pick an image'),
                           ),
-                          TextTitle.textTitle('Content : '),
+                          textStyle(context, 'Content : '),
                           TextFormField(
                             keyboardType: TextInputType.multiline,
                             style: TextStyle(
@@ -261,7 +260,7 @@ class _InfoState extends State<Info> {
                           SizedBox(
                             height: size(12, context),
                           ),
-                          TextTitle.textTitle('Category : '),
+                          textStyle(context, 'Category : '),
                           DropdownButtonFormField(
                             style: TextStyle(
                               fontSize: taille(10, context),
@@ -386,64 +385,68 @@ class ImageWidget extends StatelessWidget {
   }
 
   Widget buildImage(BuildContext context) {
-  final imagePath = this.image.path;
-  final image = imagePath.contains('https://')
-      ? NetworkImage(imagePath)
-      : FileImage(File(imagePath));
+    final imagePath = this.image.path;
+    final image = imagePath.contains('https://')
+        ? NetworkImage(imagePath)
+        : FileImage(File(imagePath));
 
-  return ClipOval(
-    child: Material(
-      color: Colors.transparent,
-      child: Ink.image(
-        image: image as ImageProvider,
-        fit: BoxFit.cover,
-        height: 160,
-        width: 160,
-        child: InkWell(
-          onTap: () async {
-            final source = await showImageSource(context);
-            if (source == null) return;
-            
-            onClicked(source);
-          },
+    return ClipOval(
+      child: Material(
+        color: Colors.transparent,
+        child: Ink.image(
+          image: image as ImageProvider,
+          fit: BoxFit.cover,
+          height: 160,
+          width: 160,
+          child: InkWell(
+            onTap: () async {
+              final source = await showImageSource(context);
+              if (source == null) return;
+
+              onClicked(source);
+            },
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
-}
-
-
-
-Future<ImageSource?> showImageSource(BuildContext context)async{
-if (Platform.isIOS){
-return  showCupertinoModalPopup(context: context, builder: ((context) => CupertinoActionSheet(
-  actions: [
-    CupertinoActionSheetAction(
-      child: Text('Camera'), 
-      onPressed: () => Navigator.of(context).pop(ImageSource.camera),
-    ),
-    CupertinoActionSheetAction(
-      child: Text('Galery'), 
-      onPressed: () => Navigator.of(context).pop(ImageSource.gallery),
-    )
-  ],)),);
-}else{
-  return showModalBottomSheet(context: context, builder: ((context) => Column(
-    mainAxisSize: MainAxisSize.min,
-children: [
-  ListTile(
-    leading: Icon(Icons.camera_outlined),
-title: Text('Camera'),
-onTap: () => Navigator.of(context).pop(ImageSource.gallery),
-  ),
-  ListTile(
-    leading: Icon(Icons.image_rounded),
-title: Text('Camera'),
-onTap: () => Navigator.of(context).pop(ImageSource.gallery),
-  ),
-],
-  )),);
-}
+Future<ImageSource?> showImageSource(BuildContext context) async {
+  if (Platform.isIOS) {
+    return showCupertinoModalPopup(
+      context: context,
+      builder: ((context) => CupertinoActionSheet(
+            actions: [
+              CupertinoActionSheetAction(
+                child: Text('Camera'),
+                onPressed: () => Navigator.of(context).pop(ImageSource.camera),
+              ),
+              CupertinoActionSheetAction(
+                child: Text('Galery'),
+                onPressed: () => Navigator.of(context).pop(ImageSource.gallery),
+              )
+            ],
+          )),
+    );
+  } else {
+    return showModalBottomSheet(
+      context: context,
+      builder: ((context) => Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: Icon(Icons.camera_outlined),
+                title: Text('Camera'),
+                onTap: () => Navigator.of(context).pop(ImageSource.gallery),
+              ),
+              ListTile(
+                leading: Icon(Icons.image_rounded),
+                title: Text('Camera'),
+                onTap: () => Navigator.of(context).pop(ImageSource.gallery),
+              ),
+            ],
+          )),
+    );
+  }
 }

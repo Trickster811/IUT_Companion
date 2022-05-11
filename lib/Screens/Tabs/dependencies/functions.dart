@@ -131,25 +131,22 @@ double taille(double val, context) {
   return AdaptiveTextSize().getadaptiveTextSize(context, val);
 }
 
-class TextTitle{
-  static textTitle(String title){
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: size(10, context),
+Padding textStyle(BuildContext context, title) {
+  return Padding(
+    padding: EdgeInsets.only(
+      bottom: size(10, context),
+    ),
+    child: Text(
+      title,
+      style: TextStyle(
+        color: Colors.black54,
+        fontWeight: FontWeight.bold,
+        fontSize: taille(12, context),
+        fontFamily: 'OpenSans_Regular',
       ),
-      child: Text(
-        title,
-        style: TextStyle(
-          color: Colors.black54,
-          fontWeight: FontWeight.bold,
-          fontSize: taille(12, context),
-          fontFamily: 'OpenSans_Regular',
-        ),
-      ),
-    );
-  }
+    ),
+  );
 }
-
 
 class PicturePicker {
   static Future imageGallerypicker(ImageSource source) async {

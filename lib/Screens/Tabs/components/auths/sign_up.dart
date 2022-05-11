@@ -113,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              TextTitle.textTitle('Username'),
+                              textStyle(context, 'Username'),
                               TextFormField(
                                 style: TextStyle(
                                   fontSize: taille(10, context),
@@ -131,7 +131,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               SizedBox(
                                 height: 20,
                               ),
-                              TextTitle.textTitle('Password'),
+                              textStyle(context, 'Password'),
                               TextFormField(
                                 style: TextStyle(
                                   fontSize: taille(10, context),
@@ -168,7 +168,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           my_con_1.text,
                                           password,
                                         ];
-                                        Admin.createAdmin(userInputs);
+                                        // Admin.createAdmin(userInputs);
 
                                         // Go to the Login page
                                         Navigator.push(

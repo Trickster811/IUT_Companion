@@ -14,10 +14,10 @@ import 'package:iut_companion/constants.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(); 
   runApp(const MyApp());
 }
-   
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 

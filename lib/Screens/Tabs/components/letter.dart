@@ -1,8 +1,6 @@
 import 'package:iut_companion/Screens/Tabs/components/generer.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
-import 'package:iut_companion/Screens/Tabs/tools_screen.dart';
 import 'package:iut_companion/constants.dart';
-import 'package:iut_companion/manage_db.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -108,7 +106,7 @@ class Forms1 extends StatefulWidget {
 }
 
 class _Forms1State extends State<Forms1> {
-  letter(idmat) async {
+  letter(List idmat) async {
     // QuerySnapshot querySnapshot;
     List docs = [];
     try {
@@ -117,20 +115,42 @@ class _Forms1State extends State<Forms1> {
       //     .where('matricule', isEqualTo: idmat[3])
       //     .get();
 
+      print(idmat);
       FirebaseFirestore.instance
-          .collection('Admin')
+          .collection('Student')
           .doc(idmat[0])
           .get()
-          .then((DocumentSnapshot querySnapshot) {
-        print(querySnapshot.data());
-        print(idmat);
-        docs.add(querySnapshot['name']);
-        docs.add(querySnapshot['prenom']);
-        docs.add(querySnapshot['sex']);
-        docs.add(querySnapshot['mention']);
-        docs.add(querySnapshot['level']);
-        if (querySnapshot == Null) {
+          .then((DocumentSnapshot doc) {
+        print(doc.data());
+        if (doc.exists) {
+          docs.add(doc['nom']);
+          docs.add(doc['prenom']);
+          docs.add(doc['sex']);
+          docs.add(doc['mention']);
+          docs.add(doc['parcours']);
+          docs.add(doc['level']);
+          idmat.remove(my_con_1);
+          for (var i in idmat) {
+            docs.add(i);
+          }
+          docs.add(doc['matricule']);
+          print(docs);
+
           _openMyLetter(docs);
+        } else {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return Expanded(
+                child: AlertDialog(
+                  title: Text('Oups!!'),
+                  content: Text(
+                    'Student with this id not exists',
+                  ),
+                ),
+              );
+            },
+          );
         }
         // if (querySnapshot.docs.isNotEmpty) {
         //   for (var doc in querySnapshot.docs.toList()) {
@@ -156,27 +176,12 @@ class _Forms1State extends State<Forms1> {
         //     PdfParagraphApi.openFile(pdfFile);
         //   }
         // }
-        else {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return Expanded(
-                child: AlertDialog(
-                  title: Text('Oups!!'),
-                  content: Text(
-                    'Student with this id not exists',
-                  ),
-                ),
-              );
-            },
-          );
-        }
       });
     } catch (e) {
       print(e);
     }
   }
-  
+
   _openMyLetter(List docs) async {
     final pdfFile = await PdfParagraphApi.generate(docs);
     PdfParagraphApi.openFile(pdfFile);
@@ -200,43 +205,43 @@ class _Forms1State extends State<Forms1> {
   List<DropdownMenuItem<String>> get items_vil {
     List<DropdownMenuItem<String>> items = [
       DropdownMenuItem(
-        child: TextTitle.textTitle('MAROUA'),
+        child: textStyle(context, 'MAROUA'),
         value: 'MAROUA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('GAROUA'),
+        child: textStyle(context, 'GAROUA'),
         value: 'GAROUA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('NGAOUNDERE'),
+        child: textStyle(context, 'NGAOUNDERE'),
         value: 'NGAOUNDERE',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('YAOUNDE'),
+        child: textStyle(context, 'YAOUNDE'),
         value: 'YAOUNDE',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('BERTOUA'),
+        child: textStyle(context, 'BERTOUA'),
         value: 'BERTOUA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('EBOLOWA'),
+        child: textStyle(context, 'EBOLOWA'),
         value: 'EBOLOWA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('DOUALA'),
+        child: textStyle(context, 'DOUALA'),
         value: 'DOUALA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('BAFOUSSAM'),
+        child: textStyle(context, 'BAFOUSSAM'),
         value: 'BAFOUSSAM',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('BAMENDA'),
+        child: textStyle(context, 'BAMENDA'),
         value: 'BAMENDA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('BUEA'),
+        child: textStyle(context, 'BUEA'),
         value: 'BUEA',
       ),
     ];
@@ -247,19 +252,19 @@ class _Forms1State extends State<Forms1> {
   List<DropdownMenuItem<String>> get items_dr {
     List<DropdownMenuItem<String>> items = [
       DropdownMenuItem(
-        child: TextTitle.textTitle('Directeur'),
+        child: textStyle(context, 'Directeur'),
         value: 'Directeur',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Directrice'),
+        child: textStyle(context, 'Directrice'),
         value: 'Directrice',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Commandant'),
+        child: textStyle(context, 'Commandant'),
         value: 'Commandant',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Autre'),
+        child: textStyle(context, 'Autre'),
         value: 'X',
       ),
     ];
@@ -331,7 +336,7 @@ class _Forms1State extends State<Forms1> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Matricule : '),
+                                  textStyle(context, 'Matricule : '),
                                   TextFormField(
                                       style: TextStyle(
                                         fontSize: taille(10, context),
@@ -366,7 +371,7 @@ class _Forms1State extends State<Forms1> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Nom : '),
+                                  textStyle(context, 'Nom : '),
                                   TextFormField(
                                       style: TextStyle(
                                         fontSize: taille(10, context),
@@ -384,7 +389,7 @@ class _Forms1State extends State<Forms1> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Ville : '),
+                                  textStyle(context, 'Ville : '),
                                   DropdownButtonFormField(
                                     style: TextStyle(
                                       fontSize: taille(10, context),
@@ -408,7 +413,7 @@ class _Forms1State extends State<Forms1> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Dirigeant : '),
+                                  textStyle(context, 'Dirigeant : '),
                                   DropdownButtonFormField(
                                     style: TextStyle(
                                       fontSize: taille(10, context),
@@ -442,10 +447,11 @@ class _Forms1State extends State<Forms1> {
                                         if (_dropdownFormKey.currentState!
                                             .validate()) {
                                           final data = [
+                                            my_con_1.text,
                                             my_con_3.text,
                                             dropdownvalue_4,
                                             dropdownvalue_5,
-                                            my_con_1.text,
+                                            // my_con_1.text,
                                           ];
 
                                           letter(data);
@@ -541,15 +547,15 @@ class _Forms2State extends State<Forms2> {
   List<DropdownMenuItem<String>> get items_lv {
     List<DropdownMenuItem<String>> items = [
       DropdownMenuItem(
-        child: TextTitle.textTitle('1'),
+        child: textStyle(context, '1'),
         value: '1',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('2'),
+        child: textStyle(context, '2'),
         value: '2',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('3'),
+        child: textStyle(context, '3'),
         value: '3',
       ),
     ];
@@ -560,15 +566,15 @@ class _Forms2State extends State<Forms2> {
   List<DropdownMenuItem<String>> get items_mn {
     List<DropdownMenuItem<String>> items = [
       DropdownMenuItem(
-        child: TextTitle.textTitle('Genie Informatique'),
+        child: textStyle(context, 'Genie Informatique'),
         value: 'Genie Informatique (GIN)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Genie Biologique'),
+        child: textStyle(context, 'Genie Biologique'),
         value: 'Genie Biologique (GBIO)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Genie Industriel et Maintenance'),
+        child: textStyle(context, 'Genie Industriel et Maintenance'),
         value: 'Genie Industriel et Maintenance (GIM)',
       ),
     ];
@@ -579,51 +585,51 @@ class _Forms2State extends State<Forms2> {
   List<DropdownMenuItem<String>> get items_pr {
     List<DropdownMenuItem<String>> items = [
       DropdownMenuItem(
-        child: TextTitle.textTitle('Genie Informatique'),
+        child: textStyle(context, 'Genie Informatique'),
         value: 'Genie Informatique (GIN)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Reseautique Internet'),
+        child: textStyle(context, 'Reseautique Internet'),
         value: 'Reseautique Internet (RIN)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Genie Logiciel'),
+        child: textStyle(context, 'Genie Logiciel'),
         value: 'Genie Logiciel (GLO)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Analyse Biologique et Biochimique'),
+        child: textStyle(context, 'Analyse Biologique et Biochimique'),
         value: 'Analyse Biologique et Biochimique (ABB)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Industrie Alimentaire et BioTechnologique'),
+        child: textStyle(context, 'Industrie Alimentaire et BioTechnologique'),
         value: 'Industrie Alimentaire et BioTechnologique (IAB)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle("Genie de l'Environnement"),
+        child: textStyle(context, "Genie de l'Environnement"),
         value: "Genie de l'Environnement (GEN)",
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Maintenqce Industrielle et Productique'),
+        child: textStyle(context, 'Maintenqce Industrielle et Productique'),
         value: 'Maintenqce Industrielle et Productique (MIP)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Genie Electrique'),
+        child: textStyle(context, 'Genie Electrique'),
         value: 'Genie Electrique (GEL)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Genie Thermique'),
+        child: textStyle(context, 'Genie Thermique'),
         value: 'Genie Thermique (GTE)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Genie Civil et construction Durable'),
+        child: textStyle(context, 'Genie Civil et construction Durable'),
         value: 'Genie Civil et construction Durable (GCD)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Genie Mecanique et Productique'),
+        child: textStyle(context, 'Genie Mecanique et Productique'),
         value: 'Genie Mecanique et Productique (GMP)',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Maintenance des Equipements Biomediacaux'),
+        child: textStyle(context, 'Maintenance des Equipements Biomediacaux'),
         value: 'Maintenance des Equipements Biomediacaux (MEB)',
       ),
     ];
@@ -634,43 +640,43 @@ class _Forms2State extends State<Forms2> {
   List<DropdownMenuItem<String>> get items_vil {
     List<DropdownMenuItem<String>> items = [
       DropdownMenuItem(
-        child: TextTitle.textTitle('MAROUA'),
+        child: textStyle(context, 'MAROUA'),
         value: 'MAROUA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('GAROUA'),
+        child: textStyle(context, 'GAROUA'),
         value: 'GAROUA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('NGAOUNDERE'),
+        child: textStyle(context, 'NGAOUNDERE'),
         value: 'NGAOUNDERE',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('YAOUNDE'),
+        child: textStyle(context, 'YAOUNDE'),
         value: 'YAOUNDE',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('BERTOUA'),
+        child: textStyle(context, 'BERTOUA'),
         value: 'BERTOUA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('EBOLOWA'),
+        child: textStyle(context, 'EBOLOWA'),
         value: 'EBOLOWA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('DOUALA'),
+        child: textStyle(context, 'DOUALA'),
         value: 'DOUALA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('BAFOUSSAM'),
+        child: textStyle(context, 'BAFOUSSAM'),
         value: 'BAFOUSSAM',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('BAMENDA'),
+        child: textStyle(context, 'BAMENDA'),
         value: 'BAMENDA',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('BUEA'),
+        child: textStyle(context, 'BUEA'),
         value: 'BUEA',
       ),
     ];
@@ -681,19 +687,19 @@ class _Forms2State extends State<Forms2> {
   List<DropdownMenuItem<String>> get items_dr {
     List<DropdownMenuItem<String>> items = [
       DropdownMenuItem(
-        child: TextTitle.textTitle('Directeur'),
+        child: textStyle(context, 'Directeur'),
         value: 'Directeur',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Directrice'),
+        child: textStyle(context, 'Directrice'),
         value: 'Directrice',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Commandant'),
+        child: textStyle(context, 'Commandant'),
         value: 'Commandant',
       ),
       DropdownMenuItem(
-        child: TextTitle.textTitle('Autre'),
+        child: textStyle(context, 'Autre'),
         value: 'X',
       ),
     ];
@@ -765,7 +771,7 @@ class _Forms2State extends State<Forms2> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Matricule : '),
+                                  textStyle(context, 'Matricule : '),
                                   TextFormField(
                                       style: TextStyle(
                                         fontSize: taille(10, context),
@@ -781,7 +787,7 @@ class _Forms2State extends State<Forms2> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Nom : '),
+                                  textStyle(context, 'Nom : '),
                                   TextFormField(
                                       style: TextStyle(
                                         fontSize: taille(10, context),
@@ -799,7 +805,7 @@ class _Forms2State extends State<Forms2> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Prenom : '),
+                                  textStyle(context, 'Prenom : '),
                                   TextFormField(
                                       style: TextStyle(
                                         fontSize: taille(10, context),
@@ -818,7 +824,7 @@ class _Forms2State extends State<Forms2> {
                                     height: size(12, context),
                                   ),
                                   Row(children: [
-                                    TextTitle.textTitle('Sexe : '),
+                                    textStyle(context, 'Sexe : '),
                                     // Radio 1
                                     Radio(
                                       value: 1,
@@ -853,7 +859,7 @@ class _Forms2State extends State<Forms2> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Mention : '),
+                                  textStyle(context, 'Mention : '),
                                   DropdownButtonFormField(
                                     style: TextStyle(
                                       fontSize: taille(10, context),
@@ -877,7 +883,7 @@ class _Forms2State extends State<Forms2> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Pacours : '),
+                                  textStyle(context, 'Pacours : '),
                                   DropdownButtonFormField(
                                     style: TextStyle(
                                       fontSize: taille(10, context),
@@ -901,7 +907,7 @@ class _Forms2State extends State<Forms2> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Level : '),
+                                  textStyle(context, 'Level : '),
                                   DropdownButtonFormField(
                                     style: TextStyle(
                                       fontSize: taille(10, context),
@@ -944,7 +950,7 @@ class _Forms2State extends State<Forms2> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Nom : '),
+                                  textStyle(context, 'Nom : '),
                                   TextFormField(
                                       style: TextStyle(
                                         fontSize: taille(10, context),
@@ -962,7 +968,7 @@ class _Forms2State extends State<Forms2> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Ville : '),
+                                  textStyle(context, 'Ville : '),
                                   DropdownButtonFormField(
                                     style: TextStyle(
                                       fontSize: taille(10, context),
@@ -986,7 +992,7 @@ class _Forms2State extends State<Forms2> {
                                   SizedBox(
                                     height: size(12, context),
                                   ),
-                                  TextTitle.textTitle('Dirigeant : '),
+                                  textStyle(context, 'Dirigeant : '),
                                   DropdownButtonFormField(
                                     style: TextStyle(
                                       fontSize: taille(10, context),
