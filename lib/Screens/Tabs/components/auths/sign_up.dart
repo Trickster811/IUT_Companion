@@ -133,6 +133,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                               textStyle(context, 'Password'),
                               TextFormField(
+                                obscureText: true,
                                 style: TextStyle(
                                   fontSize: taille(10, context),
                                   height: 1.5,

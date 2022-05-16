@@ -27,7 +27,7 @@ class _SignInScreenState extends State<SignInScreen> {
         docs.add(doc['password']);
         print(docs);
 
-        if (docs[1] == idmat[1]) {
+        if (docs[0] == idmat[0] && docs[1] == idmat[1]) {
           // Go to the admin page
           Navigator.push(
             context,

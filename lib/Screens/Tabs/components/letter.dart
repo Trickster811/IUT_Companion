@@ -107,14 +107,9 @@ class Forms1 extends StatefulWidget {
 
 class _Forms1State extends State<Forms1> {
   letter(List idmat) async {
-    // QuerySnapshot querySnapshot;
     List docs = [];
     try {
-      // querySnapshot = await FirebaseFirestore.instance
-      //     .collection('Student')
-      //     .where('matricule', isEqualTo: idmat[3])
-      //     .get();
-
+      
       print(idmat);
       FirebaseFirestore.instance
           .collection('Student')
@@ -122,14 +117,16 @@ class _Forms1State extends State<Forms1> {
           .get()
           .then((DocumentSnapshot doc) {
         print(doc.data());
+
+        final x = doc['level'].toString();
         if (doc.exists) {
           docs.add(doc['nom']);
           docs.add(doc['prenom']);
           docs.add(doc['sex']);
           docs.add(doc['mention']);
           docs.add(doc['parcours']);
-          docs.add(doc['level']);
-          idmat.remove(my_con_1);
+          docs.add(x);
+          idmat.remove(idmat[0]);
           for (var i in idmat) {
             docs.add(i);
           }
@@ -152,31 +149,7 @@ class _Forms1State extends State<Forms1> {
             },
           );
         }
-        // if (querySnapshot.docs.isNotEmpty) {
-        //   for (var doc in querySnapshot.docs.toList()) {
-        //     List a = [
-        //       doc['name'],
-        //       doc['prenom'],
-        //       doc['sex'],
-        //       doc['mention'],
-        //       doc['parcours'],
-        //       doc['level'],
-        //     ];
-        //     // idmat.remove(my_con_1.text);
-        //     // print('yoyo');
-        //     for (var i in idmat) {
-        //       a.add(i);
-        //     }
-        //     print(a);
-        //     // docs = a;
-        //     // print(docs);
-        //     // return a;
-        //     // print(docs);
-        //     final pdfFile = await PdfParagraphApi.generate(a);
-        //     PdfParagraphApi.openFile(pdfFile);
-        //   }
-        // }
-      });
+         });
     } catch (e) {
       print(e);
     }
@@ -824,7 +797,7 @@ class _Forms2State extends State<Forms2> {
                                     height: size(12, context),
                                   ),
                                   Row(children: [
-                                    textStyle(context, 'Sexe : '),
+                                    textStyle(context, 'Genre : '),
                                     // Radio 1
                                     Radio(
                                       value: 1,

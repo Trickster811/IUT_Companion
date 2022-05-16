@@ -236,7 +236,7 @@ class PdfParagraphApi {
                               textAlign: TextAlign.justify,
                               style: TextStyle(font: customFont, fontSize: 12),
                               text:
-                                  "             En effet, le stage académique sollicite par cette étudiante a une durée de ${delay[int.parse(userData_1[5])]} dans la période allant du 04 avril 2022 au 28 juin 2022 selon le calendrier académique de l'IUT de N’Gaoundéré. Ce séjour en milieu industriel lui permettra non seulement de répondre a une de vos préoccupation en ${userData_1[3]}, mais aussi de compléter la solide formation qu’elle a reçue dans les différents enseignements en ${userData_1[4]}.",
+                                  "             En effet, ${type_stage[int.parse(userData_1[5])]} sollicite par cette étudiante a une durée de ${delay[int.parse(userData_1[5])]} dans la période allant du 04 avril 2022 au 28 juin 2022 selon le calendrier académique de l'IUT de N’Gaoundéré. Ce séjour en milieu industriel lui permettra non seulement de répondre a une de vos préoccupation en ${userData_1[3]}, mais aussi de compléter la solide formation qu’elle a reçue dans les différents enseignements en ${userData_1[4]}.",
                             ),
                             Paragraph(
                               textAlign: TextAlign.justify,
@@ -270,7 +270,7 @@ class PdfParagraphApi {
                               textAlign: TextAlign.justify,
                               style: TextStyle(font: customFont, fontSize: 12),
                               text:
-                                  "             En effet, le stage académique sollicite par cet étudiant a une durée de ${delay[int.parse(userData_1[5])]} dans la période allant du 04 avril 2022 au 28 juin 2022 selon le calendrier académique de l'IUT de N’Gaoundéré. Ce séjour en milieu industriel lui permettra non seulement de répondre a une de vos préoccupation en ${userData_1[3]}, mais aussi de compléter la solide formation qu’il a reçu dans les différents enseignements du ${userData_1[4]}.",
+                                  "             En effet, ${type_stage[int.parse(userData_1[5])]} sollicite par cet étudiant a une durée de ${delay[int.parse(userData_1[5])]} dans la période allant du 04 avril 2022 au 28 juin 2022 selon le calendrier académique de l'IUT de N’Gaoundéré. Ce séjour en milieu industriel lui permettra non seulement de répondre a une de vos préoccupation en ${userData_1[3]}, mais aussi de compléter la solide formation qu’il a reçu dans les différents enseignements du ${userData_1[4]}.",
                             ),
                             Paragraph(
                               textAlign: TextAlign.justify,
@@ -279,7 +279,7 @@ class PdfParagraphApi {
                                   "              Ce faisant, votre entreprise renforcera davantage l'excellente collaboration avec l'IUT construite au fil des années et participera à son imprégnation dans les milieux professionnels.",
                             ),
                             Paragraph(
-                              textAlign: TextAlign.justify,
+                               textAlign: TextAlign.justify,
                               style: TextStyle(font: customFont, fontSize: 12),
                               text:
                                   "           Compte tenu de ce qui précède et des performances de l'étudiant au cours de son cursus, nous recommandons sans réserve que sa demande de stage soit agrée.",
@@ -306,7 +306,10 @@ class PdfParagraphApi {
                 ],
               )),
     );
-    return saveDocument(name: 'Lettre_de_Recommandation_${userData_1[9]}_${userData_1[3]}_${userData_1[4]}_niveau_${userData_1[5]}.pdf', pdf: pdf);
+    return saveDocument(
+        name:
+            'Lettre_de_Recommandation_${userData_1[9]}_${userData_1[3]}_${userData_1[4]}_niveau_${userData_1[5]}.pdf',
+        pdf: pdf);
   }
 
   static Future<File> saveDocument({

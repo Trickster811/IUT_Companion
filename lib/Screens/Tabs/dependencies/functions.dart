@@ -149,7 +149,7 @@ Padding textStyle(BuildContext context, title) {
 }
 
 class PicturePicker {
-  static Future imageGallerypicker(ImageSource source) async {
+  static Future imageGallerypicker(ImageSource source, context) async {
     try {
       final image = await ImagePicker().pickImage(source: source);
 
@@ -159,7 +159,20 @@ class PicturePicker {
       final imagePermanently = await saveImagePermanently(image.path);
       return imagePermanently;
     } on PlatformException catch (e) {
-      print('Faild to pick image: $e');
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Expanded(
+            child: AlertDialog(
+              title: Text('Oups!!'),
+              content: Text(
+                'Failed to pick image',
+              ),
+            ),
+          );
+        },
+      );
+      print('Failed to pick image: $e');
     }
   }
 

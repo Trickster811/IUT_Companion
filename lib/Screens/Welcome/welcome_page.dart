@@ -1,5 +1,5 @@
 import 'dart:async';
- 
+
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:iut_companion/Screens/Tabs/start.dart';
@@ -31,7 +31,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   startTime() async {
-    var duration = new Duration(milliseconds: 500);
+    var duration = new Duration(seconds: 5);
     return new Timer(duration, route);
   }
 

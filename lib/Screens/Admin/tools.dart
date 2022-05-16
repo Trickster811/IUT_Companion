@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:iut_companion/Screens/Admin/components/constructor.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
+import 'package:iut_companion/constants.dart';
+
 
 class ToolsAdmin extends StatelessWidget {
   const ToolsAdmin({
@@ -10,112 +13,79 @@ class ToolsAdmin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Stack(fit: StackFit.expand, children: [
-        Image.asset(
-          'assets/images/bg_img.png',
-          fit: BoxFit.fitWidth,
-          height: MediaQuery.of(context).size.height,
+    return Expanded(
+      child: GridView.count(
+        padding: EdgeInsets.symmetric(
+          horizontal: 10,
         ),
-        Column(
-          children: [
-            Flexible(
-              flex: 2,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Text(
-                      'Good Morning',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'OpenSans_Regular',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                      ),
-                    ),
-                    Text(
-                      'Mr Joachim!!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'OpenSans_Regular',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    CupertinoSearchTextField(
-                      backgroundColor: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      onChanged: (String value) {
-                        print('The text has changed to: $value');
-                      },
-                      onSubmitted: (String value) {
-                        print('Submitted text: $value');
-                      },
-                    ),
-                  ],
-                ),
-              ),
+        crossAxisCount: 2,
+        childAspectRatio: 1.2,
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
+        children: [
+          AdminCard(
+            icon: Icon(
+              Icons.new_label_rounded,
+              size: 30,
             ),
-            Flexible(
-              flex: 4,
-              child: Container(
-                color: Colors.white,
-                height: double.maxFinite,
-                width: double.maxFinite,
-                child: Column(children: [
-                  Expanded(
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      childAspectRatio: .85,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      children: [
-                        AdminCard(
-                          cardPicture: 'assets/images/letter.png',
-                          title: 'Add News',
-                        ),
-                        AdminCard(
-                          cardPicture: 'assets/images/letter.png',
-                          title: 'Add News',
-                        ),
-                        AdminCard(
-                          cardPicture: 'assets/images/letter.png',
-                          title: 'Add News',
-                        ),
-                        AdminCard(
-                          cardPicture: 'assets/images/letter.png',
-                          title: 'Add News',
-                        ),
-                      ],
-                    ),
-                  )
-                ]),
-              ),
+            title: 'Add News',
+            index: 0,
+          ),
+          AdminCard(
+            icon: Icon(
+              Icons.telegram_rounded,
+              size: 30,
             ),
-          ],
-        ),
-      ]),
+            title: 'Send Notifications',
+            index: 1,
+          ),
+          AdminCard(
+            icon: Icon(
+              Icons.book_rounded,
+              size: 30,
+            ),
+            title: 'Update Letter',
+            index: 2,
+          ),
+          AdminCard(
+            icon: Icon(
+              Icons.book_rounded,
+              size: 30,
+            ),
+            title: 'Add Entrance Exam',
+            index: 3,
+          ),
+          AdminCard(
+            icon: Icon(
+              Icons.insert_drive_file_sharp,
+              size: 30,
+            ),
+            title: 'Update Interships',
+            index: 4,
+          ),
+          AdminCard(
+            icon: Icon(
+              Icons.school,
+              size: 30,
+            ),
+            title: 'Update Filieres',
+            index: 5,
+          ),
+        ],
+      ),
     );
   }
 }
 
 class AdminCard extends StatelessWidget {
-  final cardPicture;
+  final icon;
   final title;
+  final index;
   const AdminCard({
     Key? key,
-    required this.cardPicture,
+    required this.icon,
     required this.title,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -129,28 +99,38 @@ class AdminCard extends StatelessWidget {
             BoxShadow(
               color: Color.fromARGB(255, 216, 216, 216),
               // blurStyle: BlurStyle.solid,
-              blurRadius: 5.0,
+              blurRadius: 2,
               // spreadRadius: 1.0,
               offset: Offset(0, 5),
+              blurStyle: BlurStyle.inner,
             ),
             BoxShadow(
-              color: Colors.white,
-              offset: Offset(-5, 0),
-            ),
-            BoxShadow(
-              color: Colors.white,
-              offset: Offset(5, 0),
+              color: Color.fromARGB(255, 216, 216, 216),
+              // blurStyle: BlurStyle.solid,
+              blurRadius: 2,
+              // spreadRadius: 1.0,
+              offset: Offset(0, 5),
+              blurStyle: BlurStyle.outer,
             ),
           ]),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Spacer(),
-          Image.asset(
-            cardPicture,
-            fit: BoxFit.cover,
+          // Spacer(),
+          icon,
+          // Spacer(),
+          ElevatedButton(
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => Constructor(index: index))),
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.symmetric(
+                horizontal: 0.0,
+              ),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+            ),
+            child: textStyle(context, title),
           ),
-          Spacer(),
-          textStyle(context, title),
         ],
       ),
     );

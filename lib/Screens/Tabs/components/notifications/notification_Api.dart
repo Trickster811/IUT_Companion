@@ -11,16 +11,16 @@ class NotificationApi {
   static final _notifications = FlutterLocalNotificationsPlugin();
   static final onNotifications = BehaviorSubject<String?>();
 
-  static Future _notificationDetails() async {
-    final String largeIconPath = await _downloadAndSaveFile(
-        'https://firebasestorage.googleapis.com/v0/b/iut-companion-nedaoukajoachim0.appspot.com/o/logo_iut.png?alt=media&token=540d7665-364f-4096-8d03-a601295fd36c',
-        'largeIcon');
-    final String bigPicturePath = await _downloadAndSaveFile(
-        'https://firebasestorage.googleapis.com/v0/b/iut-companion-nedaoukajoachim0.appspot.com/o/340971-things-to-consider-when-looking-for-a-web-design-agency.jpg?alt=media&token=4308e45e-0ca9-4d35-a055-728ec9a37939',
-        'bigPicture');
-
-    // final String bigPicturePath = 'assets/images/letter.png';
-    // final String largeIconPath = 'assets/images/logo_iut.png';
+  static Future _notificationDetails(
+    String bigPicturePath,
+    String largeIconPath,
+  ) async {
+    // final String largeIconPath = await _downloadAndSaveFile(
+    //     'https://firebasestorage.googleapis.com/v0/b/iut-companion-nedaoukajoachim0.appspot.com/o/logo_iut.png?alt=media&token=540d7665-364f-4096-8d03-a601295fd36c',
+    //     'largeIcon');
+    // final String bigPicturePath = await _downloadAndSaveFile(
+    //     'https://firebasestorage.googleapis.com/v0/b/iut-companion-nedaoukajoachim0.appspot.com/o/340971-things-to-consider-when-looking-for-a-web-design-agency.jpg?alt=media&token=4308e45e-0ca9-4d35-a055-728ec9a37939',
+    //     'bigPicture');
 
     final sound = 'iut_companion_notification_sound.wav';
 
@@ -64,16 +64,19 @@ class NotificationApi {
   }
 
   static Future showNotification({
-    id,
-    String? title,
-    String? body,
-    String? payload,
+    required int id,
+    required String? title,
+    required String? body,
+    required String? payload,
+    required final  bigPicturePath,
+    required final largeIconPath,
   }) async {
     _notifications.show(
       id,
       title,
       body,
-      await _notificationDetails(),
+      
+      await _notificationDetails(bigPicturePath, largeIconPath),
       payload: payload,
     );
   }

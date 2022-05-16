@@ -23,7 +23,7 @@ class _StartScreenState extends State<StartScreen> {
       size: 30.0,
     ),
     Icon(
-      Icons.class__rounded,
+      Icons.class_rounded,
       size: 30.0,
     ),
     Icon(

@@ -159,194 +159,150 @@ class _InfoState extends State<Info> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  top: size(40, context),
-                ),
-              ),
-              Container(
-                child: Column(
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Form(
-                      key: _dropdownFormKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: size(12, context),
-                          ),
-                          textStyle(context, 'Title : '),
-                          TextFormField(
-                            style: TextStyle(
-                              fontSize: taille(10, context),
-                              height: 1.5,
-                            ),
-                            decoration: InputDecoration(
-                              // icon: Icon(Icons.person),
-                              hintText: 'enter a title',
-                            ),
-                            // value: dropdownvalue_1,
-                            controller: my_con_1,
-                            validator: RequiredValidator(
-                                errorText: 'Veuillez renseigner un titre'),
-                          ),
-                          SizedBox(
-                            height: size(12, context),
-                          ),
-                          textStyle(context, 'Image : '),
-                          ElevatedButton(
-                            onPressed: () {},
-                            child: image == null
-                                ? ImageWidget(
-                                    image: image!,
-                                    onClicked: (source) =>
-                                        PicturePicker.imageGallerypicker(
-                                            source),
-                                  )
-                                : TextFormField(
-                                    keyboardType: TextInputType.url,
-                                    style: TextStyle(
-                                      fontSize: taille(10, context),
-                                      height: 1.5,
-                                    ),
-                                    decoration: InputDecoration(
-                                      // icon: Icon(Icons.person),
-                                      hintText: 'add an image',
-                                    ),
-                                    // value: dropdownvalue_1,
-                                    controller: my_con_2,
-                                    validator: RequiredValidator(
-                                        errorText: 'Please pick an image'),
-                                  ),
-                          ),
-                          TextFormField(
-                            keyboardType: TextInputType.url,
-                            style: TextStyle(
-                              fontSize: taille(10, context),
-                              height: 1.5,
-                            ),
-                            decoration: InputDecoration(
-                              // icon: Icon(Icons.person),
-                              hintText: 'add an image',
-                            ),
-                            // value: dropdownvalue_1,
-                            controller: my_con_2,
-                            validator: RequiredValidator(
-                                errorText: 'Please pick an image'),
-                          ),
-                          textStyle(context, 'Content : '),
-                          TextFormField(
-                            keyboardType: TextInputType.multiline,
-                            style: TextStyle(
-                              fontSize: taille(10, context),
-                              height: 1.5,
-                            ),
-                            decoration: InputDecoration(
-                              // icon: Icon(Icons.person),
-                              hintText: 'enter a content',
-                            ),
-                            // value: dropdownvalue_1,
-                            controller: my_con_2,
-                            validator: RequiredValidator(
-                                errorText: 'Veuillez mettre du contenu'),
-                          ),
-                          SizedBox(
-                            height: size(12, context),
-                          ),
-                          SizedBox(
-                            height: size(12, context),
-                          ),
-                          textStyle(context, 'Category : '),
-                          DropdownButtonFormField(
-                            style: TextStyle(
-                              fontSize: taille(10, context),
-                              height: 0.5,
-                            ),
-                            decoration: InputDecoration(
-                              // icon: Icon(Icons.person),
-                              hintText: 'choose',
-                            ),
-                            value: dropdownvalue_1,
-                            validator: (value) => value == null
-                                ? 'Veuillez choisir une category'
-                                : null,
-                            items: items_mn,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownvalue_1 = newValue!;
-                              });
-                            },
-                          ),
-                          SizedBox(
-                            height: size(12, context),
-                          ),
-
-                          // Submit Button
-
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () async {
-                                if (_dropdownFormKey.currentState!.validate()) {
-                                  final userInputs = [
-                                    my_con_1.text,
-                                    my_con_2.text,
-                                    dropdownvalue_1,
-                                    // _radioValue,
-                                  ];
-                                }
-                              },
-                              child: Text(
-                                'Post',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'OpenSans_Regular',
-                                ),
-                              ),
-                              style: TextButton.styleFrom(
-                                backgroundColor: kPrimaryColor,
-                                // elevation: 0,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+        Padding(
+          padding: EdgeInsets.only(
+            top: size(40, context),
           ),
         ),
-
-        //  Footer
-
-        Container(
-          padding: EdgeInsets.only(bottom: size(50, context)),
-          width: double.maxFinite,
-          height: size(100, context),
-          color: Colors.transparent,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+        Form(
+          key: _dropdownFormKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Copyright',
+              SizedBox(
+                height: size(12, context),
+              ),
+              textStyle(context, 'Title : '),
+              TextFormField(
                 style: TextStyle(
-                    fontSize: taille(12, context), color: kPrimaryColor),
+                  fontSize: taille(10, context),
+                  height: 1.5,
+                ),
+                decoration: InputDecoration(
+                  // icon: Icon(Icons.person),
+                  hintText: 'enter a title',
+                ),
+                // value: dropdownvalue_1,
+                controller: my_con_1,
+                validator: RequiredValidator(
+                    errorText: 'Veuillez renseigner un titre'),
               ),
-              Icon(
-                Icons.copyright_rounded,
-                color: kPrimaryColor,
+              SizedBox(
+                height: size(12, context),
               ),
-              Text(
-                '2022 | IUT Ngaoundere',
+              textStyle(context, 'Image : '),
+              ElevatedButton(
+                onPressed: () {},
+                child: image == null
+                    ? ImageWidget(
+                        image: image!,
+                        onClicked: (source) =>
+                            PicturePicker.imageGallerypicker(source, context),
+                      )
+                    : TextFormField(
+                        keyboardType: TextInputType.url,
+                        style: TextStyle(
+                          fontSize: taille(10, context),
+                          height: 1.5,
+                        ),
+                        decoration: InputDecoration(
+                          // icon: Icon(Icons.person),
+                          hintText: 'add an image',
+                        ),
+                        // value: dropdownvalue_1,
+                        controller: my_con_2,
+                        validator: RequiredValidator(
+                            errorText: 'Please pick an image'),
+                      ),
+              ),
+              TextFormField(
+                keyboardType: TextInputType.url,
                 style: TextStyle(
-                    fontSize: taille(12, context), color: kPrimaryColor),
+                  fontSize: taille(10, context),
+                  height: 1.5,
+                ),
+                decoration: InputDecoration(
+                  // icon: Icon(Icons.person),
+                  hintText: 'add an image',
+                ),
+                // value: dropdownvalue_1,
+                controller: my_con_2,
+                validator: RequiredValidator(errorText: 'Please pick an image'),
               ),
+              textStyle(context, 'Content : '),
+              TextFormField(
+                keyboardType: TextInputType.multiline,
+                style: TextStyle(
+                  fontSize: taille(10, context),
+                  height: 1.5,
+                ),
+                decoration: InputDecoration(
+                  // icon: Icon(Icons.person),
+                  hintText: 'enter a content',
+                ),
+                // value: dropdownvalue_1,
+                controller: my_con_2,
+                validator:
+                    RequiredValidator(errorText: 'Veuillez mettre du contenu'),
+              ),
+              SizedBox(
+                height: size(12, context),
+              ),
+              SizedBox(
+                height: size(12, context),
+              ),
+              textStyle(context, 'Category : '),
+              DropdownButtonFormField(
+                style: TextStyle(
+                  fontSize: taille(10, context),
+                  height: 0.5,
+                ),
+                decoration: InputDecoration(
+                  // icon: Icon(Icons.person),
+                  hintText: 'choose',
+                ),
+                value: dropdownvalue_1,
+                validator: (value) =>
+                    value == null ? 'Veuillez choisir une category' : null,
+                items: items_mn,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    dropdownvalue_1 = newValue!;
+                  });
+                },
+              ),
+              SizedBox(
+                height: size(12, context),
+              ),
+
+              // Submit Button
+
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    if (_dropdownFormKey.currentState!.validate()) {
+                      final userInputs = [
+                        my_con_1.text,
+                        my_con_2.text,
+                        dropdownvalue_1,
+                        // _radioValue,
+                      ];
+                    }
+                  },
+                  child: Text(
+                    'Post',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'OpenSans_Regular',
+                    ),
+                  ),
+                  style: TextButton.styleFrom(
+                    backgroundColor: kPrimaryColor,
+                    // elevation: 0,
+                  ),
+                ),
+              )
             ],
           ),
         ),

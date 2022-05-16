@@ -20,18 +20,126 @@ class AdminScreen extends StatefulWidget {
 class _AdminScreenState extends State<AdminScreen> {
   int index = 0;
 
-  final screens = [
-    HomeAdmin(),
-    DashboardAdmin(),
-    SearchAdmin(),
-    ProfileAdmin(),
-    ToolsAdmin()
+  final theme = [
+    Text(
+      'Home',
+      style: TextStyle(
+        color: Colors.white,
+        fontFamily: 'OpenSans_Regular',
+        fontWeight: FontWeight.bold,
+        fontSize: 25,
+      ),
+    ),
+    Text(
+      'Dashboard',
+      style: TextStyle(
+        color: Colors.white,
+        fontFamily: 'OpenSans_Regular',
+        fontWeight: FontWeight.bold,
+        fontSize: 25,
+      ),
+    ),
+    CupertinoSearchTextField(
+      backgroundColor: Colors.white,
+      borderRadius: BorderRadius.circular(30),
+      onChanged: (String value) {
+        print('The text has changed to: $value');
+      },
+      onSubmitted: (String value) {
+        print('Submitted text: $value');
+      },
+    ),
+    Text(
+      'Settings',
+      style: TextStyle(
+        color: Colors.white,
+        fontFamily: 'OpenSans_Regular',
+        fontWeight: FontWeight.bold,
+        fontSize: 25,
+      ),
+    ),
+    CupertinoSearchTextField(
+      backgroundColor: Colors.white,
+      borderRadius: BorderRadius.circular(30),
+      onChanged: (String value) {
+        print('The text has changed to: $value');
+      },
+      onSubmitted: (String value) {
+        print('Submitted text: $value');
+      },
+    ),
   ];
 
   Widget build(BuildContext context) {
+    final screens = [
+      HomeAdmin(),
+      DashboardAdmin(),
+      SearchAdmin(),
+      ProfileAdmin(),
+      ToolsAdmin()
+    ];
     return Scaffold(
       extendBody: true,
-      body: screens[index],
+      body: Stack(fit: StackFit.expand, children: [
+        Image.asset(
+          'assets/images/bg_img.png',
+          fit: BoxFit.fitWidth,
+          height: MediaQuery.of(context).size.height,
+        ),
+        Column(
+          children: [
+            Flexible(
+              flex: 2,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Text(
+                      'Good Morning',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'OpenSans_Regular',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                      ),
+                    ),
+                    Text(
+                      'Mr Joachim!!',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'OpenSans_Regular',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    theme[index],
+                  ],
+                ),
+              ),
+            ),
+            Flexible(
+              flex: 4,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                height: double.maxFinite,
+                width: double.maxFinite,
+                child: screens[index],
+              ),
+            ),
+          ],
+        ),
+      ]),
       bottomNavigationBar: AdminTabBar(
         index: index,
         onChangedTab: onChangedTab,
