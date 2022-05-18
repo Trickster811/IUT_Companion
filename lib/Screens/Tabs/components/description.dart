@@ -64,7 +64,6 @@ final List<Widget> imageSliders = imgList
                     ),
                   ],
                 )),
-          
           ),
         ))
     .toList();
@@ -131,8 +130,8 @@ class _InfoFiliereState extends State<InfoFiliere> {
                               width: 35,
                             ),
                             Image.asset(
-                              'assets/images/kali_light.png',
-                              width: 70,
+                              'assets/images/AppName_light.png',
+                              width: size(130, context),
                             ),
                           ],
                         ),
@@ -313,7 +312,6 @@ class _InfoFiliereState extends State<InfoFiliere> {
     );
   }
 }
-
 
 class Slide extends StatelessWidget {
   @override

@@ -14,15 +14,19 @@ import 'package:iut_companion/constants.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); 
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {  
+// void main() {
+//   runApp(const MyApp());
+// }
+
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     // final wordPair = WordPair.random();
 
     return MaterialApp(

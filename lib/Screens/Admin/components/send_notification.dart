@@ -18,7 +18,7 @@ class SendNotifications extends StatefulWidget {
 }
 
 class _SendNotificationsState extends State<SendNotifications> {
-    ImageSource source = ImageSource.camera;
+  ImageSource source = ImageSource.camera;
   @override
   Widget build(BuildContext context) {
     // Variables to get user entries
@@ -125,10 +125,10 @@ class _SendNotificationsState extends State<SendNotifications> {
                                       children: [
                                         Container(
                                           padding: EdgeInsets.symmetric(
-                                            vertical: 25.0,
+                                            vertical: 20.0,
                                             horizontal: 10.0,
                                           ),
-                                          height: 75,
+                                          height: 60,
                                           width: 250,
                                           decoration: BoxDecoration(
                                             color: Color.fromARGB(
@@ -150,10 +150,10 @@ class _SendNotificationsState extends State<SendNotifications> {
                                         ),
                                         Container(
                                           padding: EdgeInsets.symmetric(
-                                            vertical: 25.0,
+                                            vertical: 20.0,
                                             horizontal: 10.0,
                                           ),
-                                          height: 75,
+                                          height: 60,
                                           width: 70,
                                           decoration: BoxDecoration(
                                             color: kPrimaryColor,

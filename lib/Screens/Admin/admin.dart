@@ -13,6 +13,12 @@ import 'package:iut_companion/constants.dart';
 import 'package:flutter/material.dart';
 
 class AdminScreen extends StatefulWidget {
+  final List data;
+  const AdminScreen({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
+
   @override
   State<AdminScreen> createState() => _AdminScreenState();
 }
@@ -75,7 +81,7 @@ class _AdminScreenState extends State<AdminScreen> {
       HomeAdmin(),
       DashboardAdmin(),
       SearchAdmin(),
-      ProfileAdmin(),
+      ProfileAdmin(data: widget.data),
       ToolsAdmin()
     ];
     return Scaffold(
@@ -109,7 +115,7 @@ class _AdminScreenState extends State<AdminScreen> {
                       ),
                     ),
                     Text(
-                      'Mr Joachim!!',
+                      'Mr ${widget.data[0]}!!',
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'OpenSans_Regular',

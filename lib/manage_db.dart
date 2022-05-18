@@ -86,8 +86,9 @@ class News {
       FirebaseFirestore.instance.collection('Actualites').doc().set({
         'titre': data[0],
         'contenu': data[1],
-        'date': data[2],
-        'image': data[3],
+        'date': DateTime.now(),
+        'image': data[2],
+        'type': data[3],
       });
     } catch (e) {
       print(e);
@@ -101,7 +102,8 @@ class News {
         'titre': data[0],
         'contenu': data[1],
         'date': data[2],
-        'image': data[3],
+        'image': DateTime.now(),
+        'type': data[3],
       });
     } catch (e) {
       print(e);

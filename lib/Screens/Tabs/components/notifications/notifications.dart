@@ -34,13 +34,14 @@ class _NotificationPageState extends State<NotificationPage> {
           child: SizedBox(
             width: 200,
             child: ElevatedButton(
-              onPressed: () {} ,
-              // NotificationApi.showNotification(
-              //   id: 0,
-              //   title: 'Joachim Nedaouka',
-              //   body: "Hey! I'm your companion",
-              //   payload: 'Ndam Njoya',
-              // ),
+              onPressed: () => NotificationApi.showNotification(
+                id: 0,
+                title: 'Joachim Nedaouka',
+                body: "Hey! I'm your companion",
+                payload: 'Ndam Njoya',
+                bigPicturePath: 'assets/images/logo_iut.png',
+                largeIconPath: 'assets/images/logo_iut.png',
+              ),
               child: Text(
                 'Simple notification',
                 style: TextStyle(

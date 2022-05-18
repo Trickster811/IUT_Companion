@@ -123,7 +123,7 @@ class _FiliereState extends State<Filiere> {
                 bottom: size(20.0, context),
                 left: size(20.0, context)),
             child: Text(
-              "LyTech",
+              "LiTech",
               style: TextStyle(
                 fontSize: taille(22.0, context),
                 fontWeight: FontWeight.w600,

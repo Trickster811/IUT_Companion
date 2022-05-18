@@ -32,7 +32,7 @@ class _SignInScreenState extends State<SignInScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => AdminScreen(),
+              builder: (BuildContext context) => AdminScreen(data: inputs),
             ),
           );
         } else {
@@ -59,8 +59,10 @@ class _SignInScreenState extends State<SignInScreen> {
 
   // Variables to get user entries
   final my_con_1 = TextEditingController();
-
   final my_con_2 = TextEditingController();
+
+  // User's inputs
+  List inputs = [];
 
   // Form key
   final _dropdownFormKey = GlobalKey<FormState>();
@@ -202,7 +204,22 @@ class _SignInScreenState extends State<SignInScreen> {
                                   child: SizedBox(
                                     width: 200,
                                     child: ElevatedButton(
-                                      onPressed: () async {
+                                      onPressed: ()
+                                          //   this.inputs = [
+                                          //     my_con_1.text,
+                                          //     my_con_2.text,
+                                          //   ];
+                                          //   Navigator.push(
+                                          //     context,
+                                          //     MaterialPageRoute(
+                                          //       builder: (BuildContext context) =>
+                                          //           AdminScreen(
+                                          //         data: inputs,
+                                          //       ),
+                                          //     ),
+                                          //   );
+                                          // },
+                                          async {
                                         if (_dropdownFormKey.currentState!
                                             .validate()) {
                                           final data = [

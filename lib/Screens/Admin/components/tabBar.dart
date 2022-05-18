@@ -20,7 +20,7 @@ class _AdminTabBarState extends State<AdminTabBar> {
         size: 30.0,
       ),
       Icon(
-        Icons.dashboard,
+        Icons.dashboard_rounded,
         size: 30.0,
       ),
       Icon(

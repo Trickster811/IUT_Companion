@@ -68,7 +68,7 @@ class _StartScreenState extends State<StartScreen> {
                   actions: [
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.account_circle_sharp),
+                      icon: Icon(Icons.notifications_sharp),
                       iconSize: taille(30, context),
                     )
                   ],
@@ -155,7 +155,7 @@ class _StartScreenState extends State<StartScreen> {
                                     );
                                   },
                                 ),
-                                icon: Icon(Icons.account_circle_sharp),
+                                icon: Icon(Icons.notifications_sharp),
                                 iconSize: taille(30, context),
                                 color: Colors.white,
                               ),
