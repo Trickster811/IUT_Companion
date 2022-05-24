@@ -32,7 +32,7 @@ class _SignInScreenState extends State<SignInScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => AdminScreen(data: inputs),
+              builder: (BuildContext context) => AdminScreen(data: idmat),
             ),
           );
         } else {
@@ -205,6 +205,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     width: 200,
                                     child: ElevatedButton(
                                       onPressed: ()
+                                          // {
                                           //   this.inputs = [
                                           //     my_con_1.text,
                                           //     my_con_2.text,

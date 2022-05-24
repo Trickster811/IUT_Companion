@@ -63,6 +63,27 @@ class _FiliereState extends State<Filiere> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    final cycle = [
+      'DUT',
+      'BTS',
+      'LiTech',
+    ];
+    final parcours = [
+      'Génie Informatique',
+      'Génie Logiciel',
+      'Réseautique et Internet',
+      'Génie Biologique',
+      'Industrie Alimentaire et Biochimique',
+      'Analyse Biologique',
+      'Génie Industriel et Maintenance',
+      'Génie Maintenance et Productique',
+      'Maintenance Idustrielle et Productique',
+      'Génie Electrique',
+      'Génie Thermique',
+      'Génie Civil et Constructions Durables',
+      'Maintenance des Equipement Biomédicaux',
+    ];
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,15 +105,36 @@ class _FiliereState extends State<Filiere> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(children: [
-              cardFiliere("GIN", "Genie Informatique", Colors.blue, 1, 0),
-              cardFiliere("GBIO", "Genie Biologique",
-                  Color.fromARGB(255, 15, 150, 44), 1, 1),
-              cardFiliere("GIM", "Genie Industriel et maintenance",
-                  Color.fromARGB(255, 207, 132, 19), 1, 2),
-              cardFiliere("GCD", "Genie Civil et Construction durable",
-                  Color.fromARGB(255, 196, 199, 3), 1, 3),
-              cardFiliere("MEB", "Maintenance des equipements biomédicaux",
-                  Color.fromARGB(255, 7, 153, 129), 1, 4),
+              cardFiliere(
+                  title: "GIN",
+                  description: "Genie Informatique",
+                  cardColor: Colors.blue,
+                  tab: 1,
+                  index: 0),
+              cardFiliere(
+                  title: "GBIO",
+                  description: "Genie Biologique",
+                  cardColor: Color.fromARGB(255, 15, 150, 44),
+                  tab: 1,
+                  index: 1),
+              cardFiliere(
+                  title: "GIM",
+                  description: "Genie Industriel et maintenance",
+                  cardColor: Color.fromARGB(255, 207, 132, 19),
+                  tab: 1,
+                  index: 2),
+              cardFiliere(
+                  title: "GCD",
+                  description: "Genie Civil et Construction durable",
+                  cardColor: Color.fromARGB(255, 196, 199, 3),
+                  tab: 1,
+                  index: 3),
+              cardFiliere(
+                  title: "MEB",
+                  description: "Maintenance des equipements biomédicaux",
+                  cardColor: Color.fromARGB(255, 7, 153, 129),
+                  tab: 1,
+                  index: 4),
             ]),
           ),
           Padding(
@@ -110,11 +152,24 @@ class _FiliereState extends State<Filiere> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(children: [
-              cardFiliere("GLO", "Genie Logiciel", Colors.blue, 2, 0),
-              cardFiliere("RIN", "Réseaux Informatique",
-                  Color.fromARGB(255, 181, 85, 236), 2, 1),
-              cardFiliere("GBIO", "Genie Biologique",
-                  Color.fromARGB(255, 43, 187, 14), 2, 2),
+              cardFiliere(
+                  title: "GLO",
+                  description: "Genie Logiciel",
+                  cardColor: Colors.blue,
+                  tab: 2,
+                  index: 0),
+              cardFiliere(
+                  title: "RIN",
+                  description: "Réseaux Informatique",
+                  cardColor: Color.fromARGB(255, 181, 85, 236),
+                  tab: 2,
+                  index: 1),
+              cardFiliere(
+                  title: "GBIO",
+                  description: "Genie Biologique",
+                  cardColor: Color.fromARGB(255, 43, 187, 14),
+                  tab: 2,
+                  index: 2),
             ]),
           ),
           Padding(
@@ -134,9 +189,18 @@ class _FiliereState extends State<Filiere> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(children: [
-              cardFiliere("GLO", "Genie Logiciel", Colors.blue, 3, 0),
-              cardFiliere("RIN", "Réseaux Informatique",
-                  Color.fromARGB(255, 181, 85, 236), 3, 1),
+              cardFiliere(
+                  title: "GLO",
+                  description: "Genie Logiciel",
+                  cardColor: Colors.blue,
+                  tab: 3,
+                  index: 0),
+              cardFiliere(
+                  title: "RIN",
+                  description: "Réseaux Informatique",
+                  cardColor: Color.fromARGB(255, 181, 85, 236),
+                  tab: 3,
+                  index: 1),
             ]),
           ),
           Container(
@@ -171,20 +235,20 @@ class _FiliereState extends State<Filiere> {
 }
 
 class cardFiliere extends StatelessWidget {
-  String title = "";
-  String description = "";
-  Color cardColor = Colors.white;
-  int tab = 0;
-  int index = 0;
+  final title;
+  final description;
+  final cardColor;
+  final tab;
+  final index;
 
-  cardFiliere(
-      String titre, String descrip, Color cardCol, int tableau, int id) {
-    this.title = titre;
-    this.description = descrip;
-    this.cardColor = cardCol;
-    this.tab = tableau;
-    this.index = id;
-  }
+  const cardFiliere({
+    Key? key,
+    this.title,
+    this.description,
+    this.cardColor,
+    this.tab,
+    this.index,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Card(
@@ -211,13 +275,12 @@ class cardFiliere extends StatelessWidget {
                   Radius.circular(50),
                 ),
               ),
-              padding: EdgeInsets.only(
-                  left: size(15.0, context), top: size(10.0, context)),
+              padding: EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(title,
                           style: TextStyle(
@@ -225,10 +288,7 @@ class cardFiliere extends StatelessWidget {
                               color: Colors.white,
                               fontFamily: 'OpenSans_Regular',
                               fontWeight: FontWeight.w500)),
-                      Padding(
-                        padding: EdgeInsets.only(left: size(98, context)),
-                        child: Icon(Icons.zoom_in, color: Colors.white),
-                      ),
+                      Icon(Icons.zoom_in, color: Colors.white),
                     ],
                   ),
                   Padding(

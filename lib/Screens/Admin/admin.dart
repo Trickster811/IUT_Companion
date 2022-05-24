@@ -115,7 +115,7 @@ class _AdminScreenState extends State<AdminScreen> {
                       ),
                     ),
                     Text(
-                      'Mr ${widget.data[0]}!!',
+                      'Mr ${widget.data[0]} !!',
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'OpenSans_Regular',

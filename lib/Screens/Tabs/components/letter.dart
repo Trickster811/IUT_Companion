@@ -109,7 +109,6 @@ class _Forms1State extends State<Forms1> {
   letter(List idmat) async {
     List docs = [];
     try {
-      
       print(idmat);
       FirebaseFirestore.instance
           .collection('Student')
@@ -149,7 +148,7 @@ class _Forms1State extends State<Forms1> {
             },
           );
         }
-         });
+      });
     } catch (e) {
       print(e);
     }

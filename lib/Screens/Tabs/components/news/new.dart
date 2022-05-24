@@ -38,21 +38,18 @@ class News extends StatelessWidget {
           //   itemCount: 4,
           // ),
 
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ...(tab).map(
-                  (e) {
-                    print("test");
-                    return InfoCard(
-                      title: 'Transport',
-                    );
-                  },
-                )
-              ],
-            ),
+          ...(tab).map(
+            (e) {
+              print("test");
+              return InfoCard(
+                image: Image.asset(
+                  'assets/images/3.png',
+                  fit: BoxFit.cover,
+                ),
+                title:
+                    "Le Directeur de l'Institut Universitaire de Technologie informe que la rentrée est prévue pour le 04 septembre prochain",
+              );
+            },
           ),
           SizedBox(
             height: 30,
@@ -70,16 +67,46 @@ class News extends StatelessWidget {
               ),
             ],
           ),
-          SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InfoCarde(),
-                InfoCarde(),
-                InfoCarde(),
-              ],
+          InfoCard(
+            image: Image.asset(
+              'assets/images/3.png',
+              fit: BoxFit.cover,
             ),
+            title:
+                "Le Directeur de l'Institut Universitaire de Technologie informe que la rentrée est prévue pour le 04 septembre prochain",
           ),
+          InfoCard(
+            image: Image.asset(
+              'assets/images/3.png',
+              fit: BoxFit.cover,
+            ),
+            title:
+                "Le Directeur de l'Institut Universitaire de Technologie informe que la rentrée est prévue pour le 04 septembre prochain",
+          ),
+          InfoCard(
+            image: Image.asset(
+              'assets/images/3.png',
+              fit: BoxFit.cover,
+            ),
+            title:
+                "Le Directeur de l'Institut Universitaire de Technologie informe que la rentrée est prévue pour le 04 septembre prochain",
+          ),
+          InfoCard(
+            image: Image.asset(
+              'assets/images/3.png',
+              fit: BoxFit.cover,
+            ),
+            title:
+                "Le Directeur de l'Institut Universitaire de Technologie informe que la rentrée est prévue pour le 04 septembre prochain",
+          ),
+          InfoCard(
+            image: Image.asset(
+              'assets/images/3.png',
+              fit: BoxFit.cover,
+            ),
+            title:
+                "Le Directeur de l'Institut Universitaire de Technologie informe que la rentrée est prévue pour le 04 septembre prochain",
+          )
         ],
       ),
     );

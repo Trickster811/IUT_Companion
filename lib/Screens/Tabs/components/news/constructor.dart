@@ -1,6 +1,7 @@
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:iut_companion/constants.dart';
 
 class InfoCarde extends StatelessWidget {
   const InfoCarde({
@@ -72,9 +73,11 @@ class InfoCarde extends StatelessWidget {
 
 class InfoCard extends StatelessWidget {
   final title;
+  final image;
   const InfoCard({
     Key? key,
     required this.title,
+    this.image,
   }) : super(key: key);
 
   @override
@@ -85,8 +88,8 @@ class InfoCard extends StatelessWidget {
         horizontal: size(10, context),
       ),
       child: Container(
-        width: size(230, context),
-        height: size(250, context),
+        width: double.maxFinite,
+        // height: size(280, context),
         decoration: BoxDecoration(
           color: Color.fromARGB(255, 255, 255, 255),
           boxShadow: [
@@ -108,37 +111,66 @@ class InfoCard extends StatelessWidget {
           ],
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Flexible(
-              flex: 5,
-              child: Container(
-                width: double.maxFinite,
-                height: size(150, context),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                  ),
-                  child: Image.asset(
-                    'assets/images/news.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
+            image,
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.black54,
+                fontFamily: 'OpenSans_Regular',
+                fontSize: taille(14, context),
+                fontWeight: FontWeight.bold,
               ),
             ),
-            Flexible(
-              flex: 1,
-              child: Center(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontFamily: 'OpenSans_Regular',
-                    fontSize: taille(14, context),
-                    fontWeight: FontWeight.bold,
-                  ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.remove_red_eye_outlined,
+                      // color: kPrimaryColor,
+                      size: 20,
+                      semanticLabel: 'Views',
+                    ),
+                    Text(
+                      '275',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontFamily: 'OpenSans_Regular',
+                        fontSize: taille(10, context),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
+                SizedBox(
+                  width: 10,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.timelapse_rounded,
+                      // color: kPrimaryColor,
+                      size: 20,
+                      semanticLabel: 'date',
+                    ),
+                    Text(
+                      'posted at 07 pm',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontFamily: 'OpenSans_Regular',
+                        fontSize: taille(10, context),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 5,
             ),
           ],
         ),

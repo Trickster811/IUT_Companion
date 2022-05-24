@@ -18,7 +18,37 @@ class SendNotifications extends StatefulWidget {
 }
 
 class _SendNotificationsState extends State<SendNotifications> {
-  ImageSource source = ImageSource.camera;
+  imageNotifications(id, data) {
+    final image;
+    if (id == 1) {
+      image = PicturePicker.imageGallerypicker(
+        ImageSource.camera,
+        context,
+      );
+      NotificationApi.showNotification(
+        id: 0,
+        title: data[0],
+        body: data[1],
+        payload: 'IUT_Companion_notification',
+        bigPicturePath: image,
+        largeIconPath: image,
+      );
+    } else {
+      image = PicturePicker.imageGallerypicker(
+        ImageSource.gallery,
+        context,
+      );
+      NotificationApi.showNotification(
+        id: 0,
+        title: data[0],
+        body: data[1],
+        payload: 'IUT_Companion_notification',
+        bigPicturePath: image,
+        largeIconPath: image,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // Variables to get user entries
@@ -27,8 +57,6 @@ class _SendNotificationsState extends State<SendNotifications> {
 
     // Form key
     final _formKey = GlobalKey<FormState>();
-
-    // image source
 
     return Scaffold(
       // backgroundColor: kPrimaryColor,
@@ -164,6 +192,10 @@ class _SendNotificationsState extends State<SendNotifications> {
                                           ),
                                           child: ElevatedButton(
                                             onPressed: () {
+                                              final data = [
+                                                field_1.text,
+                                                field_2.text,
+                                              ];
                                               showDialog(
                                                 context: context,
                                                 builder:
@@ -177,11 +209,8 @@ class _SendNotificationsState extends State<SendNotifications> {
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
-                                                              setState(() {
-                                                            this.source =
-                                                                ImageSource
-                                                                    .camera;
-                                                          }),
+                                                              imageNotifications(
+                                                                  1, data),
                                                           child: Text(
                                                             'Camera',
                                                             style: TextStyle(
@@ -191,11 +220,8 @@ class _SendNotificationsState extends State<SendNotifications> {
                                                         ),
                                                         TextButton(
                                                           onPressed: () =>
-                                                              setState(() {
-                                                            this.source =
-                                                                ImageSource
-                                                                    .gallery;
-                                                          }),
+                                                              imageNotifications(
+                                                                  2, data),
                                                           child: Text(
                                                             'Galery',
                                                             style: TextStyle(
@@ -207,21 +233,6 @@ class _SendNotificationsState extends State<SendNotifications> {
                                                     ),
                                                   );
                                                 },
-                                              );
-
-                                              final image = PicturePicker
-                                                  .imageGallerypicker(
-                                                source,
-                                                context,
-                                              );
-                                              NotificationApi.showNotification(
-                                                id: 0,
-                                                title: field_1.text,
-                                                body: field_2.text,
-                                                payload:
-                                                    'IUT_Companion_notification',
-                                                bigPicturePath: image,
-                                                largeIconPath: image,
                                               );
                                             },
                                             style: TextButton.styleFrom(

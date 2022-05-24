@@ -51,6 +51,7 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kPrimaryColor,
       extendBody: true,
       // Header __start__
 
@@ -73,24 +74,34 @@ class _StartScreenState extends State<StartScreen> {
                     )
                   ],
                   backgroundColor: kPrimaryColor,
-                  collapsedHeight: size(100, context),
-                  expandedHeight: index == 2 ? 240 : 40,
+                  collapsedHeight: size(70, context),
+                  expandedHeight: index == 2 ? 240 : 10,
                   flexibleSpace: FlexibleSpaceBar(
-                    title: Text('Hi!! Compagnon'),
+                    title: Text('IUT Companion'),
                     background: Image.asset(
                       'assets/images/bg_img.png',
                       fit: BoxFit.cover,
                     ),
                   ),
 
-                  floating: true,
+                  floating: false,
                   // snap: true,
                   pinned: true,
                 ),
               ],
-              body: Stack(children: [
-                screens[index],
-              ]),
+              body: Container(
+                padding: padding_h,
+                height: double.maxFinite,
+                width: double.maxFinite,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+                child: screens[index],
+              ),
             )
           : Column(
               children: [
