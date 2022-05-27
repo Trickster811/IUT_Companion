@@ -123,6 +123,7 @@ class InfoCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

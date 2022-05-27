@@ -8,11 +8,11 @@ import 'package:flutter/material.dart';
 class ToolScreen extends StatelessWidget {
   final image = [
     Image.asset(
-      'assets/images/letter.png',
+      'assets/images/iut.png',
       fit: BoxFit.cover,
     ),
     Image.asset(
-      'assets/images/news.png',
+      'assets/images/iut.png',
       fit: BoxFit.cover,
     ),
     Image.asset(

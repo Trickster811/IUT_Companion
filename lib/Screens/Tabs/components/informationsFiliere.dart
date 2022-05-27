@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
+import 'package:iut_companion/Screens/Tabs/notifications_center.dart';
 import 'package:iut_companion/constants.dart';
 
 var stage = {
@@ -232,18 +233,23 @@ class _stageInformationState extends State<stageInformation> {
                           children: [
                             Image.asset(
                               'assets/images/logo_iut.png',
-                              width: 35,
+                              width: size(30, context),
                             ),
                             Image.asset(
-                              'assets/images/kali_light.png',
-                              width: 70,
+                              'assets/images/AppName_light.png',
+                              width: size(130, context),
                             ),
                           ],
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.account_circle_sharp),
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NotificationScreen(),
+                          ),
+                        ),
+                        icon: Icon(Icons.notifications),
                         iconSize: 30,
                         color: Colors.white,
                       ),
@@ -316,7 +322,7 @@ class _stageInformationState extends State<stageInformation> {
                               child: Text(
                                 "Les informations concernant le stage ouvrier sont les suivants :",
                                 style: TextStyle(
-                                  fontSize: taille(21, context),
+                                  fontSize: taille(15, context),
                                 ),
                               ))
                           : Padding(
@@ -325,7 +331,7 @@ class _stageInformationState extends State<stageInformation> {
                                   right: size(10, context)),
                               child: Text(
                                 "Les informations concernant le stage academique sont les suivant :",
-                                style: TextStyle(fontSize: taille(21, context)),
+                                style: TextStyle(fontSize: taille(15, context)),
                               )),
                     ),
                     Padding(
@@ -348,8 +354,9 @@ class _stageInformationState extends State<stageInformation> {
                     Padding(
                       padding: EdgeInsets.only(top: size(20, context)),
                       child: const panels(
-                          title: "Conditions",
-                          contenu: "Le stage a pour but de "),
+                        title: "Conditions",
+                        contenu: "Le stage a pour but de ",
+                      ),
                     ),
                   ],
                 ),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iut_companion/Screens/Tabs/about_app.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/Screens/Tabs/exam_screen.dart';
 import 'package:iut_companion/Screens/Tabs/home_screen.dart';
 import 'package:iut_companion/Screens/Tabs/new_screen.dart';
+import 'package:iut_companion/Screens/Tabs/notifications_center.dart';
 import 'package:iut_companion/Screens/Tabs/school_screen.dart';
 import 'package:iut_companion/Screens/Tabs/tools_screen.dart';
 import 'package:iut_companion/constants.dart';
@@ -62,22 +64,33 @@ class _StartScreenState extends State<StartScreen> {
               headerSliverBuilder: (context, innerBoxIsScrolled) => [
                 SliverAppBar(
                   leading: IconButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AboutAppScren(),
+                      ),
+                    ),
                     icon: Icon(Icons.menu_open_rounded),
                     iconSize: taille(30, context),
                   ),
                   actions: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NotificationScreen(),
+                        ),
+                      ),
                       icon: Icon(Icons.notifications_sharp),
                       iconSize: taille(30, context),
                     )
                   ],
                   backgroundColor: kPrimaryColor,
-                  collapsedHeight: size(70, context),
+                  collapsedHeight: size(60, context),
                   expandedHeight: index == 2 ? 240 : 10,
                   flexibleSpace: FlexibleSpaceBar(
                     title: Text('IUT Companion'),
+                    // titlePadding: EdgeInsets.only(left: 100),
                     background: Image.asset(
                       'assets/images/bg_img.png',
                       fit: BoxFit.cover,
@@ -130,7 +143,12 @@ class _StartScreenState extends State<StartScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               IconButton(
-                                onPressed: () {},
+                                onPressed: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AboutAppScren(),
+                                  ),
+                                ),
                                 icon: Icon(Icons.menu_open_rounded),
                                 iconSize: taille(30, context),
                                 color: Colors.white,
@@ -153,19 +171,25 @@ class _StartScreenState extends State<StartScreen> {
                                 ),
                               ),
                               IconButton(
-                                onPressed: () => showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return Expanded(
-                                      child: AlertDialog(
-                                        title: Text('Account Setting'),
-                                        content: Text(
-                                          'Connect to your account',
-                                        ),
-                                      ),
-                                    );
-                                  },
+                                onPressed: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => NotificationScreen(),
+                                  ),
                                 ),
+                                // showDialog(
+                                //   context: context,
+                                //   builder: (BuildContext context) {
+                                //     return Expanded(
+                                //       child: AlertDialog(
+                                //         title: Text('Account Setting'),
+                                //         content: Text(
+                                //           'Connect to get notified',
+                                //         ),
+                                //       ),
+                                //     );
+                                //   },
+                                // ),
                                 icon: Icon(Icons.notifications_sharp),
                                 iconSize: taille(30, context),
                                 color: Colors.white,

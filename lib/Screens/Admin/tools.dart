@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:iut_companion/Screens/Admin/components/constructor.dart';
+import 'package:iut_companion/Screens/Admin/components/toolsTabConstructor.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/constants.dart';
 

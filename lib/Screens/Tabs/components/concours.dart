@@ -21,7 +21,7 @@ class ConcoursPage extends StatelessWidget {
           SizedBox(
             height: size(30, context),
           ),
-          cardConcours(title: "LyTech"),
+          cardConcours(title: "LiTech"),
           Container(
             padding: EdgeInsets.only(bottom: size(50, context)),
             width: double.maxFinite,

@@ -1,89 +1,12 @@
 import 'dart:io';
 // import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
-
-// class User {
-//   final String login;
-//   final String pwd;
-//   User(this.login, this.pwd);
-// }
-
-// class Actualite {
-//   final String titre;
-//   final String contenu;
-//   final DateTime datePost;
-//   final String img;
-//   Actualite(this.titre, this.contenu, this.datePost, this.img);
-// }
-
-// class Stage {
-//   final String intitule;
-//   final String dateDeb;
-//   final String dateFin;
-//   Stage(this.intitule, this.dateDeb, this.dateFin);
-// }
-
-// class Concours {
-//   final String intitule;
-//   final String arrete;
-//   Concours(this.intitule, this.arrete);
-// }
-
-// class Faq {
-//   final String theme;
-//   final String question;
-//   final String reponse;
-//   Faq(this.theme, this.question, this.reponse);
-// }
-
-// class Cycle {
-//   final String intitule;
-//   Cycle(this.intitule);
-// }
-
-// class TexteSt extends StatelessWidget {
-//   const TexteSt({Key? key, required this.title, required this.styl})
-//       : super(key: key);
-//   final String title;
-//   final TextStyle styl;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Text(
-//       title,
-//       style: styl,
-//     );
-//   }
-// }
-
-// class Texte extends StatelessWidget {
-//   const Texte(
-//       {Key? key,
-//       required this.title,
-//       this.font = 18,
-//       this.color = Colors.black,
-//       this.weight = FontWeight.normal})
-//       : super(key: key);
-//   final String title;
-//   final double font;
-//   final Color color;
-//   final FontWeight weight;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Text(
-//       title,
-//       style: TextStyle(
-//           fontSize: font,
-//           fontWeight: weight,
-//           color: color,
-//           decoration: TextDecoration.none),
-//     );
-//   }
-// }
 
 class AdaptiveSizes {
   const AdaptiveSizes();
@@ -182,5 +105,46 @@ class PicturePicker {
     final image = File('${directory.path}/$name');
 
     return File(imagePath).copy(image.path);
+  }
+}
+
+Future showImageSource(BuildContext context) async {
+  if (Platform.isIOS) {
+    return showCupertinoModalPopup<ImageSource>(
+      context: context,
+      builder: (context) => CupertinoActionSheet(
+        actions: [
+          CupertinoActionSheetAction(
+            // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+            onPressed: () => Navigator.of(context).pop(ImageSource.camera),
+            child: Text('Camera'),
+          ),
+          CupertinoActionSheetAction(
+            // onPressed: () => imageGallerypicker(ImageSource.galery, context),
+            onPressed: () => Navigator.of(context).pop(ImageSource.gallery),
+            child: Text('Galery'),
+          ),
+        ],
+      ),
+    );
+  } else {
+    return showModalBottomSheet(
+      context: context,
+      builder: (contex) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
+            leading: Icon(Icons.camera_alt_rounded),
+            title: Text('Camera'),
+            onTap: () => Navigator.of(context).pop(ImageSource.camera),
+          ),
+          ListTile(
+            leading: Icon(Icons.image),
+            title: Text('Galery'),
+            onTap: () => Navigator.of(context).pop(ImageSource.gallery),
+          )
+        ],
+      ),
+    );
   }
 }

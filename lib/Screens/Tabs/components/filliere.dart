@@ -84,6 +84,7 @@ class _FiliereState extends State<Filiere> {
       'Génie Civil et Constructions Durables',
       'Maintenance des Equipement Biomédicaux',
     ];
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -203,6 +204,9 @@ class _FiliereState extends State<Filiere> {
                   index: 1),
             ]),
           ),
+
+          // footer
+
           Container(
             padding: EdgeInsets.only(bottom: size(60, context)),
             width: double.maxFinite,
@@ -261,48 +265,58 @@ class cardFiliere extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    InfoFiliere(fil: listFilieres[tab - 1][index]),
+                builder: (context) => InfoFiliere(
+                  fil: listFilieres[tab - 1][index],
+                ),
               ),
             );
           },
           child: Container(
-              width: size(200.0, context),
-              height: size(130.0, context),
-              decoration: BoxDecoration(
-                color: cardColor,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(50),
-                ),
+            width: size(200.0, context),
+            height: size(130.0, context),
+            decoration: BoxDecoration(
+              color: cardColor,
+              borderRadius: BorderRadius.all(
+                Radius.circular(50),
               ),
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(title,
-                          style: TextStyle(
-                              fontSize: taille(24, context),
-                              color: Colors.white,
-                              fontFamily: 'OpenSans_Regular',
-                              fontWeight: FontWeight.w500)),
-                      Icon(Icons.zoom_in, color: Colors.white),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: size(7, context)),
-                    child: Text(
-                      description,
+            ),
+            padding: EdgeInsets.all(10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      title,
                       style: TextStyle(
-                        fontSize: taille(18, context),
-                        color: Color.fromARGB(255, 238, 238, 238),
+                        fontSize: taille(24, context),
+                        color: Colors.white,
+                        fontFamily: 'OpenSans_Regular',
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
+                    Icon(
+                      Icons.zoom_in,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: size(7, context),
                   ),
-                ],
-              )),
+                  child: Text(
+                    description,
+                    style: TextStyle(
+                      fontSize: taille(18, context),
+                      color: Color.fromARGB(255, 238, 238, 238),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       );
 }

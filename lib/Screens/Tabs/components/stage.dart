@@ -323,7 +323,7 @@ class _StageState extends State<Stage> {
                           ),
                         ),
                         child: Text(
-                          "LyTech",
+                          "LiTech",
                           style: TextStyle(
                             fontSize: taille(16, context),
                             color: Colors.black,

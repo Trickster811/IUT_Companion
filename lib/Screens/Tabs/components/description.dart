@@ -18,58 +18,14 @@ final List<String> debouches = [
   'Maintenance informatique',
 ];
 
-final List<Widget> listDeb = debouches
-    .map((item) => Padding(
-        padding: EdgeInsets.only(left: 10.0, bottom: 5),
-        child: Text("- ${item}",
-            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500))))
-    .toList();
-final List description = ['Nous travaillons tous ensemble'];
-final List<Widget> imageSliders = imgList
-    .map((item) => Container(
-          child: Container(
-            margin: EdgeInsets.all(5.0),
-            child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                child: Stack(
-                  children: <Widget>[
-                    Image.asset(item, fit: BoxFit.cover, width: 1000.0),
-                    Positioned(
-                      bottom: 0.0,
-                      left: 0.0,
-                      right: 0.0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color.fromARGB(200, 0, 0, 0),
-                              Color.fromARGB(0, 0, 0, 0)
-                            ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
-                          ),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 20.0),
-                        child: Text(
-                          '${description[imgList.indexOf(item)]}',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontFamily: 'OpenSans_Regular',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
-          ),
-        ))
-    .toList();
-
 class InfoFiliere extends StatefulWidget {
-  const InfoFiliere({Key? key, required this.fil}) : super(key: key);
+  // final listUnite;
+
+  const InfoFiliere({
+    Key? key,
+    required this.fil,
+    // required this.listUnite,
+  }) : super(key: key);
   final Filieres fil;
   @override
   State<StatefulWidget> createState() {
@@ -78,9 +34,17 @@ class InfoFiliere extends StatefulWidget {
 }
 
 class _InfoFiliereState extends State<InfoFiliere> {
-  int _current = 0;
-  final CarouselController _controller = CarouselController();
   bool _expanded = false;
+  final listImages = [
+    'assets/images/admin.png',
+    'assets/images/gin-01.png',
+    'assets/images/gin-02.png',
+    'assets/images/gbio-01.png',
+    'assets/images/gbio-02.png',
+    'assets/images/gbio-03.png',
+    'assets/images/iut.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     // Use the Todo to create the UI.
@@ -151,18 +115,18 @@ class _InfoFiliereState extends State<InfoFiliere> {
           Flexible(
             flex: 6,
             child: Container(
-                // padding: padding_h,
-                height: double.maxFinite,
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
-                  color: Colors.white,
+              // padding: padding_h,
+              height: double.maxFinite,
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
                 ),
-                child: SingleChildScrollView(
-                    child: Column(
+                color: Colors.white,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
@@ -200,7 +164,24 @@ class _InfoFiliereState extends State<InfoFiliere> {
                         ],
                       ),
                     ),
-                    Slide(),
+                    CarouselSlider.builder(
+                      itemCount: listImages.length,
+                      options: CarouselOptions(
+                        autoPlayInterval: Duration(
+                          seconds: 4,
+                        ),
+                        // viewportFraction: 1,
+                        enlargeCenterPage: true,
+                        enlargeStrategy: CenterPageEnlargeStrategy.height,
+                        height: 250,
+                        autoPlay: true,
+                      ),
+                      itemBuilder: (context, index, realIndex) {
+                        final image = listImages[index];
+                        return buildImage(image, index);
+                      },
+                    ),
+
                     Padding(
                       padding: EdgeInsets.all(size(20, context)),
                       child: Text(
@@ -305,28 +286,29 @@ class _InfoFiliereState extends State<InfoFiliere> {
                       height: size(30, context),
                     )
                   ],
-                ))),
+                ),
+              ),
+            ),
           ),
         ],
       ),
     );
   }
-}
 
-class Slide extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: CarouselSlider(
-        options: CarouselOptions(
-          autoPlay: true,
-          aspectRatio: 2.0,
-          enlargeCenterPage: true,
+  Widget buildImage(
+    String img,
+    int index,
+  ) =>
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          child: Image.asset(
+            img,
+            fit: BoxFit.cover,
+          ),
         ),
-        items: imageSliders,
-      ),
-    );
-  }
+      );
 }
 
 class panel extends StatefulWidget {
@@ -415,81 +397,6 @@ class _panelState extends State<panel> {
       expansionCallback: (panelIndex, isExpanded) {
         _expanded = !_expanded;
         setState(() {});
-      },
-    );
-  }
-}
-
-class expandPanel extends StatelessWidget {
-  String title = "";
-  expandPanel(String titre) {
-    title = titre;
-  }
-
-  bool _expanded = false;
-  @override
-  Widget build(BuildContext context) {
-    return ExpansionPanelList(
-      animationDuration: const Duration(milliseconds: 500),
-      children: [
-        ExpansionPanel(
-          headerBuilder: (context, isExpanded) {
-            return ListTile(
-              title: Text(
-                title,
-                style: const TextStyle(color: Colors.black),
-              ),
-            );
-          },
-          body: Column(
-            children: const [
-              ListTile(
-                title: Text(
-                  'UE 1',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'OpenSans_Regular',
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  'UE 2',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'OpenSans_Regular',
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  'UE 3',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'OpenSans_Regular',
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  'UE 4',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'OpenSans_Regular',
-                  ),
-                ),
-              ),
-            ],
-          ),
-          backgroundColor: const Color.fromARGB(255, 248, 216, 130),
-          isExpanded: _expanded,
-          canTapOnHeader: true,
-        ),
-      ],
-      elevation: 0,
-      //dividerColor: Colors.black,
-      expansionCallback: (panelIndex, isExpanded) {
-        _expanded = !_expanded;
       },
     );
   }

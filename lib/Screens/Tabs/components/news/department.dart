@@ -42,7 +42,7 @@ class Department extends StatelessWidget {
               print("test");
               return InfoCard(
                 image: Image.asset(
-                  'assets/images/4.png',
+                  'assets/images/actu4.png',
                   fit: BoxFit.cover,
                 ),
                 title:
@@ -68,7 +68,7 @@ class Department extends StatelessWidget {
           ),
           InfoCard(
             image: Image.asset(
-              'assets/images/4.png',
+              'assets/images/actu3.png',
               fit: BoxFit.cover,
             ),
             title:
@@ -76,7 +76,7 @@ class Department extends StatelessWidget {
           ),
           InfoCard(
             image: Image.asset(
-              'assets/images/4.png',
+              'assets/images/actu4.png',
               fit: BoxFit.cover,
             ),
             title:
@@ -84,7 +84,7 @@ class Department extends StatelessWidget {
           ),
           InfoCard(
             image: Image.asset(
-              'assets/images/4.png',
+              'assets/images/actu5.png',
               fit: BoxFit.cover,
             ),
             title:
@@ -92,7 +92,7 @@ class Department extends StatelessWidget {
           ),
           InfoCard(
             image: Image.asset(
-              'assets/images/4.png',
+              'assets/images/actu1.png',
               fit: BoxFit.cover,
             ),
             title:
@@ -100,7 +100,7 @@ class Department extends StatelessWidget {
           ),
           InfoCard(
             image: Image.asset(
-              'assets/images/4.png',
+              'assets/images/actu2.png',
               fit: BoxFit.cover,
             ),
             title:

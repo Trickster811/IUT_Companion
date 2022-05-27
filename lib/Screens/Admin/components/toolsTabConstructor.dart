@@ -7,6 +7,7 @@ import 'package:iut_companion/Screens/Admin/components/update_Intership.dart';
 import 'package:iut_companion/Screens/Admin/components/update_filiere.dart';
 import 'package:iut_companion/Screens/Admin/components/update_lettre.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
+import 'package:iut_companion/Screens/Tabs/notifications_center.dart';
 import 'package:iut_companion/constants.dart';
 
 class Constructor extends StatelessWidget {
@@ -78,8 +79,13 @@ class Constructor extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.account_circle_sharp),
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NotificationScreen(),
+                          ),
+                        ),
+                        icon: Icon(Icons.notifications),
                         iconSize: 30,
                         color: Colors.white,
                       ),
