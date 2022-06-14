@@ -75,6 +75,9 @@ class News extends StatelessWidget {
             title:
                 "Le Directeur de l'Institut Universitaire de Technologie informe que la rentrée est prévue pour le 04 septembre prochain",
           ),
+          SizedBox(
+            height: 30,
+          ),
           InfoCard(
             image: Image.asset(
               'assets/images/actu2.png',
@@ -82,6 +85,9 @@ class News extends StatelessWidget {
             ),
             title:
                 "Le Directeur de l'Institut Universitaire de Technologie informe que la rentrée est prévue pour le 04 septembre prochain",
+          ),
+          SizedBox(
+            height: 30,
           ),
           InfoCard(
             image: Image.asset(

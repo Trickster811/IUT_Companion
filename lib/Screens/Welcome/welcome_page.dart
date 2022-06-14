@@ -20,7 +20,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   final spinkit = SpinKitDualRing(
     color: Colors.white,
     size: 50.0,
-    duration: const Duration(milliseconds: 400),
+    duration: const Duration(milliseconds: 500),
   );
 
   @override

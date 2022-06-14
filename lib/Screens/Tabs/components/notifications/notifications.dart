@@ -1,7 +1,9 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:iut_companion/Screens/Tabs/components/notifications/notification_Api.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/Screens/Tabs/new_screen.dart';
+import 'package:iut_companion/Screens/Tabs/notifications_center.dart';
 import 'package:iut_companion/constants.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -24,7 +26,7 @@ class _NotificationPageState extends State<NotificationPage> {
   void onClickedNotification(String? payload) => Navigator.push(
         context,
         MaterialPageRoute<void>(
-          builder: (context) => NewScreen(),
+          builder: (context) => NotificationScreen(),
         ),
       );
 
@@ -39,8 +41,8 @@ class _NotificationPageState extends State<NotificationPage> {
                 title: 'Joachim Nedaouka',
                 body: "Hey! I'm your companion",
                 payload: 'Ndam Njoya',
-                bigPicturePath: 'assets/images/logo_iut.png',
-                largeIconPath: 'assets/images/logo_iut.png',
+                // bigPicturePath: 'assets/images/iut.png',
+                // largeIconPath: 'assets/images/iut.png',
               ),
               child: Text(
                 'Simple notification',

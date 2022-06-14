@@ -1,15 +1,9 @@
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/Screens/Tabs/components/filliere.dart';
+import 'package:iut_companion/Screens/Tabs/notifications_center.dart';
 import 'package:iut_companion/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
-final List<String> imgList = [
-  'assets/images/1.png',
-  'assets/images/1.png',
-  'assets/images/1.png',
-  'assets/images/1.png',
-];
 
 final List<String> debouches = [
   'Developpement Web',
@@ -81,7 +75,7 @@ class _InfoFiliereState extends State<InfoFiliere> {
                         //   context,
                         //   MaterialPageRoute(
                         //     builder: (context) => ToolScreen(),
-                        //   ),
+                        //   ),),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
@@ -101,8 +95,13 @@ class _InfoFiliereState extends State<InfoFiliere> {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.account_circle_sharp),
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NotificationScreen(),
+                          ),
+                        ),
+                        icon: Icon(Icons.notifications),
                         iconSize: 30,
                         color: Colors.white,
                       ),

@@ -1,75 +1,8 @@
+import 'package:iut_companion/Screens/Tabs/components/news/new_view.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:iut_companion/constants.dart';
-
-class InfoCarde extends StatelessWidget {
-  const InfoCarde({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: size(10, context),
-        // horizontal: size(10, context),
-      ),
-      child: Container(
-        width: double.maxFinite,
-        height: size(100, context),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          color: Color.fromARGB(255, 255, 255, 255),
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromARGB(255, 216, 216, 216),
-              // blurStyle: BlurStyle.solid,
-              blurRadius: 5.0,
-              // spreadRadius: 1.0,
-              offset: Offset(0, 5),
-            ),
-            BoxShadow(
-              color: Colors.white,
-              offset: Offset(-5, 0),
-            ),
-            BoxShadow(
-              color: Colors.white,
-              offset: Offset(5, 0),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: size(150, context),
-              height: double.maxFinite,
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  bottomLeft: Radius.circular(10),
-                ),
-                child: Image.asset(
-                  'assets/images/news.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-            Text(
-              'Sport',
-              style: TextStyle(
-                color: Colors.black54,
-                fontFamily: 'OpenSans_Regular',
-                fontSize: taille(14, context),
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class InfoCard extends StatelessWidget {
   final title;
@@ -82,10 +15,17 @@ class InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: size(10, context),
-        horizontal: size(10, context),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.transparent,
+        elevation: 0,
+        // minimumSize: Size.fromHeight(40),
+      ),
+      onPressed: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => NewView(),
+        ),
       ),
       child: Container(
         width: double.maxFinite,

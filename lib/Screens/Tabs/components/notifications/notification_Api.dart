@@ -68,14 +68,19 @@ class NotificationApi {
     required String? title,
     required String? body,
     required String? payload,
-    required final  bigPicturePath,
-    required final largeIconPath,
+    // required final  bigPicturePath,
+    // required final largeIconPath,
   }) async {
+    final bigPicturePath = await _downloadAndSaveFile(
+        'https://firebasestorage.googleapis.com/v0/b/iut-companion-nedaoukajoachim0.appspot.com/o/notifications_images%2FScreenshot%20from%202022-05-20%2019-11-17.png?alt=media&token=ec5fb3ed-7a55-4d76-afe0-f9ca73cebb21',
+        'bigPicture');
+        final largeIconPath = await _downloadAndSaveFile(
+        'https://firebasestorage.googleapis.com/v0/b/iut-companion-nedaoukajoachim0.appspot.com/o/notifications_images%2FScreenshot%20from%202022-05-20%2019-11-17.png?alt=media&token=ec5fb3ed-7a55-4d76-afe0-f9ca73cebb21',
+        'largeIcon');
     _notifications.show(
       id,
       title,
       body,
-      
       await _notificationDetails(bigPicturePath, largeIconPath),
       payload: payload,
     );

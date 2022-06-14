@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:iut_companion/Screens/Tabs/components/auths/sign_in.dart';
 import 'package:iut_companion/Screens/Tabs/components/letter.dart';
+import 'package:iut_companion/Screens/Tabs/components/notifications/firebase.dart';
 import 'package:iut_companion/Screens/Tabs/components/notifications/notifications.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/constants.dart';
@@ -8,7 +10,7 @@ import 'package:flutter/material.dart';
 class ToolScreen extends StatelessWidget {
   final image = [
     Image.asset(
-      'assets/images/iut.png',
+      'assets/images/intershipOffice.png',
       fit: BoxFit.cover,
     ),
     Image.asset(
@@ -91,7 +93,7 @@ class ToolScreen extends StatelessWidget {
                             color: kPrimaryColor,
                           ),
                           Text(
-                            '2022 | IUT Ngaoundere',
+                            '2022 | Daily Learning',
                             style: TextStyle(
                                 fontSize: taille(12, context),
                                 color: kPrimaryColor),
@@ -173,52 +175,52 @@ class Section extends StatelessWidget {
                       elevation: 0,
                     ),
                     onPressed: () => security == 0
-                        ? showDialog(
+                        ? showCupertinoModalPopup(
                             context: context,
-                            builder: (BuildContext context) {
-                              return Expanded(
-                                child: AlertDialog(
-                                  title: Text('Hi!!'),
-                                  content: Text(
-                                    'Are you Student at UIT of Ngaoundere??',
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                Letter(index: 1),
-                                          ),
-                                        );
-                                      },
-                                      child: Text(
-                                        'YES',
-                                        style: TextStyle(color: kPrimaryColor),
-                                      ),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                Letter(index: 2),
-                                          ),
-                                        );
-                                      },
-                                      child: Text(
-                                        'NO',
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                    ),
-                                  ],
+                            builder: (context) => CupertinoActionSheet(
+                              title: Text(
+                                'IUT Companion',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'OpenSans_Regular',
                                 ),
-                              );
-                            },
+                              ),
+                              message: Text(
+                                'Please do you have your student id?',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'OpenSans_Regular',
+                                ),
+                              ),
+                              actions: [
+                                CupertinoActionSheetAction(
+                                  // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Letter(index: 1),
+                                      ),
+                                    );
+                                  },
+                                  child: Text('Yes'),
+                                ),
+                                CupertinoActionSheetAction(
+                                  // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Letter(index: 2),
+                                      ),
+                                    );
+                                  },
+                                  child: Text('No'),
+                                ),
+                              ],
+                            ),
                           )
                         : security == 2
                             ? Navigator.push(
@@ -227,47 +229,40 @@ class Section extends StatelessWidget {
                                   builder: (context) => NotificationPage(),
                                 ),
                               )
-                            : showDialog(
+                            : showCupertinoModalPopup(
                                 context: context,
-                                builder: (BuildContext context) {
-                                  return Expanded(
-                                    child: AlertDialog(
-                                      title: Text('Hi!!'),
-                                      content: Text(
-                                        'You have to be logged as "Admin" to access to area',
-                                      ),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SignInScreen(),
-                                              ),
-                                            );
-                                          },
-                                          child: Text(
-                                            'Login Now',
-                                            style:
-                                                TextStyle(color: kPrimaryColor),
-                                          ),
-                                        ),
-                                        // TextButton(
-                                        //   onPressed: () {
-                                        //     Navigator.of(context).pop();
-                                        //   },
-                                        //   child: Text(
-                                        //     'NO',
-                                        //     style:
-                                        //         TextStyle(color: Colors.black),
-                                        //   ),
-                                        // ),
-                                      ],
+                                builder: (context) => CupertinoActionSheet(
+                                  title: Text(
+                                    'IUT Companion',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontFamily: 'OpenSans_Regular',
                                     ),
-                                  );
-                                },
+                                  ),
+                                  message: Text(
+                                    'You have to be logged as "Admin" to access to area',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'OpenSans_Regular',
+                                    ),
+                                  ),
+                                  actions: [
+                                    CupertinoActionSheetAction(
+                                      // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                SignInScreen(),
+                                          ),
+                                        );
+                                      },
+                                      child: Text('Login now'),
+                                    ),
+                                  ],
+                                ),
                               ),
                     child: Text(
                       title,

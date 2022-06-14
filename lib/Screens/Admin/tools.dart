@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:iut_companion/Screens/Admin/components/toolsTabConstructor.dart';
+import 'package:iut_companion/Screens/Admin/components/tools_tab/toolsTabConstructor.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/constants.dart';
-
 
 class ToolsAdmin extends StatelessWidget {
   const ToolsAdmin({
@@ -27,6 +26,7 @@ class ToolsAdmin extends StatelessWidget {
             icon: Icon(
               Icons.new_label_rounded,
               size: 30,
+              color: Colors.redAccent,
             ),
             title: 'Add News',
             index: 0,
@@ -35,6 +35,7 @@ class ToolsAdmin extends StatelessWidget {
             icon: Icon(
               Icons.telegram_rounded,
               size: 30,
+              color: Colors.blueAccent,
             ),
             title: 'Send Notifications',
             index: 1,
@@ -43,30 +44,34 @@ class ToolsAdmin extends StatelessWidget {
             icon: Icon(
               Icons.book_rounded,
               size: 30,
+              color: Colors.amber,
             ),
             title: 'Update Letter',
             index: 2,
           ),
           AdminCard(
             icon: Icon(
-              Icons.book_rounded,
+              Icons.file_open,
               size: 30,
+              color: Colors.green,
             ),
             title: 'Add Entrance Exam',
             index: 3,
           ),
           AdminCard(
             icon: Icon(
-              Icons.insert_drive_file_sharp,
+              Icons.copy_all_rounded,
               size: 30,
+              color: Colors.deepPurple,
             ),
             title: 'Update Interships',
             index: 4,
           ),
           AdminCard(
             icon: Icon(
-              Icons.school,
+              Icons.school_rounded,
               size: 30,
+              color: kPrimaryColor,
             ),
             title: 'Update Filieres',
             index: 5,

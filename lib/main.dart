@@ -1,6 +1,6 @@
 // ************************************************************
 // ************************************************************
-// ***  Copyright 2022 Dayli Learning. All rights reserved. ***
+// ***  Copyright 2022 Daily Learning. All rights reserved. ***
 // ***     by Jo@chim Ned@ouk@ and B@d@ne Je@n Chretien.    ***
 // ************************************************************
 // ************************************************************
@@ -12,15 +12,15 @@ import 'package:flutter/material.dart';
 import 'package:iut_companion/Screens/Welcome/welcome_page.dart';
 import 'package:iut_companion/constants.dart';
 
-// Future main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-//   runApp(const MyApp());
-// }
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp()); 
+}
 
-void main() => runApp(const MyApp());
+// void main()  => runApp(const MyApp());
 
-
+ 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 

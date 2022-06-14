@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:iut_companion/Screens/Tabs/components/generer.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
+import 'package:iut_companion/Screens/Tabs/start.dart';
 import 'package:iut_companion/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -110,45 +112,66 @@ class _Forms1State extends State<Forms1> {
     List docs = [];
     try {
       print(idmat);
-      FirebaseFirestore.instance
-          .collection('Student')
-          .doc(idmat[0])
-          .get()
-          .then((DocumentSnapshot doc) {
-        print(doc.data());
+      FirebaseFirestore.instance.collection('Student').doc(idmat[0]).get().then(
+        (DocumentSnapshot doc) {
+          print(doc.data());
 
-        final x = doc['level'].toString();
-        if (doc.exists) {
-          docs.add(doc['nom']);
-          docs.add(doc['prenom']);
-          docs.add(doc['sex']);
-          docs.add(doc['mention']);
-          docs.add(doc['parcours']);
-          docs.add(x);
-          idmat.remove(idmat[0]);
-          for (var i in idmat) {
-            docs.add(i);
-          }
-          docs.add(doc['matricule']);
-          print(docs);
+          final x = doc['level'].toString();
+          if (doc.exists) {
+            docs.add(doc['nom']);
+            docs.add(doc['prenom']);
+            docs.add(doc['sex']);
+            docs.add(doc['mention']);
+            docs.add(doc['parcours']);
+            docs.add(x);
+            idmat.remove(idmat[0]);
+            for (var i in idmat) {
+              docs.add(i);
+            }
+            docs.add(doc['matricule']);
+            print(docs);
 
-          _openMyLetter(docs);
-        } else {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return Expanded(
-                child: AlertDialog(
-                  title: Text('Oups!!'),
-                  content: Text(
-                    'Student with this id not exists',
+            _openMyLetter(docs);
+          } else {
+            showCupertinoModalPopup(
+              context: context,
+              builder: (context) => CupertinoActionSheet(
+                title: Text(
+                  'Oups!!',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'OpenSans_Regular',
                   ),
                 ),
-              );
-            },
-          );
-        }
-      });
+                message: Text(
+                  'Student with this id not exists',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontFamily: 'OpenSans_Regular',
+                  ),
+                ),
+                actions: [
+                  CupertinoActionSheetAction(
+                    // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text('Retry'),
+                  ),
+                  CupertinoActionSheetAction(
+                    // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => StartScreen(),
+                      ),
+                    ),
+                    child: Text('Return Home'),
+                  ),
+                ],
+              ),
+            );
+          }
+        },
+      );
     } catch (e) {
       print(e);
     }
@@ -473,7 +496,7 @@ class _Forms1State extends State<Forms1> {
                         color: kPrimaryColor,
                       ),
                       Text(
-                        '2022 | IUT Ngaoundere',
+                        '2022 | Daily Learning',
                         style: TextStyle(
                             fontSize: taille(12, context),
                             color: kPrimaryColor),
@@ -1060,7 +1083,7 @@ class _Forms2State extends State<Forms2> {
                         color: kPrimaryColor,
                       ),
                       Text(
-                        '2022 | IUT Ngaoundere',
+                        '2022 | Daily Learning',
                         style: TextStyle(
                             fontSize: taille(12, context),
                             color: kPrimaryColor),
@@ -1076,14 +1099,3 @@ class _Forms2State extends State<Forms2> {
     );
   }
 }
-
-// final snackBar = SnackBar(
-//             content: const Text('Hi, I am a SnackBar!'),
-//             backgroundColor: (Colors.black12),
-//             action: SnackBarAction(
-//               label: 'dismiss',
-//               onPressed: () {
-//               },
-//             ),
-//           );
-//           ScaffoldMessenger.of(context).showSnackBar(snackBar);

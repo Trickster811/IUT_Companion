@@ -67,10 +67,10 @@ class _StartScreenState extends State<StartScreen> {
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AboutAppScren(),
+                        builder: (context) => NotificationScreen(),
                       ),
                     ),
-                    icon: Icon(Icons.menu_open_rounded),
+                    icon: Icon(Icons.notifications_sharp),
                     iconSize: taille(30, context),
                   ),
                   actions: [
@@ -78,12 +78,12 @@ class _StartScreenState extends State<StartScreen> {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NotificationScreen(),
+                          builder: (context) => AboutAppScren(),
                         ),
                       ),
-                      icon: Icon(Icons.notifications_sharp),
+                      icon: Icon(Icons.info_outline_rounded),
                       iconSize: taille(30, context),
-                    )
+                    ),
                   ],
                   backgroundColor: kPrimaryColor,
                   collapsedHeight: size(60, context),
@@ -146,10 +146,23 @@ class _StartScreenState extends State<StartScreen> {
                                 onPressed: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => AboutAppScren(),
+                                    builder: (context) => NotificationScreen(),
                                   ),
                                 ),
-                                icon: Icon(Icons.menu_open_rounded),
+                                // showDialog(
+                                //   context: context,
+                                //   builder: (BuildContext context) {
+                                //     return Expanded(
+                                //       child: AlertDialog(
+                                //         title: Text('Account Setting'),
+                                //         content: Text(
+                                //           'Connect to get notified',
+                                //         ),
+                                //       ),
+                                //     );
+                                //   },
+                                // ),
+                                icon: Icon(Icons.notifications_sharp),
                                 iconSize: taille(30, context),
                                 color: Colors.white,
                               ),
@@ -174,23 +187,10 @@ class _StartScreenState extends State<StartScreen> {
                                 onPressed: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => NotificationScreen(),
+                                    builder: (context) => AboutAppScren(),
                                   ),
                                 ),
-                                // showDialog(
-                                //   context: context,
-                                //   builder: (BuildContext context) {
-                                //     return Expanded(
-                                //       child: AlertDialog(
-                                //         title: Text('Account Setting'),
-                                //         content: Text(
-                                //           'Connect to get notified',
-                                //         ),
-                                //       ),
-                                //     );
-                                //   },
-                                // ),
-                                icon: Icon(Icons.notifications_sharp),
+                                icon: Icon(Icons.info_outline_rounded),
                                 iconSize: taille(30, context),
                                 color: Colors.white,
                               ),

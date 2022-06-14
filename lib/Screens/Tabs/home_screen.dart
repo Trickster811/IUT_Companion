@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -197,6 +198,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
+          
 
           // footer
 
@@ -218,7 +220,7 @@ class HomeScreen extends StatelessWidget {
                   color: kPrimaryColor,
                 ),
                 Text(
-                  '2022 | IUT Ngaoundere',
+                  '2022 | Daily Learning',
                   style: TextStyle(
                       fontSize: taille(12, context), color: kPrimaryColor),
                 ),

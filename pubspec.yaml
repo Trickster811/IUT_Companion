@@ -61,9 +61,11 @@ dependencies:
   image_picker: ^0.8.5
   rename: ^2.0.1
   get: ^4.6.1
-  firebase: ^9.0.3
+  # firebase: ^9.0.3
   syncfusion_flutter_charts: ^20.1.56
   charts_painter: ^2.0.0+2
+  firebase_storage: ^10.2.17
+  datetime_picker_formfield: ^2.0.0
   # excel: ^1.1.5
 
 dev_dependencies:

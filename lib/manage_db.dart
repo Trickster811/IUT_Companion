@@ -13,9 +13,12 @@ class Exam {
   // create
   static createExam(data) async {
     try {
-      FirebaseFirestore.instance.collection('Concours').doc().set({
+      FirebaseFirestore.instance.collection('Concours').doc(data[0]).set({
         'intitule': data[0],
-        'arrete': data[1],
+        'session': data[1],
+        'conditions': data[2],
+        'payments_fees': data[3],
+        'arrete': data[4],
       });
     } catch (e) {
       print(e);
@@ -26,7 +29,7 @@ class Exam {
   static updateExam(data) async {
     try {
       firebase.collection('Concours').doc(data[0]).update({
-        'arrete': data[1],
+        'arrete': data[4],
       });
     } catch (e) {
       print(e);
@@ -83,7 +86,7 @@ class News {
   // create
   static createNews(data) async {
     try {
-      FirebaseFirestore.instance.collection('Actualites').doc().set({
+      FirebaseFirestore.instance.collection('Actualites').doc(data[0]).set({
         'titre': data[0],
         'contenu': data[1],
         'date': DateTime.now(),
@@ -126,10 +129,15 @@ class Stage {
   // create
   static createStage(data) async {
     try {
-      FirebaseFirestore.instance.collection('Stage').doc().set({
+      FirebaseFirestore.instance.collection('Stage').doc(data[0]).set({
         'nom': data[0],
-        'date_Deb': data[1],
-        'date_Fin': data[2],
+        'but_stage': data[1],
+        'condition': data[2],
+        'periode_1_from': data[3],
+        'periode_1_to': data[4],
+        'periode_2_from': data[5],
+        'periode_2_to': data[6],
+        'canevas': data[7],
       });
     } catch (e) {
       print(e);
@@ -141,8 +149,13 @@ class Stage {
     try {
       firebase.collection('Stage').doc(data[0]).update({
         'nom': data[0],
-        'date_Deb': data[1],
-        'date_Fin': data[2],
+        'but_stage': data[1],
+        'condition': data[2],
+        'periode_1_from': data[3],
+        'periode_1_to': data[4],
+        'periode_2_from': data[5],
+        'periode_2_to': data[6],
+        'canevas': data[7],
       });
     } catch (e) {
       print(e);
@@ -342,6 +355,47 @@ class Filiere {
   static deleteFiliere(data) async {
     try {
       firebase.collection('Filiere').doc(data[0]).delete();
+    } catch (e) {
+      print(e);
+    }
+  }
+}
+
+// Functions to manage Notification
+class MessageCenter {
+  // create
+  static createMessageCenter(data) async {
+    try {
+      FirebaseFirestore.instance
+          .collection('Notifications_Center')
+          .doc(data[0])
+          .set({
+        'titre': data[0],
+        'contenu': data[1],
+        'image': data[2],
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // update
+  static updateMessageCenter(data) async {
+    try {
+      firebase.collection('Notifications_Center').doc(data[0]).update({
+        'titre': data[0],
+        'contenu': data[1],
+        'image': data[2],
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // delete
+  static deleteMessageCenter(data) async {
+    try {
+      firebase.collection('Notifications_Center').doc(data[0]).delete();
     } catch (e) {
       print(e);
     }

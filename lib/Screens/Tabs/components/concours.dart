@@ -40,7 +40,7 @@ class ConcoursPage extends StatelessWidget {
                   color: kPrimaryColor,
                 ),
                 Text(
-                  '2022 | IUT Ngaoundere',
+                  '2022 | Daily Learning',
                   style: TextStyle(
                       fontSize: taille(12, context), color: kPrimaryColor),
                 ),

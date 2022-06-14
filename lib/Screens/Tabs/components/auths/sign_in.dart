@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:iut_companion/Screens/Admin/admin.dart';
 import 'package:iut_companion/Screens/Tabs/components/auths/sign_up.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
+import 'package:iut_companion/Screens/Tabs/start.dart';
 import 'package:iut_companion/Screens/Tabs/tools_screen.dart';
 import 'package:iut_companion/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -36,18 +38,41 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
           );
         } else {
-          showDialog(
+          showCupertinoModalPopup(
             context: context,
-            builder: (BuildContext context) {
-              return Expanded(
-                child: AlertDialog(
-                  title: Text('Oups!!'),
-                  content: Text(
-                    'Username or password incorrect',
-                  ),
+            builder: (context) => CupertinoActionSheet(
+              title: Text(
+                'Oups!!',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'OpenSans_Regular',
                 ),
-              );
-            },
+              ),
+              message: Text(
+                'Username or password incorrect',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'OpenSans_Regular',
+                ),
+              ),
+              actions: [
+                CupertinoActionSheetAction(
+                  // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text('Retry'),
+                ),
+                CupertinoActionSheetAction(
+                  // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => StartScreen(),
+                    ),
+                  ),
+                  child: Text('Return Home'),
+                ),
+              ],
+            ),
           );
         }
       });
@@ -229,7 +254,6 @@ class _SignInScreenState extends State<SignInScreen> {
                                           ];
                                           authentification(data);
                                           // update(userInputs);
-
                                         }
                                       },
                                       child: Text(
