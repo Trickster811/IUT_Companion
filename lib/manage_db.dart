@@ -333,6 +333,7 @@ class Filiere {
       FirebaseFirestore.instance.collection('Filiere').doc(data[0]).set({
         'intitule': data[0],
         'cycle': data[1],
+        'description':data[2],
       });
     } catch (e) {
       print(e);
@@ -345,6 +346,7 @@ class Filiere {
       firebase.collection('Filiere').doc(data[0]).update({
         'intitule': data[0],
         'cycle': data[1],
+        'description':data[2],
       });
     } catch (e) {
       print(e);

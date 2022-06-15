@@ -14,6 +14,7 @@ import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/constants.dart';
 import 'package:iut_companion/manage_db.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+// import 'package:path/path.dart';
 
 class EntranceExam extends StatefulWidget {
   @override
@@ -261,6 +262,7 @@ class _EntranceExamState extends State<EntranceExam> {
                                   ),
                                   textStyle(context, 'Payments feeds'),
                                   TextFormField(
+                                    keyboardType: TextInputType.number,
                                     style: TextStyle(
                                       fontSize: taille(10, context),
                                       height: 1.5,
@@ -504,7 +506,7 @@ class _EntranceExamState extends State<EntranceExam> {
         field_2.text,
         urlDownload,
       ];
-      News.createNews(data);
+      Exam.createExam(data);
     } else {
       return showCupertinoModalPopup(
         context: context,

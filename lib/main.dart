@@ -6,11 +6,11 @@
 // ************************************************************
 
 import 'dart:async';
-
+ 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:iut_companion/Screens/Welcome/welcome_page.dart';
-import 'package:iut_companion/constants.dart';
+import 'package:iut_companion/constants.dart';  
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

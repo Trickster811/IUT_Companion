@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:iut_companion/Screens/Tabs/components/generer.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
+import 'package:iut_companion/Screens/Tabs/notifications_center.dart';
 import 'package:iut_companion/Screens/Tabs/start.dart';
 import 'package:iut_companion/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -69,8 +70,13 @@ class Letter extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.account_circle_sharp),
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NotificationScreen(),
+                          ),
+                        ),
+                        icon: Icon(Icons.notifications),
                         iconSize: 30,
                         color: Colors.white,
                       ),

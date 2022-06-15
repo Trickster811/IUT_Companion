@@ -1,3 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:iut_companion/Screens/Admin/components/encrytion.dart';
 import 'package:iut_companion/Screens/Tabs/components/auths/sign_in.dart';
 import 'package:iut_companion/Screens/Tabs/components/letter.dart';
@@ -15,6 +19,14 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  storeNotificationToken() async {
+    String? token = await FirebaseMessaging.instance.getToken();
+    FirebaseFirestore.instance
+        .collection('Admin')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set({'token': token}, SetOptions(merge: true));
+  }
+
   // Variables to get user entries
   final my_con_1 = TextEditingController();
 
@@ -75,103 +87,228 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       color: Colors.white),
                   height: double.maxFinite,
                   width: double.maxFinite,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontFamily: 'OpenSans_Regular',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 10,
                         ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'Sign In and enjoy withyour companion',
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontFamily: 'OpenSans_Regular',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Form(
-                        key: _dropdownFormKey,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
+                        Text(
+                          'Sign Up',
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontFamily: 'OpenSans_Regular',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              textStyle(context, 'Username'),
-                              TextFormField(
-                                style: TextStyle(
-                                  fontSize: taille(10, context),
-                                  height: 1.5,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'Sign In and enjoy withyour companion',
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontFamily: 'OpenSans_Regular',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Form(
+                          key: _dropdownFormKey,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                textStyle(context, 'Username'),
+                                TextFormField(
+                                  style: TextStyle(
+                                    fontSize: taille(10, context),
+                                    height: 1.5,
+                                  ),
+                                  decoration: InputDecoration(
+                                    // icon: Icon(Icons.person),
+                                    hintText: 'entrer votre nom',
+                                  ),
+                                  // value: dropdownvalue_1,
+                                  controller: my_con_1,
+                                  validator: RequiredValidator(
+                                      errorText:
+                                          'Veuillez renseigner votre nom'),
                                 ),
-                                decoration: InputDecoration(
-                                  // icon: Icon(Icons.person),
-                                  hintText: 'entrer votre nom',
+                                SizedBox(
+                                  height: 20,
                                 ),
-                                // value: dropdownvalue_1,
-                                controller: my_con_1,
-                                validator: RequiredValidator(
-                                    errorText: 'Veuillez renseigner votre nom'),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              textStyle(context, 'Password'),
-                              TextFormField(
-                                obscureText: true,
-                                style: TextStyle(
-                                  fontSize: taille(10, context),
-                                  height: 1.5,
+                                textStyle(context, 'Password'),
+                                TextFormField(
+                                  obscureText: true,
+                                  style: TextStyle(
+                                    fontSize: taille(10, context),
+                                    height: 1.5,
+                                  ),
+                                  decoration: InputDecoration(
+                                    // icon: Icon(Icons.person),
+                                    hintText: 'entrer votre code',
+                                  ),
+                                  // value: dropdownvalue_1,
+                                  controller: my_con_2,
+                                  validator: RequiredValidator(
+                                      errorText:
+                                          'Veuillez renseigner votre code'),
                                 ),
-                                decoration: InputDecoration(
-                                  // icon: Icon(Icons.person),
-                                  hintText: 'entrer votre code',
+                                SizedBox(
+                                  height: 30,
                                 ),
-                                // value: dropdownvalue_1,
-                                controller: my_con_2,
-                                validator: RequiredValidator(
-                                    errorText:
-                                        'Veuillez renseigner votre code'),
-                              ),
-                              SizedBox(
-                                height: 30,
-                              ),
 
-                              // Submit Button
+                                // Submit Button
 
-                              Center(
-                                child: SizedBox(
-                                  width: 200,
-                                  child: ElevatedButton(
-                                    onPressed: () async {
-                                      if (_dropdownFormKey.currentState!
-                                          .validate()) {
-                                        final password =
-                                            EncryptionAES.encryptAES(
-                                                my_con_2.text);
+                                Center(
+                                  child: SizedBox(
+                                    width: 200,
+                                    child: ElevatedButton(
+                                      onPressed: () async {
+                                        if (_dropdownFormKey.currentState!
+                                            .validate()) {
+                                          try {
+                                            // final password = EncryptionSalsa20
+                                            //     .encryptSalsa20(my_con_2.text);
 
-                                        final userInputs = [
-                                          my_con_1.text,
-                                          password,
-                                        ];
-                                        // Admin.createAdmin(userInputs);
+                                            final userInputs = [
+                                              my_con_1.text,
+                                              my_con_2.text,
+                                            ];
+                                            Admin.createAdmin(userInputs);
 
-                                        // Go to the Login page
+                                            storeNotificationToken();
+
+                                            showCupertinoModalPopup(
+                                              context: context,
+                                              builder: (context) =>
+                                                  CupertinoActionSheet(
+                                                title: Text(
+                                                  'Succes!!',
+                                                  style: TextStyle(
+                                                    color: kPrimaryColor,
+                                                    fontSize: 14,
+                                                    fontFamily:
+                                                        'OpenSans_Regular',
+                                                  ),
+                                                ),
+                                                message: Text(
+                                                  'Welcome Admin ${my_con_1.text}.\nSign In now and start manging the app.',
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontFamily:
+                                                        'OpenSans_Regular',
+                                                  ),
+                                                ),
+                                                actions: [
+                                                  CupertinoActionSheetAction(
+                                                    // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop(); // Go to the Login page
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              SignInScreen(),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Text(
+                                                      'Get Started',
+                                                      style: TextStyle(
+                                                        color: kPrimaryColor,
+                                                        fontSize: 14,
+                                                        fontFamily:
+                                                            'OpenSans_Regular',
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          } catch (e) {
+                                            print(e);
+                                            return showCupertinoModalPopup(
+                                              context: context,
+                                              builder: (context) =>
+                                                  CupertinoActionSheet(
+                                                title: Text(
+                                                  'Error!!',
+                                                  style: TextStyle(
+                                                    color: Colors.redAccent,
+                                                    fontSize: 14,
+                                                    fontFamily:
+                                                        'OpenSans_Regular',
+                                                  ),
+                                                ),
+                                                message: Text(
+                                                  'Sorry some error occured.\nPlease retry.',
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontFamily:
+                                                        'OpenSans_Regular',
+                                                  ),
+                                                ),
+                                                actions: [
+                                                  CupertinoActionSheetAction(
+                                                    // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                                                    onPressed: () =>
+                                                        Navigator.of(context)
+                                                            .pop(),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          }
+                                        }
+                                      },
+                                      child: Text(
+                                        'Sign Up',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'OpenSans_Regular',
+                                        ),
+                                      ),
+                                      style: TextButton.styleFrom(
+                                        backgroundColor: kPrimaryColor,
+                                        // elevation: 0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                                // SizedBox(
+                                //   height: 5,
+                                // ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Alredy have an account?",
+                                      style: TextStyle(
+                                        // color: kPrimaryColor,
+                                        fontFamily: 'OpenSans_Regular',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                    ElevatedButton(
+                                      style: TextButton.styleFrom(
+                                        backgroundColor: Colors.transparent,
+                                        elevation: 0,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -179,68 +316,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                 SignInScreen(),
                                           ),
                                         );
-                                      }
-                                    },
-                                    child: Text(
-                                      'Sign Up',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'OpenSans_Regular',
-                                      ),
-                                    ),
-                                    style: TextButton.styleFrom(
-                                      backgroundColor: kPrimaryColor,
-                                      // elevation: 0,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              
-                              // SizedBox(
-                              //   height: 5,
-                              // ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Alredy have an account?",
-                                    style: TextStyle(
-                                      // color: kPrimaryColor,
-                                      fontFamily: 'OpenSans_Regular',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                  ElevatedButton(
-                                    style: TextButton.styleFrom(
-                                      backgroundColor: Colors.transparent,
-                                      elevation: 0,
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => SignInScreen(),
+                                      },
+                                      child: Text(
+                                        'Sign In',
+                                        style: TextStyle(
+                                          color: kPrimaryColor,
+                                          decoration: TextDecoration.underline,
+                                          fontSize: taille(10, context),
                                         ),
-                                      );
-                                    },
-                                    child: Text(
-                                      'Sign In',
-                                      style: TextStyle(
-                                        color: kPrimaryColor,
-                                        decoration: TextDecoration.underline,
-                                        fontSize: taille(10, context),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               )

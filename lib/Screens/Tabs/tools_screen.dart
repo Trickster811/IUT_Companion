@@ -4,6 +4,7 @@ import 'package:iut_companion/Screens/Tabs/components/letter.dart';
 import 'package:iut_companion/Screens/Tabs/components/notifications/firebase.dart';
 import 'package:iut_companion/Screens/Tabs/components/notifications/notifications.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
+import 'package:iut_companion/Screens/Tabs/projects_screen.dart';
 import 'package:iut_companion/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -18,12 +19,16 @@ class ToolScreen extends StatelessWidget {
       fit: BoxFit.cover,
     ),
     Image.asset(
+      'assets/images/iut.png',
+      fit: BoxFit.cover,
+    ),
+    Image.asset(
       'assets/images/faq.png',
       fit: BoxFit.cover,
     ),
   ];
 
-  final title = ['Lettre de Recommendation', 'WorkSpace', 'FAQ'];
+  final title = ['Lettre de Recommendation', 'WorkSpace', 'Our Projects', 'FAQ'];
 
   final width = double.maxFinite;
   @override
@@ -73,6 +78,11 @@ class ToolScreen extends StatelessWidget {
                       image: image[2],
                       title: title[2],
                       security: 2,
+                    ),
+                    Section(
+                      image: image[3],
+                      title: title[3],
+                      security: 3,
                     ),
                     Container(
                       padding: EdgeInsets.only(bottom: size(50, context)),
@@ -226,44 +236,51 @@ class Section extends StatelessWidget {
                             ? Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => NotificationPage(),
+                                  builder: (context) => ProjectScreen(),
                                 ),
                               )
-                            : showCupertinoModalPopup(
-                                context: context,
-                                builder: (context) => CupertinoActionSheet(
-                                  title: Text(
-                                    'IUT Companion',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: 'OpenSans_Regular',
+                            : security == 3
+                                ? Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => NotificationPage(),
+                                    ),
+                                  )
+                                : showCupertinoModalPopup(
+                                    context: context,
+                                    builder: (context) => CupertinoActionSheet(
+                                      title: Text(
+                                        'IUT Companion',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: 'OpenSans_Regular',
+                                        ),
+                                      ),
+                                      message: Text(
+                                        'You have to be logged as "Admin" to access to area',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'OpenSans_Regular',
+                                        ),
+                                      ),
+                                      actions: [
+                                        CupertinoActionSheetAction(
+                                          // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SignInScreen(),
+                                              ),
+                                            );
+                                          },
+                                          child: Text('Login now'),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  message: Text(
-                                    'You have to be logged as "Admin" to access to area',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: 'OpenSans_Regular',
-                                    ),
-                                  ),
-                                  actions: [
-                                    CupertinoActionSheetAction(
-                                      // onPressed: () => imageGallerypicker(ImageSource.camera, context),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                SignInScreen(),
-                                          ),
-                                        );
-                                      },
-                                      child: Text('Login now'),
-                                    ),
-                                  ],
-                                ),
-                              ),
                     child: Text(
                       title,
                       style: TextStyle(fontSize: taille(12, context)),

@@ -55,7 +55,6 @@ class _AddNewsState extends State<AddNews> {
   Widget build(BuildContext context) {
     final fileName = file != null ? file!.path : 'No file selected';
 
-    // image source
     return Stack(
       children: [
         Positioned(
