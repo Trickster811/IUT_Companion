@@ -156,7 +156,7 @@ class _FiliereState extends State<Filiere> {
               "DUT",
               style: TextStyle(
                 fontSize: taille(22.0, context),
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -255,7 +255,7 @@ class _FiliereState extends State<Filiere> {
                 style: TextStyle(
                   fontSize: taille(22.0, context),
                   fontWeight: FontWeight.w600,
-                  fontFamily: 'OpenSans_Regular',
+                  fontFamily: 'ArialRoundedBold',
                 )),
           ),
           SingleChildScrollView(
@@ -315,7 +315,7 @@ class _FiliereState extends State<Filiere> {
               style: TextStyle(
                 fontSize: taille(22.0, context),
                 fontWeight: FontWeight.w600,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
               ),
             ),
           ),
@@ -402,7 +402,7 @@ class _FiliereState extends State<Filiere> {
           // footer
 
           Container(
-            padding: EdgeInsets.only(bottom: size(60, context)),
+            // padding: EdgeInsets.only(bottom: size(10, context)),
             width: double.maxFinite,
             height: size(100.0, context),
             color: Colors.transparent,
@@ -486,7 +486,7 @@ class cardFiliere extends StatelessWidget {
                       style: TextStyle(
                         fontSize: taille(24, context),
                         color: Colors.white,
-                        fontFamily: 'OpenSans_Regular',
+                        fontFamily: 'ArialRoundedBold',
                         fontWeight: FontWeight.w500,
                       ),
                     ),

@@ -25,7 +25,7 @@ class ProfileAdmin extends StatelessWidget {
           'Mr ${data[0]}!!',
           style: TextStyle(
             // color: Colors.white,
-            fontFamily: 'OpenSans_Regular',
+            fontFamily: 'ArialRoundedBold',
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),

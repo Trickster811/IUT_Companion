@@ -28,269 +28,343 @@ class ToolScreen extends StatelessWidget {
     ),
   ];
 
-  final title = ['Lettre de Recommendation', 'WorkSpace', 'Our Projects', 'FAQ'];
+  final title = [
+    'Lettre de Recommendation',
+    'WorkSpace',
+    'Our Projects',
+    'FAQ'
+  ];
 
-  final width = double.maxFinite;
+  // final width = double.maxFinite;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kPrimaryColor,
-      body: Container(
-        padding: padding_h,
-        height: double.maxFinite,
-        width: double.maxFinite,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
+    return SingleChildScrollView(
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: size(250, context),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ),
+              gradient: LinearGradient(
+                begin: AlignmentDirectional.topStart,
+                end: AlignmentDirectional.bottomStart,
+                colors: [
+                  Color.fromARGB(255, 0, 68, 255),
+                  Colors.blueAccent,
+                ],
+              ),
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Tools',
+                    style: TextStyle(
+                      letterSpacing: 15,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontSize: 30,
+                      fontFamily: 'ArialRoundedBold',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 5),
+                    height: size(2.5, context),
+                    width: size(150, context),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
+                  Text(
+                    'Daily Learning',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontSize: 10,
+                      fontFamily: 'ArialRoundedBold',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-          color: Colors.white,
-        ),
-        child: Stack(
-          children: [
-            Positioned(
-              right: -120,
-              bottom: 0,
-              child: Image.asset(
-                'assets/images/logo_iut.png',
-                color: Colors.white.withOpacity(0.2),
-                colorBlendMode: BlendMode.modulate,
-                width: 350,
-              ),
+          SizedBox(
+            height: 30,
+          ),
+          ToolsTabWidget(
+            icon: Icons.file_copy_rounded,
+            title: title[0],
+            description: 'Generate your own Letters of Recommandation.',
+            gradient: LinearGradient(
+              begin: AlignmentDirectional.topStart,
+              end: AlignmentDirectional.bottomStart,
+              colors: [kPrimaryColor, Colors.purple],
             ),
-            SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Section(
-                      image: image[0],
-                      title: title[0],
-                      security: 0,
-                    ),
-                    Section(
-                      image: image[1],
-                      title: title[1],
-                      security: 1,
-                    ),
-                    Section(
-                      image: image[2],
-                      title: title[2],
-                      security: 2,
-                    ),
-                    Section(
-                      image: image[3],
-                      title: title[3],
-                      security: 3,
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(bottom: size(50, context)),
-                      width: double.maxFinite,
-                      height: size(100, context),
-                      color: Colors.transparent,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Copyright',
-                            style: TextStyle(
-                                fontSize: taille(12, context),
-                                color: kPrimaryColor),
-                          ),
-                          Icon(
-                            Icons.copyright_rounded,
-                            color: kPrimaryColor,
-                          ),
-                          Text(
-                            '2022 | Daily Learning',
-                            style: TextStyle(
-                                fontSize: taille(12, context),
-                                color: kPrimaryColor),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+            security: 0,
+          ),
+          ToolsTabWidget(
+            icon: Icons.security_update_good_rounded,
+            title: title[1],
+            description: 'Discover all our the projects.',
+            gradient: LinearGradient(
+              begin: AlignmentDirectional.topStart,
+              end: AlignmentDirectional.bottomStart,
+              colors: [
+                Color.fromARGB(255, 0, 68, 255),
+                Colors.blueAccent,
+              ],
+            ),
+            security: 1,
+          ),
+          ToolsTabWidget(
+            icon: Icons.settings,
+            title: title[2],
+            description: 'Discover all our the projects.',
+            gradient: LinearGradient(
+              begin: AlignmentDirectional.topStart,
+              end: AlignmentDirectional.bottomStart,
+              colors: [
+                Color.fromARGB(255, 252, 50, 35),
+                Color.fromRGBO(255, 115, 115, 1)
+              ],
+            ),
+            security: 2,
+          ),
+          ToolsTabWidget(
+            icon: Icons.architecture_rounded,
+            title: title[3],
+            description: 'Discover all our the projects.',
+            gradient: LinearGradient(
+              begin: AlignmentDirectional.topStart,
+              end: AlignmentDirectional.bottomStart,
+              colors: [Colors.green, Colors.greenAccent],
+            ),
+            security: 3,
+          ),
+          Container(
+            padding: EdgeInsets.only(bottom: size(50, context)),
+            width: double.maxFinite,
+            // height: size(20, context),
+            color: Colors.transparent,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Copyright',
+                  style: TextStyle(
+                      fontSize: taille(12, context), color: kPrimaryColor),
                 ),
-              ),
+                Icon(
+                  Icons.copyright_rounded,
+                  color: kPrimaryColor,
+                ),
+                Text(
+                  '2022 | Daily Learning',
+                  style: TextStyle(
+                      fontSize: taille(12, context), color: kPrimaryColor),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
 
-class Section extends StatelessWidget {
-  final Image image;
-  final String title;
-  final int security;
-
-  const Section({
+class ToolsTabWidget extends StatelessWidget {
+  final icon, title, description, gradient, security;
+  const ToolsTabWidget({
     Key? key,
-    required this.image,
+    required this.icon,
     required this.title,
+    required this.description,
+    required this.gradient,
     required this.security,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: size(10, context),
+    return ElevatedButton(
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          vertical: 5,
-          horizontal: 5,
-        ),
-        width: double.maxFinite,
-        height: size(250, context),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.transparent,
-          // boxShadow: [
-          //   BoxShadow(
-          //     blurRadius: 5.0,
-          //     offset: Offset(0, 2),
-          //   ),
-          // ],
-        ),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              flex: 4,
-              child: Container(
-                width: double.maxFinite,
-                height: double.maxFinite,
-                child: image,
-              ),
-            ),
-            Flexible(
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: 5,
-                ),
-                child: Container(
-                  width: double.maxFinite,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: kPrimaryColor,
-                  ),
-                  child: ElevatedButton(
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      elevation: 0,
-                    ),
-                    onPressed: () => security == 0
-                        ? showCupertinoModalPopup(
-                            context: context,
-                            builder: (context) => CupertinoActionSheet(
-                              title: Text(
-                                'IUT Companion',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontFamily: 'OpenSans_Regular',
-                                ),
-                              ),
-                              message: Text(
-                                'Please do you have your student id?',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'OpenSans_Regular',
-                                ),
-                              ),
-                              actions: [
-                                CupertinoActionSheetAction(
-                                  // onPressed: () => imageGallerypicker(ImageSource.camera, context),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Letter(index: 1),
-                                      ),
-                                    );
-                                  },
-                                  child: Text('Yes'),
-                                ),
-                                CupertinoActionSheetAction(
-                                  // onPressed: () => imageGallerypicker(ImageSource.camera, context),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Letter(index: 2),
-                                      ),
-                                    );
-                                  },
-                                  child: Text('No'),
-                                ),
-                              ],
-                            ),
-                          )
-                        : security == 2
-                            ? Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ProjectScreen(),
-                                ),
-                              )
-                            : security == 3
-                                ? Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => NotificationPage(),
-                                    ),
-                                  )
-                                : showCupertinoModalPopup(
-                                    context: context,
-                                    builder: (context) => CupertinoActionSheet(
-                                      title: Text(
-                                        'IUT Companion',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontFamily: 'OpenSans_Regular',
-                                        ),
-                                      ),
-                                      message: Text(
-                                        'You have to be logged as "Admin" to access to area',
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontFamily: 'OpenSans_Regular',
-                                        ),
-                                      ),
-                                      actions: [
-                                        CupertinoActionSheetAction(
-                                          // onPressed: () => imageGallerypicker(ImageSource.camera, context),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SignInScreen(),
-                                              ),
-                                            );
-                                          },
-                                          child: Text('Login now'),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                    child: Text(
-                      title,
-                      style: TextStyle(fontSize: taille(12, context)),
-                    ),
+      onPressed: () => security == 0
+          ? showCupertinoModalPopup(
+              context: context,
+              builder: (context) => CupertinoActionSheet(
+                title: Text(
+                  'IUT Companion',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'ArialRoundedBold',
                   ),
                 ),
+                message: Text(
+                  'Please do you have your student id?',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontFamily: 'ArialRoundedBold',
+                  ),
+                ),
+                actions: [
+                  CupertinoActionSheetAction(
+                    // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Letter(index: 1),
+                        ),
+                      );
+                    },
+                    child: Text('Yes'),
+                  ),
+                  CupertinoActionSheetAction(
+                    // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Letter(index: 2),
+                        ),
+                      );
+                    },
+                    child: Text('No'),
+                  ),
+                ],
               ),
             )
-          ],
-        ),
+          : security == 2
+              ? Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProjectScreen(),
+                  ),
+                )
+              : security == 3
+                  ? Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NotificationPage(),
+                      ),
+                    )
+                  : showCupertinoModalPopup(
+                      context: context,
+                      builder: (context) => CupertinoActionSheet(
+                        title: Text(
+                          'IUT Companion',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'ArialRoundedBold',
+                          ),
+                        ),
+                        message: Text(
+                          'You have to be logged as "Admin" to access to area',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: 'ArialRoundedBold',
+                          ),
+                        ),
+                        actions: [
+                          CupertinoActionSheetAction(
+                            // onPressed: () => imageGallerypicker(ImageSource.camera, context),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignInScreen(),
+                                ),
+                              );
+                            },
+                            child: Text('Login now'),
+                          ),
+                        ],
+                      ),
+                    ),
+      child: Column(
+        children: [
+          Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                height: 65,
+                width: 65,
+                decoration: BoxDecoration(
+                    gradient: gradient,
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    )),
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                  size: size(40, context),
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    // top: BorderSide(width: 1, color: Colors.black12),
+                    bottom: BorderSide(width: 1, color: Colors.black12),
+                  ),
+                ),
+                height: size(65, context),
+                width: 200,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        // letterSpacing: 20,
+                        color: Colors.black,
+                        fontSize: taille(15, context),
+                        fontFamily: 'ArialRoundedBold',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      description,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: taille(12, context),
+                        fontFamily: 'ArialRoundedBold',
+                      ),
+                    ),
+                    Spacer(),
+                  ],
+                ),
+              ),
+              Container(
+                child: Center(
+                  child: Icon(
+                    Icons.navigate_next_rounded,
+                    color: Colors.black26,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: size(25, context),
+          ),
+        ],
       ),
     );
   }

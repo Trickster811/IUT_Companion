@@ -53,7 +53,7 @@ class _UpdateLetterState extends State<UpdateLetter> {
                     style: TextStyle(
                       fontSize: taille(20, context),
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'OpenSans_Regular',
+                      fontFamily: 'ArialRoundedBold',
                     ),
                   ),
                 ),
@@ -200,14 +200,14 @@ class _UpdateLetterState extends State<UpdateLetter> {
               style: TextStyle(
                 color: kPrimaryColor,
                 fontSize: 14,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
               ),
             ),
             message: Text(
               'Good Job!!\nLetter of Recommandation model was well updated.',
               style: TextStyle(
                 fontSize: 14,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
               ),
             ),
             actions: [
@@ -228,14 +228,14 @@ class _UpdateLetterState extends State<UpdateLetter> {
               style: TextStyle(
                 color: Colors.redAccent,
                 fontSize: 14,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
               ),
             ),
             message: Text(
               'Sorry some error occured.\nPlease retry.',
               style: TextStyle(
                 fontSize: 14,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
               ),
             ),
             actions: [
@@ -257,14 +257,14 @@ class _UpdateLetterState extends State<UpdateLetter> {
             style: TextStyle(
               color: Colors.redAccent,
               fontSize: 14,
-              fontFamily: 'OpenSans_Regular',
+              fontFamily: 'ArialRoundedBold',
             ),
           ),
           message: Text(
             'Please fill out all the fields of this form.',
             style: TextStyle(
               fontSize: 14,
-              fontFamily: 'OpenSans_Regular',
+              fontFamily: 'ArialRoundedBold',
             ),
           ),
           actions: [

@@ -8,6 +8,7 @@ import 'package:iut_companion/Screens/Tabs/home_screen.dart';
 import 'package:iut_companion/Screens/Tabs/new_screen.dart';
 import 'package:iut_companion/Screens/Tabs/notifications_center.dart';
 import 'package:iut_companion/Screens/Tabs/school_screen.dart';
+import 'package:iut_companion/Screens/Tabs/side_bar_menu.dart';
 import 'package:iut_companion/Screens/Tabs/tools_screen.dart';
 import 'package:iut_companion/constants.dart';
 
@@ -56,157 +57,136 @@ class _StartScreenState extends State<StartScreen> {
       backgroundColor: kPrimaryColor,
       extendBody: true,
       // Header __start__
-
-      body: index == 2
-          ? NestedScrollView(
-              // physics: ClampingScrollPhysics(),
-              floatHeaderSlivers: true,
-              headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                SliverAppBar(
-                  leading: IconButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NotificationScreen(),
-                      ),
-                    ),
-                    icon: Icon(Icons.notifications_sharp),
-                    iconSize: taille(30, context),
-                  ),
-                  actions: [
-                    IconButton(
-                      onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AboutAppScren(),
+      // drawer: SideBar(),
+      body: Stack(
+        children: [
+          index == 2
+              ? NestedScrollView(
+                  // physics: ClampingScrollPhysics(),
+                  floatHeaderSlivers: true,
+                  headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                    SliverAppBar(
+                      actions: [
+                        IconButton(
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NotificationScreen(),
+                            ),
+                          ),
+                          icon: Icon(Icons.notifications_sharp),
+                          iconSize: taille(25, context),
+                          color: Colors.white,
                         ),
-                      ),
-                      icon: Icon(Icons.info_outline_rounded),
-                      iconSize: taille(30, context),
-                    ),
-                  ],
-                  backgroundColor: kPrimaryColor,
-                  collapsedHeight: size(60, context),
-                  expandedHeight: index == 2 ? 240 : 10,
-                  flexibleSpace: FlexibleSpaceBar(
-                    title: Text('IUT Companion'),
-                    // titlePadding: EdgeInsets.only(left: 100),
-                    background: Image.asset(
-                      'assets/images/bg_img.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-
-                  floating: false,
-                  // snap: true,
-                  pinned: true,
-                ),
-              ],
-              body: Container(
-                padding: padding_h,
-                height: double.maxFinite,
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
-                  color: Color.fromARGB(255, 255, 255, 255),
-                ),
-                child: screens[index],
-              ),
-            )
-          : Column(
-              children: [
-                Flexible(
-                  flex: 1,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 0,
-                        color: kPrimaryColor,
-                      ),
-                      color: kPrimaryColor,
-                    ),
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        Image.asset(
+                      ],
+                      backgroundColor: kPrimaryColor,
+                      collapsedHeight: size(60, context),
+                      expandedHeight: index == 2 ? 100 : 10,
+                      flexibleSpace: FlexibleSpaceBar(
+                        titlePadding: EdgeInsets.only(
+                          right: size(50, context),
+                          bottom: size(15, context),
+                          left: size(5, context),
+                        ),
+                        title: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Image.asset(
+                              'assets/images/logo_iut.png',
+                              width: size(30, context),
+                            ),
+                            Image.asset(
+                              'assets/images/AppName_light.png',
+                              width: size(130, context),
+                            ),
+                          ],
+                        ),
+                        // titlePadding: EdgeInsets.only(left: 100),
+                        background: Image.asset(
                           'assets/images/bg_img.png',
                           fit: BoxFit.cover,
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: size(10, context),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              IconButton(
-                                onPressed: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => NotificationScreen(),
-                                  ),
-                                ),
-                                // showDialog(
-                                //   context: context,
-                                //   builder: (BuildContext context) {
-                                //     return Expanded(
-                                //       child: AlertDialog(
-                                //         title: Text('Account Setting'),
-                                //         content: Text(
-                                //           'Connect to get notified',
-                                //         ),
-                                //       ),
-                                //     );
-                                //   },
-                                // ),
-                                icon: Icon(Icons.notifications_sharp),
-                                iconSize: taille(30, context),
-                                color: Colors.white,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  top: size(10, context),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/logo_iut.png',
-                                      width: size(30, context),
-                                    ),
-                                    Image.asset(
-                                      'assets/images/AppName_light.png',
-                                      width: size(130, context),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => AboutAppScren(),
-                                  ),
-                                ),
-                                icon: Icon(Icons.info_outline_rounded),
-                                iconSize: taille(30, context),
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                      ),
+
+                      floating: false,
+                      // snap: true,
+                      pinned: true,
                     ),
+                  ],
+                  body: Container(
+                    padding: padding_h,
+                    height: double.maxFinite,
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                      ),
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                    child: screens[index],
                   ),
+                )
+              : Column(
+                  children: [
+                    Container(
+                      height: (MediaQuery.of(context).size.height / 100) * 10,
+                      padding: EdgeInsets.only(
+                        left: size(10, context),
+                        right: size(10, context),
+                        top: size(30, context),
+                      ),
+                      child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 10),
+                            child: Image.asset(
+                              'assets/images/logo_iut.png',
+                              width: size(30, context),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 10),
+                            child: Image.asset(
+                              'assets/images/AppName_light.png',
+                              width: size(130, context),
+                            ),
+                          ),
+                          Spacer(),
+                          IconButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => NotificationScreen(),
+                              ),
+                            ),
+                            icon: Icon(Icons.notifications_sharp),
+                            iconSize: taille(25, context),
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: padding_h,
+                      height: (MediaQuery.of(context).size.height / 100) * 90,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
+                        ),
+                        color: Color.fromARGB(255, 245, 245, 245),
+                      ),
+                      child: screens[index],
+                    ),
+                  ],
                 ),
-                Flexible(
-                  flex: 6,
-                  child: screens[index],
-                ),
-              ],
-            ),
+          SideBar(),
+        ],
+      ),
       // Footer __start__
 
       bottomNavigationBar: Theme(

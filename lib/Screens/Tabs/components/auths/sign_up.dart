@@ -97,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           'Sign Up',
                           style: TextStyle(
                             color: kPrimaryColor,
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
@@ -109,7 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           'Sign In and enjoy withyour companion',
                           style: TextStyle(
                             color: kPrimaryColor,
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
                             fontSize: 10,
                           ),
@@ -197,7 +197,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                     color: kPrimaryColor,
                                                     fontSize: 14,
                                                     fontFamily:
-                                                        'OpenSans_Regular',
+                                                        'ArialRoundedBold',
                                                   ),
                                                 ),
                                                 message: Text(
@@ -205,7 +205,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                   style: TextStyle(
                                                     fontSize: 14,
                                                     fontFamily:
-                                                        'OpenSans_Regular',
+                                                        'ArialRoundedBold',
                                                   ),
                                                 ),
                                                 actions: [
@@ -228,7 +228,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                         color: kPrimaryColor,
                                                         fontSize: 14,
                                                         fontFamily:
-                                                            'OpenSans_Regular',
+                                                            'ArialRoundedBold',
                                                       ),
                                                     ),
                                                   ),
@@ -247,7 +247,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                     color: Colors.redAccent,
                                                     fontSize: 14,
                                                     fontFamily:
-                                                        'OpenSans_Regular',
+                                                        'ArialRoundedBold',
                                                   ),
                                                 ),
                                                 message: Text(
@@ -255,7 +255,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                   style: TextStyle(
                                                     fontSize: 14,
                                                     fontFamily:
-                                                        'OpenSans_Regular',
+                                                        'ArialRoundedBold',
                                                   ),
                                                 ),
                                                 actions: [
@@ -276,7 +276,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         'Sign Up',
                                         style: TextStyle(
                                           fontSize: 14,
-                                          fontFamily: 'OpenSans_Regular',
+                                          fontFamily: 'ArialRoundedBold',
                                         ),
                                       ),
                                       style: TextButton.styleFrom(
@@ -297,7 +297,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       "Alredy have an account?",
                                       style: TextStyle(
                                         // color: kPrimaryColor,
-                                        fontFamily: 'OpenSans_Regular',
+                                        fontFamily: 'ArialRoundedBold',
                                         fontWeight: FontWeight.bold,
                                         fontSize: 10,
                                       ),

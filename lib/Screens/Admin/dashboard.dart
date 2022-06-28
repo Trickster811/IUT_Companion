@@ -23,7 +23,7 @@ class DashboardAdmin extends StatelessWidget {
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
                 color: Colors.redAccent,
               ),
             ),
@@ -36,7 +36,7 @@ class DashboardAdmin extends StatelessWidget {
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
                 color: Colors.blueAccent,
               ),
             ),
@@ -49,7 +49,7 @@ class DashboardAdmin extends StatelessWidget {
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
                 color: Colors.green,
               ),
             ),
@@ -62,7 +62,7 @@ class DashboardAdmin extends StatelessWidget {
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
                 color: kPrimaryColor,
               ),
             ),
@@ -75,7 +75,7 @@ class DashboardAdmin extends StatelessWidget {
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
                 color: Colors.brown,
               ),
             ),
@@ -88,7 +88,7 @@ class DashboardAdmin extends StatelessWidget {
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
                 color: Colors.amber,
               ),
             ),

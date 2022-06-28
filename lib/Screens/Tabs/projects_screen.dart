@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:iut_companion/Screens/Tabs/components/project_pages_view/page_view.dart';
+import 'package:iut_companion/Screens/Tabs/components/project_pages_view/sub_projects_screen.dart';
+import 'package:iut_companion/Screens/Tabs/components/project_pages_view/sub_projects_view.dart';
 import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/Screens/Tabs/notifications_center.dart';
 import 'package:iut_companion/Screens/Tabs/side_bar_menu.dart';
@@ -14,7 +16,7 @@ class ProjectScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(230, 255, 255, 255),
+      // backgroundColor: Color.fromARGB(230, 255, 255, 255),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -31,7 +33,7 @@ class ProjectScreen extends StatelessWidget {
           },
         ),
       ),
-      drawer: SideBar(),
+      // drawer: SideBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -61,17 +63,25 @@ class ProjectScreen extends StatelessWidget {
                             letterSpacing: 15,
                             color: Colors.white,
                             fontSize: 30,
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 5),
+                          height: size(2.5, context),
+                          width: size(150, context),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white,
                           ),
                         ),
                         Text(
                           'Daily Learning',
                           style: TextStyle(
-                            decoration: TextDecoration.underline,
                             color: Colors.white,
                             fontSize: 10,
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -97,6 +107,7 @@ class ProjectScreen extends StatelessWidget {
                     end: AlignmentDirectional.bottomStart,
                     colors: [kPrimaryColor, Colors.purple],
                   ),
+                  tab: GIN,
                 ),
                 TabWidget(
                   icon: Icons.biotech_outlined,
@@ -107,9 +118,10 @@ class ProjectScreen extends StatelessWidget {
                     end: AlignmentDirectional.bottomStart,
                     colors: [
                       Color.fromARGB(255, 0, 68, 255),
-                      Colors.blueAccent
+                      Colors.blueAccent,
                     ],
                   ),
+                  tab: GBIO,
                 ),
                 TabWidget(
                   icon: Icons.settings,
@@ -123,6 +135,7 @@ class ProjectScreen extends StatelessWidget {
                       Color.fromRGBO(255, 115, 115, 1)
                     ],
                   ),
+                  tab: GIM,
                 ),
                 TabWidget(
                   icon: Icons.architecture_rounded,
@@ -133,6 +146,8 @@ class ProjectScreen extends StatelessWidget {
                     end: AlignmentDirectional.bottomStart,
                     colors: [Colors.green, Colors.greenAccent],
                   ),
+                  tab: [],
+                  index: 1,
                 ),
                 TabWidget(
                   icon: Icons.medical_services_outlined,
@@ -146,6 +161,8 @@ class ProjectScreen extends StatelessWidget {
                       Color.fromARGB(255, 255, 185, 94),
                     ],
                   ),
+                  tab: [],
+                  index: 2,
                 ),
               ],
             ),
@@ -182,16 +199,16 @@ class ProjectScreen extends StatelessWidget {
 }
 
 class TabWidget extends StatelessWidget {
-  final icon;
-  final title;
-  final description;
-  final gradient;
+  final icon, title, description, gradient, index;
+  final List<SubProjectTabWidget>? tab;
   const TabWidget({
     Key? key,
     required this.icon,
     required this.title,
     required this.description,
     required this.gradient,
+    this.tab,
+    this.index,
   }) : super(key: key);
 
   @override
@@ -201,12 +218,25 @@ class TabWidget extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      onPressed: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ProjectView(),
-        ),
-      ),
+      onPressed: () => tab!.length > 0
+          ? Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SubProjectScreen(
+                  headTitle: title,
+                  tab: tab,
+                ),
+              ),
+            )
+          : Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SubProjectView(
+                  headTitle: title,
+                  info_tab: index == 1 ? GCD : MEB,
+                ),
+              ),
+            ),
       child: Column(
         children: [
           Row(
@@ -251,21 +281,20 @@ class TabWidget extends StatelessWidget {
                         // letterSpacing: 20,
                         color: Colors.black,
                         fontSize: taille(15, context),
-                        fontFamily: 'OpenSans_Regular',
+                        fontFamily: 'ArialRoundedBold',
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    // SizedBox(
-                    //   height: size(2, context),
-                    // ),
+                    Spacer(),
                     Text(
                       description,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: taille(12, context),
-                        fontFamily: 'OpenSans_Regular',
+                        fontFamily: 'ArialRoundedBold',
                       ),
                     ),
+                    Spacer(),
                   ],
                 ),
               ),
@@ -286,3 +315,756 @@ class TabWidget extends StatelessWidget {
     );
   }
 }
+
+// Major infos
+
+final List<SubProjectTabWidget> GIN = [
+  SubProjectTabWidget(
+    icon: Icons.code_rounded,
+    title: 'Génie Logiciel',
+    description: 'Discover all our the projects.',
+    gradient: LinearGradient(
+      begin: AlignmentDirectional.topStart,
+      end: AlignmentDirectional.bottomStart,
+      colors: [
+        Colors.orange,
+        Color.fromARGB(255, 255, 185, 94),
+      ],
+    ),
+    info_tab: GLO,
+  ),
+  SubProjectTabWidget(
+    icon: Icons.connect_without_contact_rounded,
+    title: 'Telecommunication',
+    description: 'Discover all our the projects.',
+    gradient: LinearGradient(
+      begin: AlignmentDirectional.topStart,
+      end: AlignmentDirectional.bottomStart,
+      colors: [
+        Color.fromARGB(255, 252, 50, 35),
+        Color.fromRGBO(255, 115, 115, 1)
+      ],
+    ),
+    info_tab: RT,
+  ),
+  SubProjectTabWidget(
+    icon: Icons.cell_tower_rounded,
+    title: 'Réautique et Internet',
+    description: 'Discover all our the projects.',
+    gradient: LinearGradient(
+      begin: AlignmentDirectional.topStart,
+      end: AlignmentDirectional.bottomStart,
+      colors: [
+        Color.fromARGB(255, 0, 68, 255),
+        Colors.blueAccent,
+      ],
+    ),
+    info_tab: RIN,
+  ),
+];
+
+final List<SubProjectTabWidget> GBIO = [
+  SubProjectTabWidget(
+    icon: Icons.troubleshoot_sharp,
+    title: 'Industrie Alimentaire et Biotechnologique',
+    description: 'Discover all our the projects.',
+    gradient: LinearGradient(
+      begin: AlignmentDirectional.topStart,
+      end: AlignmentDirectional.bottomStart,
+      colors: [Color.fromARGB(255, 0, 68, 255), Colors.blueAccent],
+    ),
+    info_tab: IAB,
+  ),
+  SubProjectTabWidget(
+    icon: Icons.biotech_outlined,
+    title: 'Analyse Biologique et Biochimique',
+    description: 'Discover all our the projects.',
+    gradient: LinearGradient(
+      begin: AlignmentDirectional.topStart,
+      end: AlignmentDirectional.bottomStart,
+      colors: [kPrimaryColor, Colors.purple],
+    ),
+    info_tab: ABB,
+  ),
+  SubProjectTabWidget(
+    icon: Icons.energy_savings_leaf_rounded,
+    title: "Génie de l'Environnement",
+    description: 'Discover all our the projects.',
+    gradient: LinearGradient(
+      begin: AlignmentDirectional.topStart,
+      end: AlignmentDirectional.bottomStart,
+      colors: [Colors.green, Colors.greenAccent],
+    ),
+    info_tab: GEN,
+  ),
+];
+
+final List<SubProjectTabWidget> GIM = [
+  SubProjectTabWidget(
+    icon: Icons.settings,
+    title: 'Maintenance Industrielle et Productique',
+    description: 'Discover all our the projects.',
+    gradient: LinearGradient(
+      begin: AlignmentDirectional.topStart,
+      end: AlignmentDirectional.bottomStart,
+      colors: [
+        Color.fromARGB(255, 252, 50, 35),
+        Color.fromRGBO(255, 115, 115, 1)
+      ],
+    ),
+    info_tab: MIP,
+  ),
+  SubProjectTabWidget(
+    icon: Icons.construction_rounded,
+    title: 'Génie Mécanique et Productique',
+    description: 'Discover all our the projects.',
+    gradient: LinearGradient(
+      begin: AlignmentDirectional.topStart,
+      end: AlignmentDirectional.bottomStart,
+      colors: [
+        Colors.orange,
+        Color.fromARGB(255, 255, 185, 94),
+      ],
+    ),
+    info_tab: GMP,
+  ),
+  SubProjectTabWidget(
+    icon: Icons.electrical_services_rounded,
+    title: 'Génie Electrique',
+    description: 'Discover all our the projects.',
+    gradient: LinearGradient(
+      begin: AlignmentDirectional.topStart,
+      end: AlignmentDirectional.bottomStart,
+      colors: [Colors.green, Colors.greenAccent],
+    ),
+    info_tab: GEL,
+  ),
+  SubProjectTabWidget(
+    icon: Icons.thermostat_auto_rounded,
+    title: 'Génie Thermique',
+    description: 'Discover all our the projects.',
+    gradient: LinearGradient(
+      begin: AlignmentDirectional.topStart,
+      end: AlignmentDirectional.bottomStart,
+      colors: [
+        Color.fromARGB(255, 0, 68, 255),
+        Colors.blueAccent,
+      ],
+    ),
+    info_tab: GTE,
+  ),
+];
+
+// Projects infos
+
+final GLO = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Mobile Development",
+        title_2: "IUT Companion",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet_1.png",
+        color: kPrimaryColor,
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Web Development",
+        title_2: "Coinpass Crypto Platform",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet_2.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 3,
+        title_1: 'Mobile Development',
+        title_2: "My Perf Online",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet_1.png",
+        color: Colors.redAccent,
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 4,
+        title_1: '.NET Development',
+        title_2: "Code Blocks",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet_2.png",
+        color: Colors.greenAccent,
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 5,
+        title_1: "Desktop Development",
+        title_2: "Polynomials",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet_2.png",
+        color: Colors.orangeAccent,
+        images: listImages),
+  ),
+];
+
+final RT = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Telecommunication",
+        title_2: "VLAN de Gestion des QOS",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+];
+
+final RIN = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Computer Network",
+        title_2: "Reseau VPN et Systeme Active Directory",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Colors.greenAccent,
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Computer Network",
+        title_2: "Active Directory sous Windows",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Colors.blueAccent,
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 3,
+        title_1: 'Telecommunication',
+        title_2: "Proxy SQUID et Auth LDAP",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: kPrimaryColor,
+        images: listImages),
+  ),
+];
+
+final ABB = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Health",
+        title_2: "White blood cells and Platelets",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Colors.orange,
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Health",
+        title_2: "White blood cells and Platelets",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 3,
+        title_1: "Health",
+        title_2: "White blood cells and Platelets",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: kPrimaryColor,
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 4,
+        title_1: "Health",
+        title_2: "White blood cells and Platelets",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Colors.green,
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 5,
+        title_1: "Health",
+        title_2: "White blood cells and Platelets",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Colors.redAccent,
+        images: listImages),
+  ),
+];
+
+final IAB = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Mobile Development",
+        title_2: "IUT Companion",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Web Development",
+        title_2: "Coinpass Crypto Platform",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color.fromARGB(255, 148, 5, 129),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 3,
+        title_1: 'Mobile Development',
+        title_2: "My Perf Online",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color.fromARGB(255, 89, 145, 0),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 4,
+        title_1: '.NET Development',
+        title_2: "Code Blocks",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color.fromARGB(255, 67, 0, 105),
+        images: listImages),
+  ),
+];
+
+final GEN = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Mobile Development",
+        title_2: "IUT Companion",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: kPrimaryColor,
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Web Development",
+        title_2: "Coinpass Crypto Platform",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+];
+
+final GMP = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Mobile Development",
+        title_2: "IUT Companion",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color.fromARGB(255, 61, 72, 174),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Web Development",
+        title_2: "Coinpass Crypto Platform",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color.fromARGB(255, 104, 0, 0),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 3,
+        title_1: 'Mobile Development',
+        title_2: "My Perf Online",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color.fromARGB(255, 28, 43, 53),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 4,
+        title_1: '.NET Development',
+        title_2: "Code Blocks",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color.fromARGB(255, 0, 184, 129),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 5,
+        title_1: "Desktop Development",
+        title_2: "Polynomials",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color.fromARGB(255, 41, 10, 38),
+        images: listImages),
+  ),
+];
+
+final MIP = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Mobile Development",
+        title_2: "IUT Companion",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Web Development",
+        title_2: "Coinpass Crypto Platform",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 3,
+        title_1: 'Mobile Development',
+        title_2: "My Perf Online",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+];
+
+final GEL = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Mobile Development",
+        title_2: "IUT Companion",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Web Development",
+        title_2: "Coinpass Crypto Platform",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 3,
+        title_1: 'Mobile Development',
+        title_2: "My Perf Online",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 4,
+        title_1: '.NET Development',
+        title_2: "Code Blocks",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 5,
+        title_1: "Desktop Development",
+        title_2: "Polynomials",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+];
+
+final GTE = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Mobile Development",
+        title_2: "IUT Companion",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Web Development",
+        title_2: "Coinpass Crypto Platform",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 3,
+        title_1: 'Mobile Development',
+        title_2: "My Perf Online",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 4,
+        title_1: '.NET Development',
+        title_2: "Code Blocks",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 5,
+        title_1: "Desktop Development",
+        title_2: "Polynomials",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+];
+
+final GCD = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Mobile Development",
+        title_2: "IUT Companion",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Web Development",
+        title_2: "Coinpass Crypto Platform",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 3,
+        title_1: 'Mobile Development',
+        title_2: "My Perf Online",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 4,
+        title_1: '.NET Development',
+        title_2: "Code Blocks",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 5,
+        title_1: "Desktop Development",
+        title_2: "Polynomials",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+];
+
+final MEB = [
+  Tabs(
+    livret: Livret(
+        id: 1,
+        title_1: "Maintenance",
+        title_2: "IUT Companion",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 2,
+        title_1: "Web Development",
+        title_2: "Coinpass Crypto Platform",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 3,
+        title_1: 'Mobile Development',
+        title_2: "My Perf Online",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 4,
+        title_1: '.NET Development',
+        title_2: "Code Blocks",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+  Tabs(
+    livret: Livret(
+        id: 5,
+        title_1: "Desktop Development",
+        title_2: "Polynomials",
+        price: 234,
+        size: 12,
+        description: dummyText,
+        image: "assets/images/projet.png",
+        color: Color(0xFF3D82AE),
+        images: listImages),
+  ),
+];

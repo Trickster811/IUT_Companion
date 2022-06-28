@@ -31,7 +31,7 @@ class _AdminScreenState extends State<AdminScreen> {
       'Home',
       style: TextStyle(
         color: Colors.white,
-        fontFamily: 'OpenSans_Regular',
+        fontFamily: 'ArialRoundedBold',
         fontWeight: FontWeight.bold,
         fontSize: 25,
       ),
@@ -40,7 +40,7 @@ class _AdminScreenState extends State<AdminScreen> {
       'Dashboard',
       style: TextStyle(
         color: Colors.white,
-        fontFamily: 'OpenSans_Regular',
+        fontFamily: 'ArialRoundedBold',
         fontWeight: FontWeight.bold,
         fontSize: 25,
       ),
@@ -59,7 +59,7 @@ class _AdminScreenState extends State<AdminScreen> {
       'Settings',
       style: TextStyle(
         color: Colors.white,
-        fontFamily: 'OpenSans_Regular',
+        fontFamily: 'ArialRoundedBold',
         fontWeight: FontWeight.bold,
         fontSize: 25,
       ),
@@ -109,7 +109,7 @@ class _AdminScreenState extends State<AdminScreen> {
                       'Good Morning',
                       style: TextStyle(
                         color: Colors.white,
-                        fontFamily: 'OpenSans_Regular',
+                        fontFamily: 'ArialRoundedBold',
                         fontWeight: FontWeight.bold,
                         fontSize: 30,
                       ),
@@ -118,7 +118,7 @@ class _AdminScreenState extends State<AdminScreen> {
                       'Mr ${widget.data[0]} !!',
                       style: TextStyle(
                         color: Colors.white,
-                        fontFamily: 'OpenSans_Regular',
+                        fontFamily: 'ArialRoundedBold',
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
                       ),
@@ -134,6 +134,7 @@ class _AdminScreenState extends State<AdminScreen> {
             Flexible(
               flex: 4,
               child: Container(
+                padding: EdgeInsets.only(top: 25),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),

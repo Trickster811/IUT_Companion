@@ -22,8 +22,11 @@ class ConcoursPage extends StatelessWidget {
             height: size(30, context),
           ),
           cardConcours(title: "LiTech"),
+
+          // footer
+
           Container(
-            padding: EdgeInsets.only(bottom: size(50, context)),
+            // padding: EdgeInsets.only(bottom: size(50, context)),
             width: double.maxFinite,
             height: size(100, context),
             color: Colors.transparent,
@@ -68,17 +71,13 @@ class cardConcours extends StatelessWidget {
             this.title,
             style: TextStyle(
               fontSize: taille(23, context),
-              fontFamily: 'OpenSans_Regular',
+              fontFamily: 'ArialRoundedBold',
             ),
           ),
         ),
         Card(
           color: Color.fromRGBO(249, 249, 249, 30),
           elevation: 10.0,
-          margin: EdgeInsets.only(
-              left: size(20, context),
-              right: size(20, context),
-              top: size(20, context)),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -87,7 +86,7 @@ class cardConcours extends StatelessWidget {
                   'Concours',
                   style: TextStyle(
                     fontSize: 20,
-                    fontFamily: 'OpenSans_Regular',
+                    // fontFamily: 'OpenSans_Regular',
                   ),
                 ),
               ),
@@ -106,7 +105,7 @@ class cardConcours extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   IconButton(
-                      icon: Icon(Icons.download),
+                      icon: Icon(Icons.file_download_outlined),
                       onPressed: () {
                         // Navigator.push(
                         //   context,

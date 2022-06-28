@@ -6,6 +6,8 @@ final adminIndex = ValueNotifier(const Color(0xfff8f8f8));
 // Color
 
 const kPrimaryColor = Color(0xFF7B1B85);
+// const kPrimaryColor = Color.fromARGB(255, 3, 81, 145);
+// const kPrimaryColor = Color(0xFF448AFF);
 const kPrimaryLightColor = Color.fromARGB(255, 255, 255, 255);
 
 // buttons

@@ -15,6 +15,41 @@ class News extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 20,
+            ),
+            color: Colors.white,
+            height: double.maxFinite,
+            width: 100,
+            child: Column(
+              children: [
+                Stack(children: [],),
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                  child: RichText(
+                    text: TextSpan(
+                      style: TextStyle(color: Color(0xFF535353)),
+                      children: [
+                        TextSpan(
+                          text: "12/27/2021, 6:00 PM",
+                          style: TextStyle(
+                            fontSize: taille(14, context),
+                            fontFamily: 'OpenSans_Regular',
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           Row(
             children: [
               Text(

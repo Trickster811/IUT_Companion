@@ -3,112 +3,12 @@ import 'package:iut_companion/Screens/Tabs/dependencies/functions.dart';
 import 'package:iut_companion/Screens/Tabs/notifications_center.dart';
 import 'package:iut_companion/constants.dart';
 
-var stage = {
-  'nom': 'DUT',
-  'niveau': 1,
-  'objectif':
-      'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
-};
-var listStage = [
-  {
-    'nom': 'DUT',
-    'niveau': 1,
-    'objectif':
-        'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
-  },
-  {
-    'nom': 'DUT',
-    'niveau': 2,
-    'objectif':
-        'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
-  },
-  {
-    'nom': 'BTS',
-    'niveau': 1,
-    'objectif':
-        'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
-  },
-  {
-    'nom': 'LyTech',
-    'niveau': 3,
-    'objectif':
-        'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
-  }
-];
-
-class stageInformation extends StatefulWidget {
-  stageInformation({Key? key}) : super(key: key);
-
-  @override
-  State<stageInformation> createState() => _stageInformationState();
-}
-
-class stageInfos extends StatelessWidget {
-  const stageInfos({Key? key}) : super(key: key);
-  final index = 1;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: Text(
-              "Stage niveau ${listStage[index]['niveau']} en filiere ${listStage[index]['nom']}")),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        color: Colors.white,
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: size(20, context)),
-              child: listStage[index]['niveau'] == 1
-                  ? Padding(
-                      padding: EdgeInsets.only(
-                          left: size(10, context), right: size(10, context)),
-                      child: Text(
-                        "Les informations concernant le stage ouvrier sont les suivants :",
-                        style: TextStyle(
-                          fontSize: taille(21, context),
-                        ),
-                      ))
-                  : Padding(
-                      padding: EdgeInsets.only(
-                          left: size(10, context), right: size(10, context)),
-                      child: Text(
-                        "Les informations concernant le stage academique sont les suivant :",
-                        style: TextStyle(fontSize: taille(21, context)),
-                      )),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: size(20, context)),
-              child: const panels(
-                  title: "But du stage", contenu: "Le stage a pour but de "),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: size(20, context)),
-              child: const panels(
-                  title: "Rapport de stage",
-                  contenu: "Le stage a pour but de "),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: size(20, context)),
-              child: const panels(
-                  title: "Dates", contenu: "Le stage a pour but de "),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: size(20, context)),
-              child: const panels(
-                  title: "Conditions", contenu: "Le stage a pour but de "),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class panels extends StatefulWidget {
-  const panels({Key? key, required this.title, required this.contenu})
-      : super(key: key);
+  const panels({
+    Key? key,
+    required this.title,
+    required this.contenu,
+  }) : super(key: key);
   final title;
   final contenu;
 
@@ -153,19 +53,20 @@ class _panelStates extends State<panels> {
           body: Column(
             children: [
               Container(
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.white,
-                  padding: EdgeInsets.only(
-                    left: size(10, context),
-                    right: size(10, context),
-                    top: size(10, context),
+                width: MediaQuery.of(context).size.width,
+                color: Colors.white,
+                padding: EdgeInsets.only(
+                  left: size(10, context),
+                  right: size(10, context),
+                  top: size(10, context),
+                ),
+                child: Text(
+                  widget.contenu,
+                  style: TextStyle(
+                    fontSize: taille(20, context),
                   ),
-                  child: Text(
-                    widget.contenu,
-                    style: TextStyle(
-                      fontSize: taille(20, context),
-                    ),
-                  )),
+                ),
+              ),
             ],
           ),
           backgroundColor: Color.fromARGB(255, 255, 255, 255),
@@ -183,20 +84,55 @@ class _panelStates extends State<panels> {
   }
 }
 
-class _stageInformationState extends State<stageInformation> {
-  final index = 1;
-  int _current = 0;
-  bool _expanded = false;
+class StageInfo extends StatelessWidget {
+  final Map index;
+  const StageInfo({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+  // int _current = 0;
+  // bool _expanded = false;
   @override
   Widget build(BuildContext context) {
     // Use the Todo to create the UI.
     return Scaffold(
-      backgroundColor: kPrimaryColor,
-      body: Column(
-        children: [
-          Flexible(
-            flex: 1,
-            child: Container(
+      // backgroundColor: Color.fromARGB(230, 247, 247, 247),
+      appBar: AppBar(
+        // automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        // elevation: 0,
+        title: Text(
+          "Stage niveau ${index['niveau']}\nmention ${index['nom']}",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            // color: kPrimaryColor,
+            fontSize: taille(18, context),
+            fontFamily: 'OpenSans_Regular',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NotificationScreen(),
+              ),
+            ),
+            icon: Icon(Icons.notifications),
+            iconSize: 25,
+            color: Colors.white,
+          ),
+        ],
+      ),
+      // drawer: SideBar(),
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: size(100, context),
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 0,
@@ -211,159 +147,119 @@ class _stageInformationState extends State<stageInformation> {
                     'assets/images/bg_img.png',
                     fit: BoxFit.cover,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(
-                        icon: Icon(Icons.arrow_back_rounded),
-                        iconSize: 30,
-                        color: Colors.white,
-                        onPressed: () => Navigator.pop(context),
-                        // onPressed: () => Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => ToolScreen(),
-                        //   ),
+                      Image.asset(
+                        'assets/images/logo_iut.png',
+                        width: 35,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 15,
-                        ),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/logo_iut.png',
-                              width: size(30, context),
-                            ),
-                            Image.asset(
-                              'assets/images/AppName_light.png',
-                              width: size(130, context),
-                            ),
-                          ],
+                      Image.asset(
+                        'assets/images/AppName_light.png',
+                        width: size(130, context),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 5),
+                        height: size(2.5, context),
+                        width: size(150, context),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Colors.white,
                         ),
                       ),
-                      IconButton(
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => NotificationScreen(),
-                          ),
+                      Text(
+                        'Daily Learning',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontFamily: 'OpenSans_Regular',
+                          fontWeight: FontWeight.bold,
                         ),
-                        icon: Icon(Icons.notifications),
-                        iconSize: 30,
-                        color: Colors.white,
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-          ),
-          Flexible(
-            flex: 6,
-            child: Container(
-              // padding: padding_h,
-              height: double.maxFinite,
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-                color: Colors.white,
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      height: size(50, context),
-                      margin: EdgeInsets.only(
-                        bottom: size(20.0, context),
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30),
+            Padding(
+              padding: EdgeInsets.only(top: size(20, context)),
+              child: index['niveau'] == 1
+                  ? Padding(
+                      padding: EdgeInsets.only(
+                          left: size(10, context), right: size(10, context)),
+                      child: Text(
+                        "Les informations concernant le stage ouvrier sont les suivants :",
+                        style: TextStyle(
+                          fontSize: taille(15, context),
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 6.0,
-                            offset: Offset(0, 2),
-                          )
-                        ],
-                        color: sampleColorBtn,
-                      ),
-
-                      // color: Color.fromARGB(255, 219, 219, 219),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // Text(
-                          // "Stage niveau ${listStage[index]['niveau']} en filiere ${listStage[index]['nom']}"))
-                          Text(
-                            "Stage niveau ${listStage[index]['niveau']} en filiere ${listStage[index]['nom']}",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: kPrimaryColor,
-                                fontSize: taille(18, context),
-                                fontFamily: 'OpenSans_Regular',
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size(20, context)),
-                      child: listStage[index]['niveau'] == 1
-                          ? Padding(
-                              padding: EdgeInsets.only(
-                                  left: size(10, context),
-                                  right: size(10, context)),
-                              child: Text(
-                                "Les informations concernant le stage ouvrier sont les suivants :",
-                                style: TextStyle(
-                                  fontSize: taille(15, context),
-                                ),
-                              ))
-                          : Padding(
-                              padding: EdgeInsets.only(
-                                  left: size(10, context),
-                                  right: size(10, context)),
-                              child: Text(
-                                "Les informations concernant le stage academique sont les suivant :",
-                                style: TextStyle(fontSize: taille(15, context)),
-                              )),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size(20, context)),
-                      child: const panels(
-                          title: "But du stage",
-                          contenu: "Le stage a pour but de "),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size(20, context)),
-                      child: const panels(
-                          title: "Rapport de stage",
-                          contenu: "Le stage a pour but de "),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size(20, context)),
-                      child: const panels(
-                          title: "Dates", contenu: "Le stage a pour but de "),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size(20, context)),
-                      child: const panels(
-                        title: "Conditions",
-                        contenu: "Le stage a pour but de ",
-                      ),
-                    ),
-                  ],
-                ),
+                      ))
+                  : Padding(
+                      padding: EdgeInsets.only(
+                          left: size(10, context), right: size(10, context)),
+                      child: Text(
+                        "Les informations concernant le stage academique sont les suivant :",
+                        style: TextStyle(fontSize: taille(15, context)),
+                      )),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: size(20, context)),
+              child: panels(
+                title: "But du stage",
+                contenu: index['objectif'],
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.only(top: size(20, context)),
+              child: panels(
+                title: "Dates",
+                contenu: "index['periode']",
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: size(20, context)),
+              child: panels(
+                title: "Conditions",
+                contenu: "index['conditions']",
+              ),
+            ),
+            Padding(
+              padding: padding_h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    'Canevas du Rapport',
+                    style: TextStyle(
+                      fontSize: taille(17, context),
+                      fontFamily: 'OpenSans_Regular',
+                      fontWeight: FontWeight.bold,
+                      // color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    height: size(40, context),
+                    width: size(150, context),
+                    child: TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        backgroundColor: kPrimaryColor,
+                      ),
+                      child: Text(
+                        "Obtenir",
+                        style: TextStyle(
+                          fontSize: taille(17, context),
+                          fontFamily: 'OpenSans_Regular',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

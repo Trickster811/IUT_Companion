@@ -74,7 +74,7 @@ class AdminWorkSpace extends StatelessWidget {
                         child: Text(
                           'Admin Workspace',
                           style: TextStyle(
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -87,7 +87,7 @@ class AdminWorkSpace extends StatelessWidget {
                         child: Text(
                           "Let's add something our application.",
                           style: TextStyle(
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
@@ -294,7 +294,7 @@ class _InfoState extends State<Info> {
                     'Post',
                     style: TextStyle(
                       fontSize: 14,
-                      fontFamily: 'OpenSans_Regular',
+                      fontFamily: 'ArialRoundedBold',
                     ),
                   ),
                   style: TextButton.styleFrom(

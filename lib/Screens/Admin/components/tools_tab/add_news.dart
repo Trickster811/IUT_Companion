@@ -79,7 +79,7 @@ class _AddNewsState extends State<AddNews> {
                     style: TextStyle(
                       fontSize: taille(20, context),
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'OpenSans_Regular',
+                      fontFamily: 'ArialRoundedBold',
                     ),
                   ),
                 ),
@@ -188,7 +188,7 @@ class _AddNewsState extends State<AddNews> {
                                       //       'Upload here',
                                       //       style: TextStyle(
                                       //         fontSize: taille(14, context),
-                                      //         fontFamily: 'OpenSans_Regular',
+                                      //         fontFamily: 'ArialRoundedBold',
                                       //       ),
                                       //     ),
                                       //     style: TextButton.styleFrom(
@@ -232,7 +232,7 @@ class _AddNewsState extends State<AddNews> {
                                           fileName,
                                           style: TextStyle(
                                             fontSize: 14,
-                                            fontFamily: 'OpenSans_Regular',
+                                            fontFamily: 'ArialRoundedBold',
                                           ),
                                         ),
                                       ),
@@ -359,14 +359,14 @@ class _AddNewsState extends State<AddNews> {
               'Success!!',
               style: TextStyle(
                 fontSize: 18,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
               ),
             ),
             message: Text(
               'Your message have been sent.\n Good Job!!!',
               style: TextStyle(
                 fontSize: 14,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
               ),
             ),
             actions: [
@@ -398,14 +398,14 @@ class _AddNewsState extends State<AddNews> {
             style: TextStyle(
               color: Colors.redAccent,
               fontSize: 14,
-              fontFamily: 'OpenSans_Regular',
+              fontFamily: 'ArialRoundedBold',
             ),
           ),
           message: Text(
             'Please fill out Title and the description of your message.',
             style: TextStyle(
               fontSize: 14,
-              fontFamily: 'OpenSans_Regular',
+              fontFamily: 'ArialRoundedBold',
             ),
           ),
           actions: [
@@ -432,7 +432,7 @@ class _AddNewsState extends State<AddNews> {
             'Status: $percentage %',
             style: TextStyle(
               fontSize: 14,
-              fontFamily: 'OpenSans_Regular',
+              fontFamily: 'ArialRoundedBold',
             ),
           );
         } else {

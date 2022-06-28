@@ -45,14 +45,14 @@ class _SignInScreenState extends State<SignInScreen> {
                 'Oups!!',
                 style: TextStyle(
                   fontSize: 18,
-                  fontFamily: 'OpenSans_Regular',
+                  fontFamily: 'ArialRoundedBold',
                 ),
               ),
               message: Text(
                 'Username or password incorrect',
                 style: TextStyle(
                   fontSize: 14,
-                  fontFamily: 'OpenSans_Regular',
+                  fontFamily: 'ArialRoundedBold',
                 ),
               ),
               actions: [
@@ -154,7 +154,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           'Sign In',
                           style: TextStyle(
                             color: kPrimaryColor,
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
@@ -166,7 +166,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           'Sign In and enjoy with your companion',
                           style: TextStyle(
                             color: kPrimaryColor,
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
                             fontSize: 10,
                           ),
@@ -260,7 +260,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                         'Sign In',
                                         style: TextStyle(
                                           fontSize: 14,
-                                          fontFamily: 'OpenSans_Regular',
+                                          fontFamily: 'ArialRoundedBold',
                                         ),
                                       ),
                                       style: TextButton.styleFrom(
@@ -280,7 +280,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       "Don't have an account?",
                                       style: TextStyle(
                                         // color: kPrimaryColor,
-                                        fontFamily: 'OpenSans_Regular',
+                                        fontFamily: 'ArialRoundedBold',
                                         fontWeight: FontWeight.bold,
                                         fontSize: 10,
                                       ),

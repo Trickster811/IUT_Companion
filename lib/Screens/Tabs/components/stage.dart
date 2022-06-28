@@ -28,7 +28,7 @@ var listStage = [
         'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
   },
   {
-    'nom': 'LyTech',
+    'nom': 'LiTech',
     'niveau': 3,
     'objectif':
         'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
@@ -90,7 +90,8 @@ class _StageState extends State<Stage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => stageInformation()),
+                              builder: (context) =>
+                                  StageInfo(index: listStage[0])),
                         );
                       },
                       child: Container(
@@ -133,7 +134,8 @@ class _StageState extends State<Stage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => stageInformation()),
+                              builder: (context) =>
+                                  StageInfo(index: listStage[2])),
                         );
                       },
                       child: Container(
@@ -214,7 +216,8 @@ class _StageState extends State<Stage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => stageInformation()),
+                              builder: (context) =>
+                                  StageInfo(index: listStage[2])),
                         );
                       },
                       child: Container(
@@ -295,7 +298,9 @@ class _StageState extends State<Stage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => stageInformation()),
+                              builder: (context) => StageInfo(
+                                    index: listStage[3],
+                                  )),
                         );
                       },
                       child: Container(

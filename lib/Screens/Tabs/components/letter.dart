@@ -184,7 +184,7 @@ class _Forms1State extends State<Forms1> {
   }
 
   _openMyLetter(List docs) async {
-    final pdfFile = await PdfParagraphApi.generate(docs);
+    final pdfFile = await PdfParagraphApi.generateLetter(docs);
     PdfParagraphApi.openFile(pdfFile);
   }
 
@@ -265,8 +265,12 @@ class _Forms1State extends State<Forms1> {
         value: 'Commandant',
       ),
       DropdownMenuItem(
-        child: textStyle(context, 'Autre'),
-        value: 'X',
+        child: textStyle(context, 'Responsable'),
+        value: 'Responsable',
+      ),
+      DropdownMenuItem(
+        child: textStyle(context, 'Chef'),
+        value: 'Chef',
       ),
     ];
     return items;
@@ -1040,7 +1044,7 @@ class _Forms2State extends State<Forms2> {
                                           ];
 
                                           final pdfFile =
-                                              await PdfParagraphApi.generate(
+                                              await PdfParagraphApi.generateLetter   (
                                                   userInputs);
                                           PdfParagraphApi.openFile(pdfFile);
                                         }
