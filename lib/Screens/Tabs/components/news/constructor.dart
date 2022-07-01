@@ -58,7 +58,7 @@ class InfoCard extends StatelessWidget {
               title,
               style: TextStyle(
                 color: Colors.black54,
-                fontFamily: 'OpenSans_Regular',
+                fontFamily: 'ArialRoundedBold',
                 fontSize: taille(14, context),
                 fontWeight: FontWeight.bold,
               ),
@@ -79,7 +79,7 @@ class InfoCard extends StatelessWidget {
                       '275',
                       style: TextStyle(
                         color: Colors.black54,
-                        fontFamily: 'OpenSans_Regular',
+                        fontFamily: 'ArialRoundedBold',
                         fontSize: taille(10, context),
                         fontWeight: FontWeight.bold,
                       ),
@@ -101,7 +101,7 @@ class InfoCard extends StatelessWidget {
                       'posted at 07 pm',
                       style: TextStyle(
                         color: Colors.black54,
-                        fontFamily: 'OpenSans_Regular',
+                        fontFamily: 'ArialRoundedBold',
                         fontSize: taille(10, context),
                         fontWeight: FontWeight.bold,
                       ),

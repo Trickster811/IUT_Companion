@@ -50,7 +50,7 @@ class carteScolarity extends StatelessWidget {
         style: TextStyle(
             color: Colors.black,
             fontSize: taille(16, context),
-            fontFamily: 'OpenSans_Regular',
+            fontFamily: 'ArialRoundedBold',
             fontWeight: FontWeight.w400),
       ),
     );

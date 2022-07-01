@@ -20,10 +20,10 @@ class SubProjectView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(230, 247, 247, 247),
+      backgroundColor: Color.fromARGB(255, 240, 240, 240),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color.fromARGB(255, 238, 238, 238),
         // elevation: 0,
         title: CupertinoSearchTextField(
           // decoration: BoxDecoration(),
@@ -37,19 +37,13 @@ class SubProjectView extends StatelessWidget {
           },
         ),
       ),
-      // drawer: SideBar(),
+      drawer: SideBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               height: size(100, context),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 0,
-                  color: kPrimaryColor,
-                ),
-                color: kPrimaryColor,
-              ),
+              color: Colors.black,
               child: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -67,7 +61,7 @@ class SubProjectView extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -85,7 +79,7 @@ class SubProjectView extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 10,
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -185,7 +179,7 @@ class Tabs extends StatelessWidget {
                         style: TextStyle(
                           // color: Colors.white,
                           fontSize: 15,
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -194,7 +188,7 @@ class Tabs extends StatelessWidget {
                         style: TextStyle(
                           // color: Colors.white,
                           fontSize: 12,
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -206,7 +200,7 @@ class Tabs extends StatelessWidget {
                         style: TextStyle(
                           // color: Colors.white,
                           fontSize: 12,
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -251,7 +245,8 @@ class Tabs extends StatelessWidget {
                       size: 25,
                     ),
                     onPressed: () async {
-                      final pdfFile = await PdfParagraphApi.generateLivret(livret.title_1, livret.title_2);
+                      final pdfFile = await PdfParagraphApi.generateLivret(
+                          livret.title_1, livret.title_2);
                       PdfParagraphApi.openFile(pdfFile);
                     },
                   ),
@@ -273,7 +268,7 @@ class Tabs extends StatelessWidget {
                       "More",
                       style: TextStyle(
                         fontSize: taille(17, context),
-                        fontFamily: 'OpenSans_Regular',
+                        fontFamily: 'ArialRoundedBold',
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -291,12 +286,11 @@ class Tabs extends StatelessWidget {
 
 final List listImages = [
   'assets/images/actu1.png',
-  'assets/images/gin-01.png',
-  'assets/images/gin-02.png',
-  'assets/images/gbio-01.png',
-  'assets/images/gbio-02.png',
-  'assets/images/gbio-03.png',
-  'assets/images/iut.png',
+  'assets/images/enspd.png',
+  'assets/images/actu2.png',
+  'assets/images/logo_iut.png',
+  'assets/images/actu3.png',
+  'assets/images/enspd1.png',
 ];
 
 class Livret {

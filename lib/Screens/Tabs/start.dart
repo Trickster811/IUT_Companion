@@ -8,9 +8,9 @@ import 'package:iut_companion/Screens/Tabs/home_screen.dart';
 import 'package:iut_companion/Screens/Tabs/new_screen.dart';
 import 'package:iut_companion/Screens/Tabs/notifications_center.dart';
 import 'package:iut_companion/Screens/Tabs/school_screen.dart';
-import 'package:iut_companion/Screens/Tabs/side_bar_menu.dart';
 import 'package:iut_companion/Screens/Tabs/tools_screen.dart';
 import 'package:iut_companion/constants.dart';
+// import 'package:flutter_icons/flutter_icons.dart';
 
 class StartScreen extends StatefulWidget {
   @override
@@ -57,101 +57,46 @@ class _StartScreenState extends State<StartScreen> {
       backgroundColor: kPrimaryColor,
       extendBody: true,
       // Header __start__
-      // drawer: SideBar(),
-      body: Stack(
-        children: [
-          index == 2
-              ? NestedScrollView(
-                  // physics: ClampingScrollPhysics(),
-                  floatHeaderSlivers: true,
-                  headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                    SliverAppBar(
-                      actions: [
-                        IconButton(
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => NotificationScreen(),
-                            ),
-                          ),
-                          icon: Icon(Icons.notifications_sharp),
-                          iconSize: taille(25, context),
-                          color: Colors.white,
-                        ),
-                      ],
-                      backgroundColor: kPrimaryColor,
-                      collapsedHeight: size(60, context),
-                      expandedHeight: index == 2 ? 100 : 10,
-                      flexibleSpace: FlexibleSpaceBar(
-                        titlePadding: EdgeInsets.only(
-                          right: size(50, context),
-                          bottom: size(15, context),
-                          left: size(5, context),
-                        ),
-                        title: Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Image.asset(
-                              'assets/images/logo_iut.png',
-                              width: size(30, context),
-                            ),
-                            Image.asset(
-                              'assets/images/AppName_light.png',
-                              width: size(130, context),
-                            ),
-                          ],
-                        ),
-                        // titlePadding: EdgeInsets.only(left: 100),
-                        background: Image.asset(
-                          'assets/images/bg_img.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
 
-                      floating: false,
-                      // snap: true,
-                      pinned: true,
+      body: index == 2
+          ? NestedScrollView(
+              // physics: ClampingScrollPhysics(),
+              floatHeaderSlivers: true,
+              headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                SliverAppBar(
+                  backgroundColor: kPrimaryColor,
+                  collapsedHeight: size(60, context),
+                  expandedHeight: index == 2 ? 100 : 10,
+                  flexibleSpace: FlexibleSpaceBar(
+                    centerTitle: true,
+                    expandedTitleScale: 1,
+                    titlePadding: EdgeInsets.only(
+                      // right: size(50, context),
+                      bottom: size(15, context),
+                      // left: size(5, context),
                     ),
-                  ],
-                  body: Container(
-                    padding: padding_h,
-                    height: double.maxFinite,
-                    width: double.maxFinite,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      ),
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: screens[index],
-                  ),
-                )
-              : Column(
-                  children: [
-                    Container(
-                      height: (MediaQuery.of(context).size.height / 100) * 10,
-                      padding: EdgeInsets.only(
-                        left: size(10, context),
-                        right: size(10, context),
-                        top: size(30, context),
+                    title: Container(
+                      width: MediaQuery.of(context).size.width,
+                      color: Colors.white,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5,
                       ),
                       child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                        // crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 10),
-                            child: Image.asset(
-                              'assets/images/logo_iut.png',
-                              width: size(30, context),
-                            ),
+                          // Spacer(),
+                          Image.asset(
+                            'assets/images/logo_iut.png',
+                            width: size(30, context),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 10),
-                            child: Image.asset(
-                              'assets/images/AppName_light.png',
-                              width: size(130, context),
+                          Text(
+                            'ENSPD COMPANION',
+                            style: TextStyle(
+                              // decoration: TextDecoration.underline,
+                              color: kPrimaryColor,
+                              fontFamily: 'ArialRoundedBold',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
                             ),
                           ),
                           Spacer(),
@@ -164,36 +109,117 @@ class _StartScreenState extends State<StartScreen> {
                             ),
                             icon: Icon(Icons.notifications_sharp),
                             iconSize: taille(25, context),
-                            color: Colors.white,
+                            color: kPrimaryColor,
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.more_vert),
+                            iconSize: taille(25, context),
+                            color: kPrimaryColor,
                           ),
                         ],
                       ),
                     ),
-                    Container(
-                      padding: padding_h,
-                      height: (MediaQuery.of(context).size.height / 100) * 90,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30),
-                        ),
-                        color: Color.fromARGB(255, 245, 245, 245),
-                      ),
-                      child: screens[index],
-                    ),
-                  ],
+                    // titlePadding: EdgeInsets.only(left: 100),
+                    // background: Image.asset(
+                    //   'assets/images/bg_img.png',
+                    //   fit: BoxFit.cover,
+                    // ),
+                  ),
+
+                  floating: false,
+                  // snap: true,
+                  pinned: true,
                 ),
-          SideBar(),
-        ],
-      ),
+              ],
+              body: Container(
+                padding: padding_h,
+                height: double.maxFinite,
+                width: double.maxFinite,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+                child: screens[index],
+              ),
+            )
+          : Column(
+              children: [
+                Container(
+                  height: (MediaQuery.of(context).size.height / 100) * 10,
+                  padding: EdgeInsets.only(
+                    top: size(30, context),
+                    bottom: 5,
+                  ),
+                  color: kPrimaryColor,
+                  child: Container(
+                    color: Colors.white,
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 5,
+                    ),
+                    child: Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Image.asset(
+                          'assets/images/logo_iut.png',
+                          width: size(30, context),
+                        ),
+                        Text(
+                          'ENSPD COMPANION',
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontFamily: 'ArialRoundedBold',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                        Spacer(),
+                        IconButton(
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NotificationScreen(),
+                            ),
+                          ),
+                          icon: Icon(Icons.notifications_sharp),
+                          iconSize: taille(25, context),
+                          color: kPrimaryColor,
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.more_vert),
+                          iconSize: taille(25, context),
+                          color: kPrimaryColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: padding_h,
+                  height: (MediaQuery.of(context).size.height / 100) * 90,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                    color: Color.fromARGB(255, 243, 243, 243),
+                  ),
+                  child: screens[index],
+                ),
+              ],
+            ),
       // Footer __start__
 
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
-          iconTheme: IconThemeData(
-            color: Colors.white,
-          ),
+          iconTheme: IconThemeData(color: Colors.white),
         ),
         child: CurvedNavigationBar(
           color: kPrimaryColor,

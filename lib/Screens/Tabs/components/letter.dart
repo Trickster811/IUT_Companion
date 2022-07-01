@@ -18,19 +18,12 @@ class Letter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      // backgroundColor: kPrimaryColor,
       body: Column(
         children: [
           Flexible(
             flex: 1,
             child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 0,
-                  color: kPrimaryColor,
-                ),
-                color: kPrimaryColor,
-              ),
               child: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -44,7 +37,7 @@ class Letter extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.arrow_back_rounded),
                         iconSize: 30,
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 0, 0, 0),
                         onPressed: () => Navigator.pop(context),
                         // onPressed: () => Navigator.push(
                         //   context,
@@ -63,7 +56,7 @@ class Letter extends StatelessWidget {
                               width: size(35, context),
                             ),
                             Image.asset(
-                              'assets/images/AppName_light.png',
+                              'assets/images/AppName_dark.png',
                               width: size(130, context),
                             ),
                           ],
@@ -77,8 +70,8 @@ class Letter extends StatelessWidget {
                           ),
                         ),
                         icon: Icon(Icons.notifications),
-                        iconSize: 30,
-                        color: Colors.white,
+                        iconSize: 25,
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ],
                   ),
@@ -88,17 +81,8 @@ class Letter extends StatelessWidget {
           ),
           Flexible(
             flex: 6,
-            child: Container(
-              padding: padding_h,
-              height: double.maxFinite,
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-                color: Colors.white,
-              ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
               child: index == 1 ? Forms1() : Forms2(),
             ),
           ),
@@ -146,14 +130,14 @@ class _Forms1State extends State<Forms1> {
                   'Oups!!',
                   style: TextStyle(
                     fontSize: 18,
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                   ),
                 ),
                 message: Text(
                   'Student with this id not exists',
                   style: TextStyle(
                     fontSize: 14,
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                   ),
                 ),
                 actions: [
@@ -265,12 +249,8 @@ class _Forms1State extends State<Forms1> {
         value: 'Commandant',
       ),
       DropdownMenuItem(
-        child: textStyle(context, 'Responsable'),
-        value: 'Responsable',
-      ),
-      DropdownMenuItem(
-        child: textStyle(context, 'Chef'),
-        value: 'Chef',
+        child: textStyle(context, 'Autre'),
+        value: 'X',
       ),
     ];
     return items;
@@ -287,7 +267,7 @@ class _Forms1State extends State<Forms1> {
             'assets/images/logo_iut.png',
             color: Color.fromRGBO(255, 255, 255, 1).withOpacity(0.2),
             colorBlendMode: BlendMode.modulate,
-            width: size(250, context),
+            width: size(350, context),
           ),
         ),
         SafeArea(
@@ -302,7 +282,7 @@ class _Forms1State extends State<Forms1> {
                     style: TextStyle(
                       fontSize: taille(16, context),
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'OpenSans_Regular',
+                      fontFamily: 'ArialRoundedBold',
                     ),
                   ),
                 ),
@@ -312,7 +292,7 @@ class _Forms1State extends State<Forms1> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(
-                          top: size(40, context),
+                          top: size(30, context),
                         ),
                       ),
                       Container(
@@ -334,7 +314,7 @@ class _Forms1State extends State<Forms1> {
                                         // decoration: TextDecoration.combine(TextDecoration.overline, TextDecoration.underline,),
                                         fontSize: taille(14, context),
                                         fontWeight: FontWeight.bold,
-                                        fontFamily: 'OpenSans_Regular',
+                                        fontFamily: 'ArialRoundedBold',
                                       ),
                                     ),
                                   ),
@@ -368,8 +348,8 @@ class _Forms1State extends State<Forms1> {
                                         // decoration: TextDecoration.combine(TextDecoration.overline, TextDecoration.underline,),
                                         fontSize: taille(14, context),
                                         fontWeight: FontWeight.bold,
-                                        fontFamily: 'OpenSans_Regular',
-                                        // fontFamily: 'OpenSans_Regular',
+                                        fontFamily: 'ArialRoundedBold',
+                                        // fontFamily: 'ArialRoundedBold',
                                       ),
                                     ),
                                   ),
@@ -466,7 +446,7 @@ class _Forms1State extends State<Forms1> {
                                         'Generate',
                                         style: TextStyle(
                                           fontSize: 14,
-                                          fontFamily: 'OpenSans_Regular',
+                                          fontFamily: 'ArialRoundedBold',
                                         ),
                                       ),
                                       style: TextButton.styleFrom(
@@ -722,7 +702,7 @@ class _Forms2State extends State<Forms2> {
             'assets/images/logo_iut.png',
             color: Color.fromRGBO(255, 255, 255, 1).withOpacity(0.2),
             colorBlendMode: BlendMode.modulate,
-            width: size(250, context),
+            width: size(350, context),
           ),
         ),
         SafeArea(
@@ -737,7 +717,7 @@ class _Forms2State extends State<Forms2> {
                     style: TextStyle(
                       fontSize: taille(16, context),
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'OpenSans_Regular',
+                      fontFamily: 'ArialRoundedBold',
                     ),
                   ),
                 ),
@@ -769,7 +749,7 @@ class _Forms2State extends State<Forms2> {
                                         // decoration: TextDecoration.combine(TextDecoration.overline, TextDecoration.underline,),
                                         fontSize: taille(14, context),
                                         fontWeight: FontWeight.bold,
-                                        fontFamily: 'OpenSans_Regular',
+                                        fontFamily: 'ArialRoundedBold',
                                       ),
                                     ),
                                   ),
@@ -947,8 +927,8 @@ class _Forms2State extends State<Forms2> {
                                         // decoration: TextDecoration.combine(TextDecoration.overline, TextDecoration.underline,),
                                         fontSize: taille(14, context),
                                         fontWeight: FontWeight.bold,
-                                        fontFamily: 'OpenSans_Regular',
-                                        // fontFamily: 'OpenSans_Regular',
+                                        fontFamily: 'ArialRoundedBold',
+                                        // fontFamily: 'ArialRoundedBold',
                                       ),
                                     ),
                                   ),
@@ -1043,9 +1023,8 @@ class _Forms2State extends State<Forms2> {
                                             my_con_0.text,
                                           ];
 
-                                          final pdfFile =
-                                              await PdfParagraphApi.generateLetter   (
-                                                  userInputs);
+                                          final pdfFile = await PdfParagraphApi
+                                              .generateLetter(userInputs);
                                           PdfParagraphApi.openFile(pdfFile);
                                         }
                                       },
@@ -1053,7 +1032,7 @@ class _Forms2State extends State<Forms2> {
                                         'Generate',
                                         style: TextStyle(
                                           fontSize: 14,
-                                          fontFamily: 'OpenSans_Regular',
+                                          fontFamily: 'ArialRoundedBold',
                                         ),
                                       ),
                                       style: TextButton.styleFrom(

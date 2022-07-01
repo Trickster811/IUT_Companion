@@ -38,7 +38,7 @@ class News extends StatelessWidget {
                           text: "12/27/2021, 6:00 PM",
                           style: TextStyle(
                             fontSize: taille(14, context),
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
                           ),
                         )
@@ -56,7 +56,7 @@ class News extends StatelessWidget {
                 'This week',
                 style: TextStyle(
                   fontSize: taille(18, context),
-                  fontFamily: 'OpenSans_Regular',
+                  fontFamily: 'ArialRoundedBold',
                   fontWeight: FontWeight.bold,
                   // decoration: TextDecoration.underline,
                 ),
@@ -95,7 +95,7 @@ class News extends StatelessWidget {
                 'Last week',
                 style: TextStyle(
                   fontSize: taille(18, context),
-                  fontFamily: 'OpenSans_Regular',
+                  fontFamily: 'ArialRoundedBold',
                   fontWeight: FontWeight.bold,
                   // decoration: TextDecoration.underline,
                 ),

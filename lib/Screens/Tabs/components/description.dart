@@ -30,15 +30,6 @@ class InfoFiliere extends StatefulWidget {
 
 class _InfoFiliereState extends State<InfoFiliere> {
   bool _expanded = false;
-  final listImages = [
-    'assets/images/admin.png',
-    'assets/images/gin-01.png',
-    'assets/images/gin-02.png',
-    'assets/images/gbio-01.png',
-    'assets/images/gbio-02.png',
-    'assets/images/gbio-03.png',
-    'assets/images/iut.png',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +46,7 @@ class _InfoFiliereState extends State<InfoFiliere> {
           style: TextStyle(
               // color: ,
               fontSize: taille(20, context),
-              fontFamily: 'OpenSans_Regular',
+              fontFamily: 'ArialRoundedBold',
               fontWeight: FontWeight.w600),
         ),
         centerTitle: true,
@@ -101,9 +92,15 @@ class _InfoFiliereState extends State<InfoFiliere> {
                         'assets/images/logo_iut.png',
                         width: 35,
                       ),
-                      Image.asset(
-                        'assets/images/AppName_light.png',
-                        width: size(130, context),
+                      Text(
+                        'ENSPD COMPANION',
+                        style: TextStyle(
+                          // decoration: TextDecoration.underline,
+                          color: Colors.white,
+                          fontFamily: 'ArialRoundedBold',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 5),
@@ -119,7 +116,7 @@ class _InfoFiliereState extends State<InfoFiliere> {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 10,
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -140,7 +137,7 @@ class _InfoFiliereState extends State<InfoFiliere> {
               ),
             ),
             CarouselSlider.builder(
-              itemCount: listImages.length,
+              itemCount: widget.fil.images.length,
               options: CarouselOptions(
                 autoPlayInterval: Duration(
                   seconds: 4,
@@ -152,7 +149,7 @@ class _InfoFiliereState extends State<InfoFiliere> {
                 autoPlay: true,
               ),
               itemBuilder: (context, index, realIndex) {
-                final image = listImages[index];
+                final image = widget.fil.images[index];
                 return buildImage(image, index);
               },
             ),
@@ -163,7 +160,7 @@ class _InfoFiliereState extends State<InfoFiliere> {
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                   fontSize: taille(14.0, context),
-                  fontFamily: 'OpenSans_Regular',
+                  fontFamily: 'ArialRoundedBold',
                 ),
               ),
             ),
@@ -219,7 +216,7 @@ class _InfoFiliereState extends State<InfoFiliere> {
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                   fontSize: taille(14.0, context),
-                  fontFamily: 'OpenSans_Regular',
+                  fontFamily: 'ArialRoundedBold',
                 ),
               ),
             ),
@@ -290,7 +287,7 @@ class _panelState extends State<panel> {
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: taille(14.0, context),
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                     fontWeight: FontWeight.w500),
               ),
             );
@@ -304,7 +301,7 @@ class _panelState extends State<panel> {
                   style: TextStyle(
                     fontSize: taille(12.0, context),
                     color: Colors.black,
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                   ),
                 ),
               ),
@@ -315,7 +312,7 @@ class _panelState extends State<panel> {
                   style: TextStyle(
                     fontSize: taille(12.0, context),
                     color: Colors.black,
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                   ),
                 ),
               ),
@@ -326,7 +323,7 @@ class _panelState extends State<panel> {
                   style: TextStyle(
                     fontSize: taille(12.0, context),
                     color: Colors.black,
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                   ),
                 ),
               ),
@@ -337,7 +334,7 @@ class _panelState extends State<panel> {
                   style: TextStyle(
                     fontSize: taille(12.0, context),
                     color: Colors.black,
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                   ),
                 ),
               ),

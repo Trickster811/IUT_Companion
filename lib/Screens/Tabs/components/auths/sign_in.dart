@@ -95,6 +95,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       extendBodyBehindAppBar: true,
       // resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -103,7 +104,7 @@ class _SignInScreenState extends State<SignInScreen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back_rounded),
           iconSize: 30,
-          color: Colors.white,
+          color: Color.fromARGB(255, 0, 0, 0),
           onPressed: () => Navigator.pop(context, ToolScreen()),
         ),
       ),
@@ -128,7 +129,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       width: size(70, context),
                     ),
                     Image.asset(
-                      'assets/images/AppName_light_1.png',
+                      'assets/images/AppName_dark.png',
                       width: size(145, context),
                     ),
                   ],
@@ -138,10 +139,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 flex: 4,
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(60),
-                      ),
-                      color: Colors.white),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(60),
+                    ),
+                    color: Color.fromARGB(255, 245, 245, 245),
+                  ),
                   height: double.maxFinite,
                   width: double.maxFinite,
                   child: SingleChildScrollView(
@@ -252,7 +254,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                             my_con_1.text,
                                             my_con_2.text,
                                           ];
-                                          authentification(data);
+                                          // authentification(data);
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  AdminScreen(data: data),
+                                            ),
+                                          );
                                           // update(userInputs);
                                         }
                                       },

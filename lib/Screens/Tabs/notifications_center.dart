@@ -95,7 +95,7 @@ class NotificationScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: taille(16, context),
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                         ),
                       ),
                     ),

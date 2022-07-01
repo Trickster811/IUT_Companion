@@ -20,7 +20,7 @@ class Department extends StatelessWidget {
                 'This week',
                 style: TextStyle(
                   fontSize: taille(18, context),
-                  fontFamily: 'OpenSans_Regular',
+                  fontFamily: 'ArialRoundedBold',
                   fontWeight: FontWeight.bold,
                   // decoration: TextDecoration.underline,
                 ),
@@ -59,7 +59,7 @@ class Department extends StatelessWidget {
                 'Last week',
                 style: TextStyle(
                   fontSize: taille(18, context),
-                  fontFamily: 'OpenSans_Regular',
+                  fontFamily: 'ArialRoundedBold',
                   fontWeight: FontWeight.bold,
                   // decoration: TextDecoration.underline,
                 ),

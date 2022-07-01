@@ -5,32 +5,33 @@ import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   final listImages = [
+    'assets/images/actu7.png',
     'assets/images/actu1.png',
-    'assets/images/gin-01.png',
-    'assets/images/gin-02.png',
-    'assets/images/gbio-01.png',
-    'assets/images/gbio-02.png',
-    'assets/images/gbio-03.png',
-    'assets/images/iut.png',
+    'assets/images/actu4.png',
+    'assets/images/actu2.png',
+    'assets/images/actu3.png',
+    'assets/images/actu5.png',
   ];
 
   @override
   Widget build(BuildContext context) {
-
     return SingleChildScrollView(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'assets/images/iut.png',
+            'assets/images/enspd.png',
             fit: BoxFit.cover,
           ),
           SizedBox(
             height: 10,
           ),
           Text(
-            'Institut Universitaire de Technologie',
+            'Ecole Nationale Supérieure Polytechnique de Douala',
+            // softWrap: true,
+            textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'OpenSans_Regular',
+              fontFamily: 'ArialRoundedBold',
               fontWeight: FontWeight.bold,
               fontSize: 15,
             ),
@@ -55,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 Text(
                   'Actualités',
                   style: TextStyle(
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
@@ -69,7 +70,7 @@ class HomeScreen extends StatelessWidget {
               autoPlayInterval: Duration(
                 seconds: 4,
               ),
-              // viewportFraction: 1,
+              viewportFraction: 1,
               enlargeCenterPage: true,
               enlargeStrategy: CenterPageEnlargeStrategy.height,
               height: 250,
@@ -90,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                 Text(
                   'Une école de choix',
                   style: TextStyle(
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
@@ -99,8 +100,10 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Image.asset(
-            'assets/images/actu3.png',
+            'assets/images/enspd1.png',
             fit: BoxFit.cover,
+            height: 300,
+            width: double.maxFinite,
           ),
           SizedBox(
             height: 30,
@@ -112,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                 Text(
                   'Des laboratoires de qualité',
                   style: TextStyle(
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
@@ -126,7 +129,7 @@ class HomeScreen extends StatelessWidget {
               autoPlayInterval: Duration(
                 seconds: 4,
               ),
-              // viewportFraction: 1,
+              viewportFraction: 1,
               enlargeCenterPage: true,
               enlargeStrategy: CenterPageEnlargeStrategy.height,
               height: 250,
@@ -147,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                 Text(
                   'Un enseignement pointu',
                   style: TextStyle(
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
@@ -156,8 +159,10 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Image.asset(
-            'assets/images/actu2.png',
+            'assets/images/actu4.png',
             fit: BoxFit.cover,
+            height: 300,
+            width: double.maxFinite,
           ),
           SizedBox(
             height: 30,
@@ -169,7 +174,7 @@ class HomeScreen extends StatelessWidget {
                 Text(
                   'Un personnel dévoué',
                   style: TextStyle(
-                    fontFamily: 'OpenSans_Regular',
+                    fontFamily: 'ArialRoundedBold',
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
@@ -178,27 +183,26 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Image.asset(
-            'assets/images/actu4.png',
+            'assets/images/actu1.png',
             fit: BoxFit.cover,
           ),
           SizedBox(
             height: 30,
           ),
           Image.asset(
-            "assets/images/4.png",
+            "assets/images/enspd1.png",
             fit: BoxFit.cover,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: Text(
-              "L'Institut Universitaire de Technologie en abbrégé IUT est un établissement supérieur ayant pour objectif de former des etudiants afin de leur octroyer les compétences requises pour qu'il puisse s'inserer sans encombre dans le monde professionnel et ainsi obtenir un emploi ou en créer",
+              "L'Ecole Nationale Supérieure Polytechnique de Douala en abbrégé ENSPD est un établissement supérieur ayant pour objectif de former des etudiants afin de leur octroyer les compétences accrues pour qu'il puisse s'inserer sans encombre dans le monde professionnel et ainsi obtenir un emploi ou en créer",
               textAlign: TextAlign.justify,
               style: TextStyle(
                 fontSize: 16,
               ),
             ),
           ),
-          
 
           // footer
 
@@ -242,7 +246,9 @@ class HomeScreen extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(5)),
           child: Image.asset(
             img,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
+            height: 300,
+            width: double.maxFinite,
           ),
         ),
       );

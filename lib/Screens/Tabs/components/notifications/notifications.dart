@@ -48,7 +48,7 @@ class _NotificationPageState extends State<NotificationPage> {
                 'Simple notification',
                 style: TextStyle(
                   fontSize: 14,
-                  fontFamily: 'OpenSans_Regular',
+                  fontFamily: 'ArialRoundedBold',
                 ),
               ),
               style: TextButton.styleFrom(

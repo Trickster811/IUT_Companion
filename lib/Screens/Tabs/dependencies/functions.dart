@@ -67,7 +67,7 @@ Padding textStyle(BuildContext context, title) {
         color: Colors.black54,
         fontWeight: FontWeight.bold,
         fontSize: taille(12, context),
-        fontFamily: 'OpenSans_Regular',
+        fontFamily: 'ArialRoundedBold',
       ),
     ),
   );

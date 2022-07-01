@@ -38,6 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       extendBodyBehindAppBar: true,
       // resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -46,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back_rounded),
           iconSize: 30,
-          color: Colors.white,
+          color: Color.fromARGB(255, 0, 0, 0),
           onPressed: () => Navigator.pop(context, ToolScreen()),
         ),
       ),
@@ -71,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       width: size(70, context),
                     ),
                     Image.asset(
-                      'assets/images/AppName_light_1.png',
+                      'assets/images/AppName_dark.png',
                       width: size(145, context),
                     ),
                   ],
@@ -81,10 +82,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 flex: 4,
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(60),
-                      ),
-                      color: Colors.white),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(60),
+                    ),
+                    color: Color.fromARGB(255, 245, 245, 245),
+                  ),
                   height: double.maxFinite,
                   width: double.maxFinite,
                   child: SingleChildScrollView(
@@ -106,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           height: 20,
                         ),
                         Text(
-                          'Sign In and enjoy withyour companion',
+                          'Sign In and enjoy with your companion',
                           style: TextStyle(
                             color: kPrimaryColor,
                             fontFamily: 'ArialRoundedBold',

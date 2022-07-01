@@ -69,6 +69,7 @@ dependencies:
   datetime_picker_formfield: ^2.0.0
   flutter_icons: ^1.1.0
   shared_preferences: ^2.0.15
+  url_launcher: ^6.1.4
   # excel: ^1.1.5
 
 dev_dependencies:

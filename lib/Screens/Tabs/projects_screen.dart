@@ -10,16 +10,192 @@ import 'package:iut_companion/Screens/Tabs/side_bar_menu.dart';
 import 'package:iut_companion/constants.dart';
 
 class ProjectScreen extends StatelessWidget {
-  const ProjectScreen({
-    Key? key,
-  }) : super(key: key);
+  final List filiereList = [
+    [
+      Icons.wind_power,
+      "Genie Energetique",
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.green, Colors.greenAccent],
+      ),
+      RIN,
+    ],
+    [
+      Icons.water_rounded,
+      "Genie Maritime et Port",
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.blue, Colors.blueAccent],
+      ),
+      RIN,
+    ],
+    [
+      Icons.settings,
+      "Genie Mecanique",
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.red, Colors.redAccent],
+      ),
+      RIN,
+    ],
+    [
+      Icons.thermostat_auto_rounded,
+      "Metrologie",
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Color.fromARGB(255, 32, 0, 173), Colors.blueAccent],
+      ),
+      RIN,
+    ],
+    [
+      Icons.wifi_protected_setup_sharp,
+      'Genie des Procedes',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.orange, Colors.orangeAccent],
+      ),
+      RIN,
+    ],
+    [
+      Icons.architecture_rounded,
+      'Genie Civil',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.tealAccent, Colors.teal],
+      ),
+      RIN,
+    ],
+    [
+      Icons.car_repair,
+      'Genie Automobile',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.brown, Colors.brown.shade200],
+      ),
+      RIN,
+    ],
+    [
+      Icons.computer_rounded,
+      'Genie Informtique et Telecommunication',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.purpleAccent, Colors.purple],
+      ),
+      RIN,
+    ],
+    [
+      Icons.electrical_services_rounded,
+      'Genie Electrique et Systeme Intelligents',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.green, Colors.greenAccent],
+      ),
+      RIN,
+    ],
+    [
+      Icons.energy_savings_leaf_rounded,
+      'Qualite, Hygiene, Securite et Environnement Industriels',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.green, Colors.greenAccent],
+      ),
+      RIN,
+    ],
+    [
+      Icons.electric_bolt_rounded,
+      'Energie',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.yellow, Colors.yellowAccent],
+      ),
+      RIN,
+    ],
+    [
+      Icons.blur_linear_outlined,
+      'Science des Donnees et Intelligence Artificielle',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.blue, Colors.blueAccent],
+      ),
+      RIN,
+    ],
+    [
+      Icons.biotech_outlined,
+      'Industrie Chimique et Bioprocedurale',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.green, Colors.grey],
+      ),
+      RIN,
+    ],
+    [
+      Icons.online_prediction_rounded,
+      'Geophysique, Eau et Environnement',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [kPrimaryColor, Colors.purple],
+      ),
+      RIN,
+    ],
+    [
+      Icons.construction_rounded,
+      'Mecaniques et Materiels',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [Colors.red, Colors.redAccent],
+      ),
+      RIN,
+    ],
+    [
+      Icons.troubleshoot_sharp,
+      'Genie Electrique, Electronics, Automation et Telecommunication',
+      'Discover all our the projects.',
+      LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomStart,
+        colors: [kPrimaryColor, Colors.purple],
+      ),
+      RIN,
+    ],
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Color.fromARGB(230, 255, 255, 255),
+      backgroundColor: Color.fromARGB(230, 0, 0, 0),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color.fromARGB(255, 238, 238, 238),
         // elevation: 0,
         title: CupertinoSearchTextField(
           // decoration: BoxDecoration(),
@@ -33,19 +209,19 @@ class ProjectScreen extends StatelessWidget {
           },
         ),
       ),
-      // drawer: SideBar(),
+      drawer: SideBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               height: size(250, context),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 0,
-                  color: kPrimaryColor,
-                ),
-                color: kPrimaryColor,
-              ),
+              // decoration: BoxDecoration(
+              //   // border: Border.all(
+              //   //   width: 0,
+              //   //   color: kPrimaryColor,
+              //   // ),
+              //   // color: kPrimaryColor,
+              // ),
               child: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -91,102 +267,45 @@ class ProjectScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TabWidget(
-                  icon: Icons.computer_rounded,
-                  title: 'Génie Informatique',
-                  description: 'Discover all our the projects.',
-                  gradient: LinearGradient(
-                    begin: AlignmentDirectional.topStart,
-                    end: AlignmentDirectional.bottomStart,
-                    colors: [kPrimaryColor, Colors.purple],
-                  ),
-                  tab: GIN,
-                ),
-                TabWidget(
-                  icon: Icons.biotech_outlined,
-                  title: 'Génie Biologique',
-                  description: 'Discover all our the projects.',
-                  gradient: LinearGradient(
-                    begin: AlignmentDirectional.topStart,
-                    end: AlignmentDirectional.bottomStart,
-                    colors: [
-                      Color.fromARGB(255, 0, 68, 255),
-                      Colors.blueAccent,
-                    ],
-                  ),
-                  tab: GBIO,
-                ),
-                TabWidget(
-                  icon: Icons.settings,
-                  title: 'Génie Idustrielle et Maintenance',
-                  description: 'Discover all our the projects.',
-                  gradient: LinearGradient(
-                    begin: AlignmentDirectional.topStart,
-                    end: AlignmentDirectional.bottomStart,
-                    colors: [
-                      Color.fromARGB(255, 252, 50, 35),
-                      Color.fromRGBO(255, 115, 115, 1)
-                    ],
-                  ),
-                  tab: GIM,
-                ),
-                TabWidget(
-                  icon: Icons.architecture_rounded,
-                  title: 'Génie Civil et Dévéloppement Durable',
-                  description: 'Discover all our the projects.',
-                  gradient: LinearGradient(
-                    begin: AlignmentDirectional.topStart,
-                    end: AlignmentDirectional.bottomStart,
-                    colors: [Colors.green, Colors.greenAccent],
-                  ),
-                  tab: [],
-                  index: 1,
-                ),
-                TabWidget(
-                  icon: Icons.medical_services_outlined,
-                  title: 'Maintenance des Equipement Biomédicaux',
-                  description: 'Discover all our the projects.',
-                  gradient: LinearGradient(
-                    begin: AlignmentDirectional.topStart,
-                    end: AlignmentDirectional.bottomStart,
-                    colors: [
-                      Colors.orange,
-                      Color.fromARGB(255, 255, 185, 94),
-                    ],
-                  ),
-                  tab: [],
-                  index: 2,
-                ),
-              ],
-            ),
             Container(
-              padding: EdgeInsets.only(bottom: size(25, context)),
-              width: double.maxFinite,
-              // height: size(20, context),
-              color: Colors.transparent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              color: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Copyright',
-                    style: TextStyle(
-                        fontSize: taille(12, context), color: kPrimaryColor),
+                  SizedBox(
+                    height: 30,
                   ),
-                  Icon(
-                    Icons.copyright_rounded,
-                    color: kPrimaryColor,
-                  ),
-                  Text(
-                    '2022 | Daily Learning',
-                    style: TextStyle(
-                        fontSize: taille(12, context), color: kPrimaryColor),
+                  for (var item in filiereList)
+                    TabWidget(
+                      item: item,
+                    ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: size(25, context)),
+                    width: double.maxFinite,
+                    // height: size(20, context),
+                    color: Colors.transparent,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Copyright',
+                          style: TextStyle(
+                              fontSize: taille(12, context),
+                              color: kPrimaryColor),
+                        ),
+                        Icon(
+                          Icons.copyright_rounded,
+                          color: kPrimaryColor,
+                        ),
+                        Text(
+                          '2022 | Daily Learning',
+                          style: TextStyle(
+                              fontSize: taille(12, context),
+                              color: kPrimaryColor),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -199,16 +318,11 @@ class ProjectScreen extends StatelessWidget {
 }
 
 class TabWidget extends StatelessWidget {
-  final icon, title, description, gradient, index;
-  final List<SubProjectTabWidget>? tab;
+  final item;
+
   const TabWidget({
     Key? key,
-    required this.icon,
-    required this.title,
-    required this.description,
-    required this.gradient,
-    this.tab,
-    this.index,
+    required this.item,
   }) : super(key: key);
 
   @override
@@ -218,25 +332,15 @@ class TabWidget extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      onPressed: () => tab!.length > 0
-          ? Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SubProjectScreen(
-                  headTitle: title,
-                  tab: tab,
-                ),
-              ),
-            )
-          : Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SubProjectView(
-                  headTitle: title,
-                  info_tab: index == 1 ? GCD : MEB,
-                ),
-              ),
-            ),
+      onPressed: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SubProjectView(
+            headTitle: item[1],
+            info_tab: item[4],
+          ),
+        ),
+      ),
       child: Column(
         children: [
           Row(
@@ -245,7 +349,7 @@ class TabWidget extends StatelessWidget {
                 height: 65,
                 width: 65,
                 decoration: BoxDecoration(
-                    gradient: gradient,
+                    gradient: item[3],
                     color: kPrimaryColor,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
@@ -254,7 +358,7 @@ class TabWidget extends StatelessWidget {
                       bottomRight: Radius.circular(10),
                     )),
                 child: Icon(
-                  icon,
+                  item[0],
                   color: Colors.white,
                   size: size(40, context),
                 ),
@@ -276,7 +380,7 @@ class TabWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      title,
+                      item[1],
                       style: TextStyle(
                         // letterSpacing: 20,
                         color: Colors.black,
@@ -285,16 +389,17 @@ class TabWidget extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Spacer(),
+                    // SizedBox(
+                    //   height: size(2, context),
+                    // ),
                     Text(
-                      description,
+                      item[2],
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: taille(12, context),
                         fontFamily: 'ArialRoundedBold',
                       ),
                     ),
-                    Spacer(),
                   ],
                 ),
               ),
@@ -412,7 +517,7 @@ final List<SubProjectTabWidget> GIM = [
         Color.fromRGBO(255, 115, 115, 1)
       ],
     ),
-    info_tab: MIP,
+    info_tab: RIN,
   ),
   SubProjectTabWidget(
     icon: Icons.construction_rounded,
@@ -774,45 +879,6 @@ final GMP = [
         description: dummyText,
         image: "assets/images/projet.png",
         color: Color.fromARGB(255, 41, 10, 38),
-        images: listImages),
-  ),
-];
-
-final MIP = [
-  Tabs(
-    livret: Livret(
-        id: 1,
-        title_1: "Mobile Development",
-        title_2: "IUT Companion",
-        price: 234,
-        size: 12,
-        description: dummyText,
-        image: "assets/images/projet.png",
-        color: Color(0xFF3D82AE),
-        images: listImages),
-  ),
-  Tabs(
-    livret: Livret(
-        id: 2,
-        title_1: "Web Development",
-        title_2: "Coinpass Crypto Platform",
-        price: 234,
-        size: 12,
-        description: dummyText,
-        image: "assets/images/projet.png",
-        color: Color(0xFF3D82AE),
-        images: listImages),
-  ),
-  Tabs(
-    livret: Livret(
-        id: 3,
-        title_1: 'Mobile Development',
-        title_2: "My Perf Online",
-        price: 234,
-        size: 12,
-        description: dummyText,
-        image: "assets/images/projet.png",
-        color: Color(0xFF3D82AE),
         images: listImages),
   ),
 ];

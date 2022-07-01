@@ -154,9 +154,15 @@ class StageInfo extends StatelessWidget {
                         'assets/images/logo_iut.png',
                         width: 35,
                       ),
-                      Image.asset(
-                        'assets/images/AppName_light.png',
-                        width: size(130, context),
+                      Text(
+                        'ENSPD COMPANION',
+                        style: TextStyle(
+                          // decoration: TextDecoration.underline,
+                          color: Colors.white,
+                          fontFamily: 'ArialRoundedBold',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 5),

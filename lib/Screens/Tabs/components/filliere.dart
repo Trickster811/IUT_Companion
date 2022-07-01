@@ -8,97 +8,170 @@ class Filieres {
   final String title;
   final String intitule;
   final String description;
+  final List images;
 
-  const Filieres(this.title, this.intitule, this.description);
+  const Filieres(this.title, this.intitule, this.description, this.images);
 }
 
 int _indexFil = 0;
 
 const listFilieres = [
-  [
-    Filieres('GIN', 'Genie Informatique',
-        'La filiere Genie Informatique offre a tous les etudiants desirants devenir des grands ingenieurs en genie logiciel ou en reseautique et internet une formation pointu axee sur le domaine choisit par des enseignant qualifies et meilleures ans leur domaine....'),
-    Filieres('GBIO', 'Genie Biologique',
-        'Le genie biologique est une filiere consacrée aux biologistes'),
-    Filieres('GIM', 'Genie Industriel et maintenance',
-        'Le genie industrustrielle et maintenance est une filiere consacrée aux informaticien afin de ...'),
-    Filieres('GCD', "Genie Civil et Construction durable",
-        'Le genie civil et constructions durables est une filiere consacrée aux desireux de devenir de grands Architectes...'),
-    Filieres('MEB', "Maintenance des equipements biomédicaux",
-        'Le genie maintenance des equipements biomedicaux est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...'),
-    Filieres('MIP', "Maintenance Industrie et Productique",
-        'La filiere Maintenance Industrie et Productique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...'),
-    Filieres('GMP', "Genie Maintenance et Productique",
-        'Le genie Maintenance et Productique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...'),
-    Filieres('GEL', "Genie Electrique",
-        'Le genie Electrique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...'),
-    Filieres('GTE', "Genie Thermique",
-        'Le genie Thermique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...'),
-    Filieres(
-      'IAB',
-      "Industrie Alimentaire Biotechnologique",
-      "La filiere de l'Industrie Alimentaire et de la Biotechnologique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...",
-    ),
-    Filieres('ABB', "Analyse Biologique et Biochimique",
-        "La filiere de l'Analyse Biologique et Biochimique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical..."),
-    Filieres(
-      'GEN',
-      "Genie de l'Environnement",
-      "Le genie de l'environnement est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...",
-    ),
-  ],
-  [
-    Filieres('GLO', "Genie Logiciel",
-        "Le genie logiciel est une filiere du Cycle BTS consacrée aux etudiants passionnes par l'informatique en general et par le genie logiciel en particulier..."),
-    Filieres(
-      'RIN',
-      "Réseautique et Internet",
-      "La filiere réseautique et internet est une filiere du Cycle BTS consacrée aux etudiants passionnes par l'informatique en general et par l'administration réseau en particulier...",
-    ),
-    Filieres(
-      'IA',
-      'Industrie Alimentaire',
-      "Le genie informatique es une filiere du Cycle BTS consacrée aux etudiants passionnes par le domaine de la biologie en general et par l'industrie alimentaire en particulier...",
-    ),
-    Filieres(
-      'CGE',
-      'Comptabilité et Gestion des Entreprises',
-      "Le genie informatique es une filiere du Cycle BTS consacrée aux etudiants passionnes par le domaine des sciences de gestion en général et par celles appliquées aux entreprises en particulier...",
-    ),
-  ],
-  [
-    Filieres('GLO', "Genie Logiciel",
-        "Le genie logiciel est une filiere consacrée aux detenteur d'un diplome universitaire de technologie ou aux etudiants ayant un BAC+2 desireux d'approfondir leurs acquis en matiere de developpement..."),
-    Filieres(
-      'RIN',
-      "Réseautique et Internet",
-      "La filiere réseautique ett internet est une filiere consacrée aux detenteur d'un diplome universitaire de technologie ou aux etudiants ayant un BAC+2 desireux d'approfondir leurs acquis en matiere d'administration réseau...",
-    ),
-    Filieres('GCD', "Genie Civil et Construction durable",
-        'Le genie civil et constructions durables est une filiere consacrée aux desireux de devenir de grands Architectes...'),
-    Filieres('MEB', "Maintenance des equipements biomédicaux",
-        'Le genie maintenance des equipements biomedicaux est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...'),
-    Filieres('MIP', "Maintenance Industrie et Productique",
-        'La filiere Maintenance Industrie et Productique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...'),
-    Filieres('GMP', "Genie Maintenance et Productique",
-        'Le genie Maintenance et Productique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...'),
-    Filieres('GEL', "Genie Electrique",
-        'Le genie Electrique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...'),
-    Filieres('GTE', "Genie Thermique",
-        'Le genie Thermique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...'),
-    Filieres(
-      'IAB',
-      "Industrie Alimentaire Biotechnologique",
-      "La filiere de l'Industrie Alimentaire et de la Biotechnologique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...",
-    ),
-    Filieres('ABB', "Analyse Biologique et Biochimique",
-        "La filiere de l'Analyse Biologique et Biochimique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical..."),
-    Filieres(
-      'GEN',
-      "Genie de l'Environnement",
-      "Le genie de l'environnement est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...",
-    ),
-  ],
+  Filieres(
+    'GE',
+    "Genie Energetique",
+    'La filiere Genie Energetique offre a tous les etudiants desirants devenir des grands ingenieurs en genie logiciel ou en reseautique et internet une formation pointu axee sur le domaine choisit par des enseignant qualifies et meilleures ans leur domaine....',
+    [
+      'assets/images/energy1.png',
+      'assets/images/energy2.png',
+      'assets/images/energy3.png',
+    ],
+  ),
+  Filieres(
+    'GMP',
+    "Genie Maritime et Port",
+    'Le Genie Maritime et Port est une filiere consacrée aux biologistes',
+    [
+      'assets/images/martime1.png',
+      'assets/images/martime2.png',
+    ],
+  ),
+  Filieres(
+    'GME',
+    "Genie Mecanique",
+    'Le genie Mecanique et maintenance est une filiere consacrée aux etudiant ...',
+    [
+      'assets/images/mecanique1.png',
+      'assets/images/mecanique2.png',
+    ],
+  ),
+  Filieres(
+    'MET',
+    "Metrologie",
+    'La filiere Metrologie est une filiere consacrée aux etudiants desireux de ...',
+    [
+      'assets/images/meteo1.png',
+      'assets/images/meteo2.png',
+    ],
+  ),
+  Filieres(
+    'GPR',
+    'Genie des Procedes',
+    'Le genie des Procedes est une filiere consacrée aux etudiants qui souhaitent devenir des ...',
+    [
+      'assets/images/process1.png',
+      'assets/images/process2.png',
+      'assets/images/process3.png',
+    ],
+  ),
+  Filieres(
+    'GCI',
+    'Genie Civil',
+    'Le Genie Civil est une filiere consacrée aux etudiants qui souhaitent devenir des Architechtes...',
+    [
+      'assets/images/civil1.png',
+      'assets/images/civil2.png',
+    ],
+  ),
+  Filieres(
+    'GAU',
+    'Genie Automobile',
+    'Le genie Automobile est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...',
+    [
+      'assets/images/auto1.png',
+      'assets/images/auto2.png',
+      'assets/images/auto3.png',
+    ],
+  ),
+  Filieres(
+    'GEL',
+    'Genie Informtique et Telecommunication',
+    'Le genie Electrique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...',
+    [
+      'assets/images/info1.png',
+      'assets/images/info2.png',
+      'assets/images/info3.png',
+    ],
+  ),
+  Filieres(
+    'GTE',
+    'Genie Electrique et Systeme Intelligents',
+    'Le genie Thermique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...',
+    [
+      'assets/images/actu5.png',
+      'assets/images/actu6.png',
+      'assets/images/actu4.png',
+    ],
+  ),
+  Filieres(
+    'IAB',
+    'Qualite, Hygiene, Securite et Environnement Industriels',
+    "La filiere de l'Industrie Alimentaire et de la Biotechnologique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...",
+    [
+      'assets/images/actu5.png',
+      'assets/images/actu6.png',
+      'assets/images/actu4.png',
+    ],
+  ),
+  Filieres(
+    'ABB',
+    'Energie',
+    "La filiere de l'Analyse Biologique et Biochimique est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...",
+    [
+      'assets/images/actu5.png',
+      'assets/images/actu6.png',
+      'assets/images/actu4.png',
+    ],
+  ),
+  Filieres(
+    'GEN',
+    'Science des Donnees et Intelligence Artificielle',
+    "Le genie de l'environnement est une filiere consacrée aux etudiants qui souhaitent devenir des maintanciers dans le domaine medical...",
+    [
+      'assets/images/actu5.png',
+      'assets/images/actu6.png',
+      'assets/images/actu4.png',
+    ],
+  ),
+  Filieres(
+    'GLO',
+    'Industrie Chimique et Bioprocedurale',
+    "Le genie logiciel est une filiere du Cycle BTS consacrée aux etudiants passionnes par l'informatique en general et par le genie logiciel en particulier...",
+    [
+      'assets/images/actu5.png',
+      'assets/images/actu6.png',
+      'assets/images/actu4.png',
+    ],
+  ),
+  Filieres(
+    'RIN',
+    'Geophysique, Eau et Environnement',
+    "La filiere réseautique et internet est une filiere du Cycle BTS consacrée aux etudiants passionnes par l'informatique en general et par l'administration réseau en particulier...",
+    [
+      'assets/images/actu5.png',
+      'assets/images/actu6.png',
+      'assets/images/actu4.png',
+    ],
+  ),
+  Filieres(
+    'IA',
+    'Mecaniques et Materiels',
+    "Le genie informatique es une filiere du Cycle BTS consacrée aux etudiants passionnes par le domaine de la biologie en general et par l'industrie alimentaire en particulier...",
+    [
+      'assets/images/actu5.png',
+      'assets/images/actu6.png',
+      'assets/images/actu4.png',
+    ],
+  ),
+  Filieres(
+    'CGE',
+    'Genie Electrique, Electronics, Automation et Telecommunication',
+    "Le genie informatique es une filiere du Cycle BTS consacrée aux etudiants passionnes par le domaine des sciences de gestion en général et par celles appliquées aux entreprises en particulier...",
+    [
+      'assets/images/actu5.png',
+      'assets/images/actu6.png',
+      'assets/images/actu4.png',
+    ],
+  ),
 ];
 
 class Filiere extends StatefulWidget {
@@ -122,287 +195,127 @@ class _FiliereState extends State<Filiere> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
 
-    final cycle = [
-      'DUT',
-      'BTS',
-      'LiTech',
-    ];
-    final parcours = [
-      'Génie Informatique',
-      'Génie Logiciel',
-      'Réseautique et Internet',
-      'Génie Biologique',
-      'Industrie Alimentaire et Biochimique',
-      'Analyse Biologique',
-      'Génie Industriel et Maintenance',
-      'Génie Maintenance et Productique',
-      'Maintenance Idustrielle et Productique',
-      'Génie Electrique',
-      'Génie Thermique',
-      'Génie Civil et Constructions Durables',
-      'Maintenance des Equipement Biomédicaux',
-    ];
-
     return SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(
-                top: size(20.0, context),
-                bottom: size(20.0, context),
-                left: size(20.0, context)),
-            child: Text(
-              "DUT",
-              style: TextStyle(
-                fontSize: taille(22.0, context),
-                fontFamily: 'ArialRoundedBold',
-                fontWeight: FontWeight.w600,
-              ),
+            padding: const EdgeInsets.symmetric(
+              vertical: 20,
+            ),
+            child: Row(
+              children: [
+                Text(
+                  "Nos filieres",
+                  style: TextStyle(
+                    fontSize: taille(22.0, context),
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'ArialRoundedBold',
+                  ),
+                ),
+              ],
             ),
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(children: [
-              cardFiliere(
-                  title: "GIN",
-                  description: "Genie Informatique",
-                  cardColor: Colors.blue,
-                  tab: 1,
-                  index: 0),
-              cardFiliere(
-                  title: "GBIO",
-                  description: "Genie Biologique",
-                  cardColor: Color.fromARGB(255, 15, 150, 44),
-                  tab: 1,
-                  index: 1),
-              cardFiliere(
-                  title: "GIM",
-                  description: "Genie Industriel et maintenance",
-                  cardColor: Color.fromARGB(255, 207, 132, 19),
-                  tab: 1,
-                  index: 2),
-              cardFiliere(
-                  title: "GCD",
-                  description: "Genie Civil et Construction durable",
-                  cardColor: Color.fromARGB(255, 196, 199, 3),
-                  tab: 1,
-                  index: 3),
-              cardFiliere(
-                title: "MEB",
-                description: "Maintenance des equipements biomédicaux",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 1,
-                index: 4,
-              ),
-              cardFiliere(
-                title: 'MIP',
-                description: "Maintenance Industrie et Productique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 1,
-                index: 5,
-              ),
-              cardFiliere(
-                title: 'GMP',
-                description: "Genie Maintenance et Productique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 1,
-                index: 6,
-              ),
-              cardFiliere(
-                title: 'GEL',
-                description: "Genie Electrique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 1,
-                index: 7,
-              ),
-              cardFiliere(
-                title: 'GTE',
-                description: "Genie Thermique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 1,
-                index: 8,
-              ),
-              cardFiliere(
-                title: 'IAB',
-                description: "Industrie Alimentaire Biotechnologique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 1,
-                index: 9,
-              ),
-              cardFiliere(
-                title: 'ABB',
-                description: "Analyse Biologique et Biochimique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 1,
-                index: 10,
-              ),
-              cardFiliere(
-                title: 'GEN',
-                description: "Genie de l'Environnement",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 1,
-                index: 11,
-              ),
-            ]),
+
+          cardFiliere(
+              title: "Genie Energetique",
+              description: "Genie Energetique",
+              cardColor: Colors.blue,
+              index: 0),
+          cardFiliere(
+              title: "Genie Maritime et Port",
+              description: "Genie Maritime et Port",
+              cardColor: Color.fromARGB(255, 181, 85, 236),
+              index: 1),
+          cardFiliere(
+              title: "Genie Mecanique",
+              description: "Genie Mecanique",
+              cardColor: Color.fromARGB(255, 196, 199, 3),
+              index: 2),
+          cardFiliere(
+            title: "Metrologie",
+            description: "Metrologie",
+            cardColor: Color.fromARGB(255, 7, 153, 129),
+            index: 3,
           ),
-          Padding(
-            padding: EdgeInsets.only(
-                top: size(20.0, context),
-                bottom: size(20.0, context),
-                left: size(20.0, context)),
-            child: Text("BTS",
-                style: TextStyle(
-                  fontSize: taille(22.0, context),
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'ArialRoundedBold',
-                )),
+          cardFiliere(
+            title: 'Genie des Procedes',
+            description: "Genie des Procedes",
+            cardColor: Color.fromARGB(255, 7, 22, 153),
+            index: 4,
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(children: [
-              cardFiliere(
-                  title: "GLO",
-                  description: "Genie Logiciel",
-                  cardColor: Colors.blue,
-                  tab: 2,
-                  index: 0),
-              cardFiliere(
-                  title: "RIN",
-                  description: "Réseaux Informatique",
-                  cardColor: Color.fromARGB(255, 181, 85, 236),
-                  tab: 2,
-                  index: 1),
-              cardFiliere(
-                  title: "IA",
-                  description: "Industrie Alimentaire",
-                  cardColor: Color.fromARGB(255, 43, 187, 14),
-                  tab: 2,
-                  index: 2),
-              cardFiliere(
-                  title: "CGE",
-                  description: "Comptabilité et Gestion des Entreprises",
-                  cardColor: Color.fromARGB(255, 43, 187, 14),
-                  tab: 2,
-                  index: 2),
-              cardFiliere(
-                  title: "TEK",
-                  description: "Electricité",
-                  cardColor: Color.fromARGB(255, 43, 187, 14),
-                  tab: 2,
-                  index: 2),
-              cardFiliere(
-                  title: "ABB",
-                  description: "Analyse Biologique et Biochimique",
-                  cardColor: Color.fromARGB(255, 43, 187, 14),
-                  tab: 2,
-                  index: 2),
-              cardFiliere(
-                  title: "GTE",
-                  description: "Génie Thermique",
-                  cardColor: Color.fromARGB(255, 43, 187, 14),
-                  tab: 2,
-                  index: 2),
-            ]),
+          cardFiliere(
+            title: 'Genie Civil',
+            description: "Genie Civil",
+            cardColor: Color.fromARGB(255, 153, 95, 7),
+            index: 5,
           ),
-          Padding(
-            padding: EdgeInsets.only(
-                top: size(20.0, context),
-                bottom: size(20.0, context),
-                left: size(20.0, context)),
-            child: Text(
-              "LiTech",
-              style: TextStyle(
-                fontSize: taille(22.0, context),
-                fontWeight: FontWeight.w600,
-                fontFamily: 'ArialRoundedBold',
-              ),
-            ),
+          cardFiliere(
+            title: 'Genie Automobile',
+            description: "Automobile Engineering",
+            cardColor: Color.fromARGB(255, 153, 7, 97),
+            index: 6,
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(children: [
-              cardFiliere(
-                  title: "GLO",
-                  description: "Genie Logiciel",
-                  cardColor: Colors.blue,
-                  tab: 3,
-                  index: 0),
-              cardFiliere(
-                  title: "RIN",
-                  description: "Réseaux Informatique",
-                  cardColor: Color.fromARGB(255, 181, 85, 236),
-                  tab: 3,
-                  index: 1),
-              cardFiliere(
-                  title: "GCD",
-                  description: "Genie Civil et Construction durable",
-                  cardColor: Color.fromARGB(255, 196, 199, 3),
-                  tab: 3,
-                  index: 2),
-              cardFiliere(
-                title: "MEB",
-                description: "Maintenance des equipements biomédicaux",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 3,
-                index: 3,
-              ),
-              cardFiliere(
-                title: 'MIP',
-                description: "Maintenance Industrie et Productique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 3,
-                index: 4,
-              ),
-              cardFiliere(
-                title: 'GMP',
-                description: "Genie Maintenance et Productique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 3,
-                index: 5,
-              ),
-              cardFiliere(
-                title: 'GEL',
-                description: "Genie Electrique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 3,
-                index: 6,
-              ),
-              cardFiliere(
-                title: 'GTE',
-                description: "Genie Thermique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 3,
-                index: 7,
-              ),
-              cardFiliere(
-                title: 'IAB',
-                description: "Industrie Alimentaire Biotechnologique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 3,
-                index: 8,
-              ),
-              cardFiliere(
-                title: 'ABB',
-                description: "Analyse Biologique et Biochimique",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 3,
-                index: 9,
-              ),
-              cardFiliere(
-                title: 'GEN',
-                description: "Genie de l'Environnement",
-                cardColor: Color.fromARGB(255, 7, 153, 129),
-                tab: 3,
-                index: 10,
-              ),
-            ]),
+          cardFiliere(
+            title: 'Genie Informtique et Telecommunication',
+            description: "Informations and Telecommunication Engineering",
+            cardColor: Color.fromARGB(255, 114, 153, 7),
+            index: 7,
+          ),
+          cardFiliere(
+            title: 'Genie Electrique et Systeme Intelligents',
+            description: "Electrical Engineering and Intelligent Systems",
+            cardColor: Color.fromARGB(255, 153, 36, 7),
+            index: 8,
+          ),
+          cardFiliere(
+            title: 'Qualite, Hygiene, Securiteet Environnement Industriels',
+            description:
+                "Industrial Quality, Hygiene, Security and Environment",
+            cardColor: Color.fromARGB(255, 119, 7, 153),
+            index: 9,
+          ),
+          cardFiliere(
+            title: 'Energie',
+            description: "Energy",
+            cardColor: Color.fromARGB(255, 7, 153, 129),
+            index: 10,
+          ),
+          cardFiliere(
+            title: 'Science des Donnees et Intelligence Artificielle',
+            description: "Data Science and Artificial Intelligence",
+            cardColor: Color.fromARGB(255, 31, 153, 7),
+            index: 11,
+          ),
+          cardFiliere(
+            title: 'Industrie Chimique et Bioprocedurale',
+            description: "Industrial Chemistry and Insutrial Bioprocesses",
+            cardColor: Color.fromARGB(255, 7, 153, 129),
+            index: 6,
+          ),
+          cardFiliere(
+            title: 'Geophysique, Eau et Environnement',
+            description: "Geophysique, Water and Environment",
+            cardColor: Color.fromARGB(255, 153, 95, 7),
+            index: 12,
+          ),
+          cardFiliere(
+            title: 'Mecaniques et Materiels',
+            description: "Mecanics and Materials",
+            cardColor: Color.fromARGB(255, 7, 9, 153),
+            index: 13,
+          ),
+          cardFiliere(
+            title:
+                'Genie Electrique, Electronics, Automation et Telecommunication',
+            description: "Automobile Engineering",
+            cardColor: kPrimaryColor,
+            index: 14,
           ),
 
           // footer
 
           Container(
-            // padding: EdgeInsets.only(bottom: size(10, context)),
+            padding: EdgeInsets.only(bottom: size(10, context)),
             width: double.maxFinite,
             height: size(100.0, context),
             color: Colors.transparent,
@@ -436,7 +349,7 @@ class cardFiliere extends StatelessWidget {
   final title;
   final description;
   final cardColor;
-  final tab;
+
   final index;
 
   const cardFiliere({
@@ -444,15 +357,14 @@ class cardFiliere extends StatelessWidget {
     this.title,
     this.description,
     this.cardColor,
-    this.tab,
     this.index,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Card(
         color: cardColor,
-        margin: EdgeInsets.only(
-            left: size(10.0, context), right: size(10.0, context)),
+        // margin: EdgeInsets.only(
+        //     left: size(10.0, context), right: size(10.0, context)),
         elevation: 8,
         child: new InkWell(
           onTap: () {
@@ -460,14 +372,14 @@ class cardFiliere extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => InfoFiliere(
-                  fil: listFilieres[tab - 1][index],
+                  fil: listFilieres[index],
                 ),
               ),
             );
           },
           child: Container(
-            width: size(200.0, context),
-            height: size(130.0, context),
+            width: MediaQuery.of(context).size.width,
+            height: size(170.0, context),
             decoration: BoxDecoration(
               color: cardColor,
               borderRadius: BorderRadius.all(
@@ -478,34 +390,21 @@ class cardFiliere extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: taille(24, context),
-                        color: Colors.white,
-                        fontFamily: 'ArialRoundedBold',
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Icon(
-                      Icons.zoom_in,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: size(7, context),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: taille(24, context),
+                    color: Colors.white,
+                    fontFamily: 'ArialRoundedBold',
+                    fontWeight: FontWeight.w500,
                   ),
-                  child: Text(
-                    description,
-                    style: TextStyle(
-                      fontSize: taille(18, context),
-                      color: Color.fromARGB(255, 238, 238, 238),
-                    ),
+                ),
+                Spacer(),
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: taille(18, context),
+                    color: Color.fromARGB(255, 238, 238, 238),
                   ),
                 ),
               ],

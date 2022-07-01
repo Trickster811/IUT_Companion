@@ -15,7 +15,7 @@ class _NewScreenState extends State<NewScreen> {
   final theme = [
     [
       kPrimaryColor,
-      Colors.purpleAccent,
+      Colors.blue,
     ],
     [
       Colors.red,
@@ -29,8 +29,22 @@ class _NewScreenState extends State<NewScreen> {
   final numGradient = [0, 1];
 
   final newsItems = [
-    "Journées portes ouvertes de l'IUT de Nn gaoundere",
-    "Concours d'entrée en première année cycle DUT"
+    [
+      'assets/images/enspd1.png',
+      "Journées portes ouvertes de l'ENSP de Douala",
+    ],
+    [
+      'assets/images/actu2.png',
+      "Lancement des activités culturelles",
+    ],
+    [
+      'assets/images/actu3.png',
+      "Concours d'entrée en première année",
+    ],
+    [
+      'assets/images/actu1.png',
+      "Installation du personnel",
+    ],
   ];
 
   @override
@@ -181,6 +195,7 @@ class NewsBox extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(
             vertical: 10,
+            horizontal: 5,
           ),
           height: size(200, context),
           width: double.maxFinite,
@@ -198,7 +213,7 @@ class NewsBox extends StatelessWidget {
                         Radius.circular(10),
                       ),
                       child: Image.asset(
-                        'assets/images/actu2.png',
+                        items[0],
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -221,19 +236,21 @@ class NewsBox extends StatelessWidget {
                             ],
                           ),
                         ),
-                        child: Column(
-                          children: [
-                            Spacer(),
-                            Text(
-                              "Journées portes ouvertes de l'IUT de Ngaoundéré...",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                        child: Padding(
+                          padding: padding_h,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Spacer(),
+                              Text(
+                                items[1],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: padding_h,
-                              child: Row(
+                              Row(
                                 children: [
                                   Icon(
                                     Icons.remove_red_eye_rounded,
@@ -252,8 +269,8 @@ class NewsBox extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                            )
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

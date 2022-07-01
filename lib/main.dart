@@ -22,14 +22,14 @@ Future main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
+ 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'IUT Companion',
       theme: ThemeData(
-        primaryColor: kPrimaryColor, 
+        primaryColor: Color.fromARGB(255, 243, 243, 243),
         scaffoldBackgroundColor: Colors.white,
         inputDecorationTheme: InputDecorationTheme(
           // border: textFieldBorder,

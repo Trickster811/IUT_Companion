@@ -95,7 +95,7 @@ class AboutAppScren extends StatelessWidget {
                         style: TextStyle(
                           fontSize: taille(18, context),
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                         ),
                       ),
                     ),
@@ -107,7 +107,7 @@ class AboutAppScren extends StatelessWidget {
                         style: TextStyle(
                           fontSize: taille(14, context),
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                         ),
                       ),
                     ),
@@ -117,7 +117,7 @@ class AboutAppScren extends StatelessWidget {
                         style: TextStyle(
                           fontSize: taille(18, context),
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                         ),
                       ),
                     ),
@@ -129,7 +129,7 @@ class AboutAppScren extends StatelessWidget {
                         style: TextStyle(
                           fontSize: taille(14, context),
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                         ),
                       ),
                     ),

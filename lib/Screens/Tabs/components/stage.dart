@@ -10,26 +10,32 @@ var stage = {
 };
 var listStage = [
   {
-    'nom': 'DUT',
+    'nom': 'Agent de Maîtrise',
     'niveau': 1,
     'objectif':
         'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
   },
   {
-    'nom': 'DUT',
+    'nom': 'Agent de Maîtrise',
     'niveau': 2,
     'objectif':
         'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
   },
   {
-    'nom': 'BTS',
-    'niveau': 1,
+    'nom': 'Agent de Maîtrise',
+    'niveau': 3,
     'objectif':
         'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
   },
   {
-    'nom': 'LiTech',
-    'niveau': 3,
+    'nom': 'Agent de Maîtrise',
+    'niveau': 4,
+    'objectif':
+        'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
+  },
+  {
+    'nom': 'Ingénieur',
+    'niveau': 5,
     'objectif':
         'jkhsdf,nfd dkjsf sd, fbjkdsf jfkdsbf bkjsdiff bsfn,dsb fbjdskdfnsdbji ds,f '
   }
@@ -77,7 +83,7 @@ class _StageState extends State<Stage> {
                       ),
                     ),
                     child: Text(
-                      "Niveau 1",
+                      "Agent De Maîtrise",
                       style: TextStyle(
                         fontSize: taille(20, context),
                         color: Colors.white,
@@ -90,8 +96,7 @@ class _StageState extends State<Stage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  StageInfo(index: listStage[0])),
+                              builder: (context) => StageInfo(index: listStage[0],)),
                         );
                       },
                       child: Container(
@@ -119,7 +124,7 @@ class _StageState extends State<Stage> {
                           ),
                         ),
                         child: Text(
-                          "DUT",
+                          "Niveau 1",
                           style: TextStyle(
                             fontSize: taille(16, context),
                             color: Colors.black,
@@ -134,8 +139,7 @@ class _StageState extends State<Stage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  StageInfo(index: listStage[2])),
+                              builder: (context) => StageInfo(index: listStage[1],)),
                         );
                       },
                       child: Container(
@@ -163,7 +167,93 @@ class _StageState extends State<Stage> {
                           ),
                         ),
                         child: Text(
-                          "BTS",
+                          "Niveau 2",
+                          style: TextStyle(
+                            fontSize: taille(16, context),
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => StageInfo(index: listStage[2],)),
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(
+                            top: size(7, context),
+                            bottom: size(20, context),
+                            left: size(50, context),
+                            right: size(50, context)),
+                        padding: EdgeInsets.only(
+                          top: size(7, context),
+                          bottom: size(7, context),
+                        ),
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 187, 187, 187),
+                              blurRadius: 10.0,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                          color: Color.fromARGB(255, 241, 241, 241),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        child: Text(
+                          "Niveau 3",
+                          style: TextStyle(
+                            fontSize: taille(16, context),
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => StageInfo(index: listStage[3],)),
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(
+                            top: size(7, context),
+                            bottom: size(20, context),
+                            left: size(50, context),
+                            right: size(50, context)),
+                        padding: EdgeInsets.only(
+                          top: size(7, context),
+                          bottom: size(7, context),
+                        ),
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 187, 187, 187),
+                              blurRadius: 10.0,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                          color: Color.fromARGB(255, 241, 241, 241),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        child: Text(
+                          "Niveau 4",
                           style: TextStyle(
                             fontSize: taille(16, context),
                             color: Colors.black,
@@ -203,7 +293,7 @@ class _StageState extends State<Stage> {
                       ),
                     ),
                     child: Text(
-                      "Niveau 2",
+                      "Ingénieur",
                       style: TextStyle(
                         fontSize: taille(20, context),
                         color: Colors.white,
@@ -216,8 +306,7 @@ class _StageState extends State<Stage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  StageInfo(index: listStage[2])),
+                              builder: (context) => StageInfo(index: listStage[4],)),
                         );
                       },
                       child: Container(
@@ -245,90 +334,7 @@ class _StageState extends State<Stage> {
                           ),
                         ),
                         child: Text(
-                          "DUT",
-                          style: TextStyle(
-                            fontSize: taille(16, context),
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Column(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(
-                        top: size(20, context),
-                        bottom: size(10, context),
-                        left: size(25, context),
-                        right: size(25, context)),
-                    padding: EdgeInsets.only(
-                      top: size(10, context),
-                      bottom: size(10, context),
-                    ),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 20.0,
-                          offset: Offset(0, 5),
-                        ),
-                      ],
-                      color: Colors.orangeAccent,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                    child: Text(
-                      "Niveau 3",
-                      style: TextStyle(
-                        fontSize: taille(20, context),
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => StageInfo(
-                                    index: listStage[3],
-                                  )),
-                        );
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.only(
-                            top: size(7, context),
-                            bottom: size(20, context),
-                            left: size(50, context),
-                            right: size(50, context)),
-                        padding: EdgeInsets.only(
-                          top: size(7, context),
-                          bottom: size(7, context),
-                        ),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 187, 187, 187),
-                              blurRadius: 10.0,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                          color: Color.fromARGB(255, 241, 241, 241),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                        child: Text(
-                          "LiTech",
+                          "Niveau 5",
                           style: TextStyle(
                             fontSize: taille(16, context),
                             color: Colors.black,

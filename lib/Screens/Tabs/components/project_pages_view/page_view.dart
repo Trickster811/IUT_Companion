@@ -69,7 +69,7 @@ class ProjectView extends StatelessWidget {
                                     text: "Joachim Nedaouka",
                                     style: TextStyle(
                                       fontSize: taille(14, context),
-                                      fontFamily: 'OpenSans_Regular',
+                                      fontFamily: 'ArialRoundedBold',
                                       fontWeight: FontWeight.bold,
                                     ),
                                   )
@@ -87,7 +87,7 @@ class ProjectView extends StatelessWidget {
                                     text: "Juin 25, 2022.",
                                     style: TextStyle(
                                       fontSize: taille(14, context),
-                                      fontFamily: 'OpenSans_Regular',
+                                      fontFamily: 'ArialRoundedBold',
                                       fontWeight: FontWeight.bold,
                                     ),
                                   )
@@ -169,7 +169,7 @@ class ProjectView extends StatelessWidget {
                                     "Get Documentation".toUpperCase(),
                                     style: TextStyle(
                                       fontSize: taille(17, context),
-                                      fontFamily: 'OpenSans_Regular',
+                                      fontFamily: 'ArialRoundedBold',
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                     ),
@@ -193,7 +193,7 @@ class ProjectView extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: taille(20, context),
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -202,7 +202,7 @@ class ProjectView extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: taille(15, context),
-                          fontFamily: 'OpenSans_Regular',
+                          fontFamily: 'ArialRoundedBold',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -217,7 +217,7 @@ class ProjectView extends StatelessWidget {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: taille(8, context),
-                                    fontFamily: 'OpenSans_Regular',
+                                    fontFamily: 'ArialRoundedBold',
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -226,7 +226,7 @@ class ProjectView extends StatelessWidget {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: taille(12, context),
-                                    fontFamily: 'OpenSans_Regular',
+                                    fontFamily: 'ArialRoundedBold',
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -273,6 +273,8 @@ class ProjectView extends StatelessWidget {
           child: Image.asset(
             img,
             fit: BoxFit.cover,
+            height: 300,
+            width: double.maxFinite,
           ),
         ),
       );

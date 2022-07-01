@@ -3,7 +3,11 @@ import 'package:iut_companion/constants.dart';
 import 'package:flutter/material.dart';
 
 class ConcoursPage extends StatelessWidget {
-  const ConcoursPage({Key? key}) : super(key: key);
+  const ConcoursPage({
+    Key? key,
+  }) : super(
+          key: key,
+        );
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -13,20 +17,16 @@ class ConcoursPage extends StatelessWidget {
           SizedBox(
             height: size(30, context),
           ),
-          cardConcours(title: "DUT"),
+          cardConcours(title: "Niveau 1"),
           SizedBox(
             height: size(30, context),
           ),
-          cardConcours(title: "BTS"),
+          cardConcours(title: "Niveau 3"),
           SizedBox(
             height: size(30, context),
           ),
-          cardConcours(title: "LiTech"),
-
-          // footer
-
           Container(
-            // padding: EdgeInsets.only(bottom: size(50, context)),
+            padding: EdgeInsets.only(bottom: size(50, context)),
             width: double.maxFinite,
             height: size(100, context),
             color: Colors.transparent,

@@ -30,7 +30,7 @@ class _AdminScreenState extends State<AdminScreen> {
     Text(
       'Home',
       style: TextStyle(
-        color: Colors.white,
+        color: Color.fromARGB(255, 0, 0, 0),
         fontFamily: 'ArialRoundedBold',
         fontWeight: FontWeight.bold,
         fontSize: 25,
@@ -39,14 +39,14 @@ class _AdminScreenState extends State<AdminScreen> {
     Text(
       'Dashboard',
       style: TextStyle(
-        color: Colors.white,
+        color: Color.fromARGB(255, 0, 0, 0),
         fontFamily: 'ArialRoundedBold',
         fontWeight: FontWeight.bold,
         fontSize: 25,
       ),
     ),
     CupertinoSearchTextField(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 139, 139, 139),
       borderRadius: BorderRadius.circular(30),
       onChanged: (String value) {
         print('The text has changed to: $value');
@@ -58,14 +58,14 @@ class _AdminScreenState extends State<AdminScreen> {
     Text(
       'Settings',
       style: TextStyle(
-        color: Colors.white,
+        color: Color.fromARGB(255, 0, 0, 0),
         fontFamily: 'ArialRoundedBold',
         fontWeight: FontWeight.bold,
         fontSize: 25,
       ),
     ),
     CupertinoSearchTextField(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 139, 139, 139),
       borderRadius: BorderRadius.circular(30),
       onChanged: (String value) {
         print('The text has changed to: $value');
@@ -86,67 +86,70 @@ class _AdminScreenState extends State<AdminScreen> {
     ];
     return Scaffold(
       extendBody: true,
-      body: Stack(fit: StackFit.expand, children: [
-        Image.asset(
-          'assets/images/bg_img.png',
-          fit: BoxFit.fitWidth,
-          height: MediaQuery.of(context).size.height,
-        ),
-        Column(
-          children: [
-            Flexible(
-              flex: 2,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Text(
-                      'Good Morning',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'ArialRoundedBold',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+      body: Container(
+        color: Colors.black,
+        child: Stack(fit: StackFit.expand, children: [
+          Image.asset(
+            'assets/images/bg_img.png',
+            fit: BoxFit.fitWidth,
+            height: MediaQuery.of(context).size.height,
+          ),
+          Column(
+            children: [
+              Flexible(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      SizedBox(
+                        height: 50,
                       ),
-                    ),
-                    Text(
-                      'Mr ${widget.data[0]} !!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'ArialRoundedBold',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
+                      Text(
+                        'Good Morning',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'ArialRoundedBold',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    theme[index],
-                  ],
+                      Text(
+                        'Mr ${widget.data[0]} !!',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'ArialRoundedBold',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      theme[index],
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Flexible(
-              flex: 4,
-              child: Container(
-                padding: EdgeInsets.only(top: 25),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
+              Flexible(
+                flex: 4,
+                child: Container(
+                  padding: EdgeInsets.only(top: 25),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  height: double.maxFinite,
+                  width: double.maxFinite,
+                  child: screens[index],
                 ),
-                height: double.maxFinite,
-                width: double.maxFinite,
-                child: screens[index],
               ),
-            ),
-          ],
-        ),
-      ]),
+            ],
+          ),
+        ]),
+      ),
       bottomNavigationBar: AdminTabBar(
         index: index,
         onChangedTab: onChangedTab,

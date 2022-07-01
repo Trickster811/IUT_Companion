@@ -15,35 +15,29 @@ class SubProjectScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(230, 255, 255, 255),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color.fromARGB(255, 238, 238, 238),
         // elevation: 0,
         title: Text(
           'Projects',
           style: TextStyle(
             // letterSpacing: 15,
-            color: Colors.white,
+            color: Color.fromARGB(255, 0, 0, 0),
             fontSize: 25,
-            fontFamily: 'OpenSans_Regular',
+            fontFamily: 'ArialRoundedBold',
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
       ),
-      // drawer: SideBar(),
+      drawer: SideBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               height: size(250, context),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 0,
-                  color: kPrimaryColor,
-                ),
-                color: kPrimaryColor,
-              ),
+              color: Colors.black,
               child: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -61,7 +55,7 @@ class SubProjectScreen extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -79,7 +73,7 @@ class SubProjectScreen extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 10,
-                            fontFamily: 'OpenSans_Regular',
+                            fontFamily: 'ArialRoundedBold',
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -203,7 +197,7 @@ class SubProjectTabWidget extends StatelessWidget {
                         // letterSpacing: 20,
                         color: Colors.black,
                         fontSize: taille(15, context),
-                        fontFamily: 'OpenSans_Regular',
+                        fontFamily: 'ArialRoundedBold',
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -215,7 +209,7 @@ class SubProjectTabWidget extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: taille(12, context),
-                        fontFamily: 'OpenSans_Regular',
+                        fontFamily: 'ArialRoundedBold',
                       ),
                     ),
                   ],
